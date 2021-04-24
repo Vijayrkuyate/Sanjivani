@@ -1,0 +1,64 @@
+﻿@model SanjivaniModalView.UserIntraction
+<div class="box-body no-padding">
+    <div class="box-body table-responsive" id="OrderDtl">
+        <table id="example1" class="table table-bordered table-striped">
+        
+            <thead>
+                <tr style="color: white;background-color: #1c7faf;">
+                    <th align="center">Date</th>
+                    <th>CP Intraction</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int rowNo = 0; }
+                @foreach (var item in ViewBag.UserIntract)
+                {
+                    @Html.HiddenFor(model => model.IntractionId)
+                    <tr>
+                        @*<td>@item.RegistrationDate</td>*@
+                        <td>
+                            @item.Date
+                            @*@(rowNo += 1)*@
+                        </td>
+                      
+                        <td>@item.Intraction</td>
+                     
+                            <td align="center">
+                                <input type="hidden" id="IntractId" name="rank" value=@item.IntractionId>
+                                <a class="btn btn-danger btn-sm" id=Delete>
+                                    <i class="fa fa-trash">
+                                    </i>
+                                </a>
+</td>
+</tr>
+                }
+            </tbody>
+           
+        </table>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+<script>
+    $('body').on('click', '#Delete', function () {
+        debugger;
+        var IntractionId = $(this).siblings("#IntractId").val();
+
+        var dd = getJsonResult("@Url.Action("DeleteUserIntraction", "Partner")", { IntractionId });
+          var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+        $('#_IntractionList').html(d);
+        var messege = '';
+        if (dd.Status == 200) {
+            messege = 'Record saved successfully';
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+       
+    });
+</script>

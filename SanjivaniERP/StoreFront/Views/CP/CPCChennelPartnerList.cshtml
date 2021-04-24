@@ -1,0 +1,158 @@
+﻿@model IEnumerable<ModelView.CPCchannelPartnerModel>
+@{
+    ViewBag.Title = "CPCChennelPartnerList";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @*Channal Partner Customer*@
+        @*<small>Control panel</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"> Channal Partner Customer</li>
+    </ol>
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-3" style="margin-top: 10px;">
+
+
+                        <a class="btn btn-danger btn-md" href="@Url.Action("CPCChennelPartner", "CP", new { CustId = 0 })" style="color:white"><i class="fa fa-plus"></i> Add New CP</a>
+                        <button class="btn btn-success btn-md" onclick="write_to_excel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                    </div>
+                    @*<div class="form-group col-md-3">
+                            <label for="exampleInputFile">Select Channal Partner</label>
+
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputFile">From Date</label>
+
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputFile">To Date</label>
+
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>*@
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #1c7faf;">
+
+                                    <th align="center">Sr.No</th>
+                                    <th>User Name</th>
+                                    <th>Email Id</th>
+                                    <th>Mobile No</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>Operation</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in ViewBag.CPCChennelPartnerList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(rowNo += 1)
+                                        </td>
+                                        <td>@item.UserId</td>
+                                        <td>@item.EmailID</td>
+                                        <td>@item.mobileNo</td>
+                                        <td>@item.Address</td>
+                                        @*<td align="center"><a href="@Url.Action("CPCChennelPartner", "CP", new { CustId = @item.CustId })" class=""><i class="fa fa-eye"></i>View</a></td>*@
+
+                                        @if (item.StatusId == "1")
+                                        {
+                                            <td style="text-align: center;"><i class="fa fa-circle text-green" style="font-size :large;"></i></td>
+                                        }
+                                        @if (item.StatusId == "2")
+                                        {
+                                            <td style="text-align: center;"><i class="fa fa-circle text-yellow" style="font-size :large;"></i></td>
+                                        }
+                                        @if (item.StatusId == "3")
+                                        {
+                                            <td style="text-align: center;"><i class="fa fa-circle text-red" style="font-size :large;"></i></td>
+                                        }
+                                        <td align="center">
+                                            <a class="btn btn-danger btn-sm" href="@Url.Action("CPCChennelPartner", "CP",new { CustId= @item.CustId })">
+                                                <i class="fa fa-eye">
+                                                </i>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                            @*<tfoot>
+                                    <tr>
+                                        <th align="center">Sr.No</th>
+                                        <th>User Name</th>
+                                        <th>Email Id</th>
+                                        <th>Mobile No</th>
+                                        <th>Address</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </tfoot>*@
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>
+

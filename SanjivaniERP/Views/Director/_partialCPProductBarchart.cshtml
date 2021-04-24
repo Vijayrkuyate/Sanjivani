@@ -1,0 +1,56 @@
+﻿
+<div class="col-sm-6 card card-danger">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="chartContaineres" style="height: 370px; width: 100%;"></div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<script>
+    window.onload = function () {
+        debugger;
+        var chart = new CanvasJS.Chart("chartContaineres", {
+	animationEnabled: true,
+	theme: "light2",
+	title: {
+		text: "Sales via Advertisement"
+	},
+	legend: {
+		horizontalAlign: "right",
+		verticalAlign: "center"
+	},
+	data: [{
+		type: "pyramid",
+		showInLegend: true,
+		legendText: "{label}",
+		indexLabel: "{label} - {y}",
+		toolTipContent: "<b>{label}</b>: {y} <b>({percentage}%)</b>",
+		dataPoints: @Html.Raw(ViewBag.DataPoints12)
+	}]
+});
+calculatePercentage();
+chart.render();
+
+function calculatePercentage() {
+	var dataPoint = chart.options.data[0].dataPoints;
+	var total = dataPoint[0].y;
+	for (var i = 0; i < dataPoint.length; i++) {
+		if (i == 0) {
+			chart.options.data[0].dataPoints[i].percentage = 100;
+		} else {
+			chart.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+		}
+	}
+}
+
+}
+</script>

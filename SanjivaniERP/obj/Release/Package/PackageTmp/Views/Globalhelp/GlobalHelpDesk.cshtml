@@ -1,0 +1,168 @@
+﻿@model  SanjivaniModalView.GlobalHelpdesk
+@{
+    ViewBag.Title = "GlobalHelpdesk";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+    <style>
+        .nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a {
+            background-color: #b92a37;
+        }
+    </style>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Global Help Desk</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Global Help Desk</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+
+                <div class="col-6 col-sm-6">
+
+
+                    <div class="card card-primary card-tabs">
+                        <div class="card-header p-0 pt-1">
+                            <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                <li class="nav-item" id="one">
+                                    <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Global Help Desk</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-one-tabContent">
+                                <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
+                                    <div class="box box-danger" id="loading-example">
+                                        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                                            <!-- tools box -->
+                                            <div class="pull-right box-tools">
+
+                                                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+                                            </div><!-- /. tools -->
+
+
+
+                                        </div><!-- /.box-header -->
+                                        @using (Ajax.BeginForm("_SetGlobalHelDskQue", "Globalhelp", new AjaxOptions
+                                        {
+                                            HttpMethod = "POST",
+                                            UpdateTargetId = "",
+                                            OnSuccess = "Success123",
+                                            OnFailure = "Failure123"
+                                        }, new { @enctype = "multipart/form-data" }))
+                                        {
+                                            <div class="box-body no-padding" style="background-color: whitesmoke;">
+                                                <div class="row">
+
+                                                    <div class="form-group col-md-12">
+
+                                                        <label for="exampleInputEmail1">Question</label>
+
+                                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Question" } })
+                                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="exampleInputEmail1">Upload Files</label>
+                                                        @Html.HiddenFor(model => model.GID)
+                                                        @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                        <div class="col-md-10">
+                                                            @Html.TextBoxFor(model => model.files, "", new { @type = "file", })
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+
+                                                        <div>
+
+                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+
+
+                                                            @*<a class="btn btn-danger" ><i class="fa fa-edit"></i> New</a>*@
+                                                        </div>
+
+
+
+
+                                                    </div>
+
+                                                </div><!-- /.row - inside box -->
+                                            </div><!-- /.box-body -->
+                                        }
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-12" id="ImgDiv">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+
+<script type="text/javascript">
+    function Success123() {
+        debugger
+        //var userId = $('#CustId').val();
+        //var data = { CustId: userId };
+        alert('Save Sucessfull')
+        var d = loadData("@Url.Action("_PartialgetGlobaldeskImag", "Globalhelp")", {});
+        $('#ImgDiv').html(d);
+
+    }
+    function Failure123() {
+        alert1('test')
+        $('#errormsg4').html("safdsgsd");
+        $('#trans4').html("Server error please try again");
+        $('#myModalEMB4').modal('show');
+
+    }
+    $('body').on('click', '#Edit', function () {
+        debugger;
+        var GID = $(this).siblings("#GID").val();
+        //var Dtlid = $(this).siblings("#VocDtl").val();
+        $('#Name').val(GID);
+        //$('#Ans').val(Link);
+        //$('#VocDtlId').val(Dtlid);
+        // window.location.reload();
+    });
+
+    var d = loadData("@Url.Action("_PartialgetGlobaldeskImag", "Globalhelp")", {});
+    $('#ImgDiv').html(d);
+
+   
+
+</script>
+

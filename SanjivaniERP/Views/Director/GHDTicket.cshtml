@@ -1,0 +1,141 @@
+﻿
+@model SanjivaniModalView.GHDTicket
+@{
+    ViewBag.Title = "GHDTicket";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        GHD Ticket
+
+    </h1>
+
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>Sales</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>Billing</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="@Url.Action("CPCChennelPartnerList","CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>Technical</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>Complaint</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="box-header" style="cursor: move;background-color: #030358;cursor: move;color: white;">
+                        <!-- tools box -->
+                        <div class="form-group col-md-6" style="margin-top: 10px;">
+
+                            <button class="btn btn-success btn-md" onclick="write_to_excel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                            
+                        </div>
+
+
+                    </div><!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="box-body table-responsive" id="OrderDtl">
+                            
+                        </div>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>

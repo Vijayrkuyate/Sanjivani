@@ -1,0 +1,48 @@
+﻿<section class="content-header">
+    <h1>
+        Order
+
+    </h1>
+
+</section>
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #1c7faf;">
+
+            <th>Order Date</th>
+            <th>Product</th>
+            <th>Product Name</th>
+            <th>Customer</th>
+            <th>Cost Price</th>
+            <th>Selling Price</th>
+            <th>Margin</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in ViewBag.CPOrderList)
+        {
+            <tr>
+                @*<td>@item.RegistrationDate</td>*@
+                <td>@item.OrderDate</td>
+                <td>@item.ProductCat</td>
+
+                <td>@item.ProductName</td>
+                <td>@item.CustName</td>
+                <td>@item.CostPrise</td>
+                <td>@item.Price</td>
+                <td>@item.Margin</td>
+
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ModelView.ProductBusinessModal>
+@{
+    ViewBag.Title = "Domain";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Domain</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Domain</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-6" style="margin-top: 10px;">
+
+                        <button class="btn btn-success btn-md" onclick="write_to_excel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                    </div>
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #1c7faf;">
+
+                                    <th style="width: 20px;">Image</th>
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+
+                                    <th>SAC Code</th>
+                                    <th>Registrartion Price</th>
+                                    <th>Renewal Price</th>
+                                    <th>Transfer Price</th>
+                                    <th>Restoration Price</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>@item.RegistrationDate</td>*@
+                                        <td>
+                                            <div class="pull-left image">
+                                                <img src="~/Documents/ProductImage/@item.PropductImage" class="img-circle" alt="User Image" style="height: 47px;">
+                                            </div>
+                                        </td>
+                                        <td>@item.ProductCode</td>
+
+                                        <td>@item.ProductName</td>
+
+                                        <td>@item.SACCode</td>
+                                        <td>@item.RegistrartionPrice</td>
+                                        <td>@item.RenewalPrice</td>
+                                        <td>@item.TransferPrice</td>
+                                        <td>@item.DomainregistrationPrice</td>
+                                        
+                                    </tr>
+                                }
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>
+

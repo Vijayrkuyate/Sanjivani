@@ -1,0 +1,65 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+@using (Html.BeginForm("_SetCPDocument", "CP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company Logo</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded" style="background-color: transparent;border: none;"accept="image/png,image/jpeg,image/jpg,application/pdf"  />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company PAN Card</label>
+
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded1" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf"  />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company Reg Document</label>
+
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded2" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Account Profile Photo</label>
+
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded3" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf"  />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company Owner Signature</label>
+
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded4" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+    <div style="text-align: center;"><button type="submit" class="btn btn-primary" id="test"><i class="fa fa-mail-forward"></i> Submit</button></div>
+}
+<script type="text/javascript">
+    debugger;
+    var a = $("#fileuploaded").val();
+    var b = $("#fileuploaded1").val();
+    var c = $("#fileuploaded2").val();
+    var d = $("#fileuploaded3").val();
+    var e = $("#fileuploaded4").val();
+    $("#test").click(function () {
+        if (a != '' && b != '' && c != '' && d != '' && e != '')
+        {
+            alert('Your Appliction Is Under Review');
+        }
+
+    });
+</script>

@@ -1,0 +1,151 @@
+﻿@model IEnumerable<SanjivaniModalView.GlobalHelpdesk>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <embed id="pdf" class="image_modal" src="" type="" height="260" width="460">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #1c7faf;">
+                                    <th align="center">Sr.No</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Operation</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>@item.RegistrationDate</td>*@
+                                        <td>
+                                            @(rowNo += 1)
+                                        </td>
+                                        <td>@item.Name</td>
+                                        <td><img style="display:block;" width="20%" height="20%" src="~/Documents/Globaldesk/@item.imagfile" /></td>
+
+                                        <td align="center">
+                                            <input type="hidden" id="GID" name="rank" value=@item.GID>
+                                            <input type="hidden" id="WithdrawId1" name="rank" value=@item.ImgId />
+                                            <a class="btn btn-danger btn-sm view" id="view" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a type="submit" class="btn btn-primary btn-sm"  href="@Url.Action("GlobalHelpDesk", "Globalhelp",new {GID = @item.GID })"><i class="fa fa-edit"></i></a>
+                                            @*<a class="btn btn-primary btn-sm" id="Edit">
+                                                <i class="fa fa-edit">
+                                                </i>
+
+                                            </a>*@
+                                            <input type="hidden" id="ImgId" name="rank" value=@item.ImgId>
+                                            <a class="btn btn-danger btn-sm" id="delete" style="color:white">
+                                                <i class="fa fa-trash-restore-alt">
+                                                </i>
+
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div>
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+<!-- /.card -->
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script>
+    $('body').on('click', '#view', function () {
+
+        var id = $(this).siblings("#WithdrawId1").val();
+        //alert(id)
+        var Url = id
+        var url = Url
+
+        $("#pdf").show();
+        $("#pdf").attr("src", url);
+    });
+
+    $('body').on('click', '#delete', function () {
+        debugger;
+        var ImgId = $(this).siblings("#ImgId").val();
+
+        var dd = getJsonResult("@Url.Action("DeleteGlobalImg", "Globalhelp")", { ImgId });
+        window.location.reload();
+        var messege = '';
+        if (dd.Status == 200) {
+            alert("Record Deleted successfully");
+        }
+        else {
+            alert("Internal server error please try again");
+            //messege = '';
+        }
+
+    });
+
+
+
+    $(".btn btn-danger btn-sm view").click(function () {
+        debugger;
+        var id = $(this).attr("id");
+        //parts = id.split('.').pop().trim();
+        //var currenturl = window.location.href;
+
+        var Url = "http://" + currenturl.split("/")[2] + id
+        var url = Url
+
+
+    });
+</script>

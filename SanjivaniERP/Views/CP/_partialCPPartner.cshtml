@@ -1,0 +1,124 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+
+@using (Ajax.BeginForm("_PartialCPRegister", "Account", new AjaxOptions
+{
+
+    HttpMethod = "POST",
+    OnSuccess = "invTknSuccess",
+    OnFailure = "invTknFailure"
+}))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="row">
+                @Html.HiddenFor(model => model.CustId)
+
+                @*<div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Channel Partner Id</label>
+                        @Html.EditorFor(model => model.CPId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Channel Partner Id" } })
+                    </div>*@
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Channel Partner Name</label>
+                    @Html.EditorFor(model => model.chennelpartName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Name", @required = "required", onfocusout = "return validate(this);" } })
+                    @Html.ValidationMessageFor(model => model.chennelpartName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Channel Partner Email Id</label>
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Email Id", @required = "required", onfocusout = "validateCaseSensitiveEmail();" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Email Id">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Mobile No</label>
+                    @Html.EditorFor(model => model.mobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Mobile No.", @required = "required", onblur = "IsMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.mobileNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">User Id</label>
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Password</label>
+                    @Html.EditorFor(model => model.pwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Password", @type = "Password", @required = "required", onfocusout = "CheckPassword()" } })
+                    @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    @Html.EditorFor(model => model.Cpwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Confirm Password", @type = "Password", @required = "required", onfocusout = "CnfirmPassword()" } })
+                    @Html.ValidationMessageFor(model => model.Cpwd, "", new { @class = "text-danger" })
+                </div>
+                
+                
+
+                @*<div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">CP Categeory</label>
+                        @Html.DropDownListFor(model => model.CpCategory, new SelectList(ViewBag.BindCPCategory, "Value", "Text"), "--Select CPCategory--", new { @class = "form-control", })
+                    </div>*@
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Address</label>
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Your Address" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Country</label>
+                    @Html.DropDownListFor(model => model.Country,
+       Enumerable.Empty<SelectListItem>
+           (),
+           "Select Country",
+           new { @class = "countries order-alpha dropdown form-control", @id = "countryId"})
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">State</label>
+                    @Html.DropDownListFor(m => m.State,
+               new SelectList(Enumerable.Empty<SelectListItem>
+                   (), "StateId", "State"),
+                   "Select State",
+                   new { @class = "states order-alpha dropdown form-control", @id = "stateId" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">City</label>
+                    @Html.DropDownListFor(m => m.City,
+       new SelectList(Enumerable.Empty<SelectListItem>
+           (), "StateId", "State"),
+           "Select City",
+           new { @class = "cities order-alpha dropdown form-control", @id = "cityId" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Postal Code</label>
+                    @Html.EditorFor(model => model.PostedCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Postal Code", @required = "required", onfocusout = "validateCaseSensitiveEmail();" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Email Id">*@
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+    <div style="text-align: center;"><button type="submit" class="btn btn-primary"><i class="fa fa-mail-forward"></i> Next</button></div>
+}
+<script>
+    function invTknSuccess(response) {
+        console.log(response.responseText)
+        //$('#messege').text(response.responseText);
+       // window.location.href = '@Url.Action("DashBoard", "Dashboard")';
+        //$('#messege').text(response.Messege);
+    }
+    function invTknFailure(response) {
+        console.log(response.responseText)
+      //  $('#messege').text(response.responseText);
+    }
+
+</script>

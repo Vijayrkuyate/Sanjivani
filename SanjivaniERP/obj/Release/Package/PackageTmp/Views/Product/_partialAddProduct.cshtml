@@ -1,0 +1,144 @@
+﻿@model SanjivaniModalView.ProductBusinessModal
+
+
+@using (Html.BeginForm("SetDomain", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title" style="background-color:#007bff"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.HiddenFor(model => model.ProductId)
+                    <label for="exampleInputEmail1">Product Code</label>
+
+                    @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                    @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Domain EPP Code</label>
+                    @Html.EditorFor(model => model.DomainERPCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Domain EPP Code"} })
+                    @Html.ValidationMessageFor(model => model.DomainERPCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Domain Provider Code</label>
+                    @Html.EditorFor(model => model.DomainProviderCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Domain Provider Code" } })
+                    @Html.ValidationMessageFor(model => model.DomainProviderCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">SAC Code</label>
+                    @Html.EditorFor(model => model.SACCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "SAC Code" } })
+                    @Html.ValidationMessageFor(model => model.SACCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Domain Name</label>
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Domain Name" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Registration Price</label>
+                    @Html.EditorFor(model => model.RegistrartionPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration Price", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.RegistrartionPrice, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Renewal Price</label>
+                    @Html.EditorFor(model => model.RenewalPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Renewal Price", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.RenewalPrice, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Transfer Price</label>
+                    @Html.EditorFor(model => model.TransferPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "IFSC Code", onkeypress = "Transfer Price" } })
+                    @Html.ValidationMessageFor(model => model.TransferPrice, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Restoration Price</label>
+                    @Html.EditorFor(model => model.DomainregistrationPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Doamin Restoration Fees", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.DomainregistrationPrice, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Product Image</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded4" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="col-md-12">
+
+                    <div>
+                        @if (Model.ProductId != 0)
+                        {
+                            <a class="btn btn-danger" onclick="EnableTrue()" style="color:white"><i class="fa fa-edit"></i> Edit</a>
+                        }
+                        @if (Model.ProductId != 0)
+                        {
+                            <button type="submit" id="usave" class="btn btn-danger"><i class="fa fa-save"></i> Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" id="dsave" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+                        }
+                        @if (Model.ProductId != 0)
+                        {
+                            <a class="btn btn-danger" id="esave" href="@Url.Action("DeleteProduct","Product",new { ProductId=Model.ProductId})"><i class="fa fa-edit"></i> Delete</a>
+                        }
+
+                        <a class="btn btn-danger" href="@Url.Action("Domain","Product")"><i class="fa fa-edit"></i> Close</a>
+                    </div>
+
+                    
+
+                   
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    var name = $('#ProductId').val();
+    if (name != '0') {
+        $(document).ready(function () {
+            console.log("dd");
+            $('#ProductCode').prop('disabled', true);
+            $('#DomainERPCode').prop('disabled', true);
+            $('#DomainProviderCode').prop('disabled', true);
+            $('#SACCode').prop('disabled', true);
+            $('#ProductName').prop('disabled', true);
+            $('#RegistrartionPrice').prop('disabled', true);
+
+            $('#RenewalPrice').prop('disabled', true);
+            $('#TransferPrice').prop('disabled', true);
+            $('#DomainregistrationPrice').prop('disabled', true);
+
+        });
+    }
+    function EnableTrue() {
+        $('#ProductCode').prop('disabled', false);
+        $('#DomainERPCode').prop('disabled', false);
+        $('#DomainProviderCode').prop('disabled', false);
+        $('#SACCode').prop('disabled', false);
+        $('#ProductName').prop('disabled', false);
+        $('#RegistrartionPrice').prop('disabled', false);
+
+        $('#RenewalPrice').prop('disabled', false);
+        $('#TransferPrice').prop('disabled', false);
+        $('#DomainregistrationPrice').prop('disabled', false);
+    }
+</script>
+
+
+
+
+
+

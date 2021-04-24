@@ -1,0 +1,91 @@
+﻿@model SanjivaniModalView.DirectorBusinessModel
+@using (Html.BeginForm("_SetDirectorDocument", "Director", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+     
+        <div class="box-body no-padding">
+            @Html.HiddenFor(model => model.CustId)
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="exampleInputFile">Upload Profile photo</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" required />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputFile">Upload Company PAN Card</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded1"style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf"/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputFile">Upload Adhaar Card </label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded2" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputFile">Upload Light Bill</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded3" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputFile">Upload Passport</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded4" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+    <button type="submit" id="ddsave" class="btn btn-danger"><i class="fa fa-save"></i>Save</button>
+}
+<div class="box box-danger" id="loading-example" style="margin-top:10px">
+
+    <div class="box-body no-padding" style="background-color: whitesmoke;">
+        <div class="row" id="Doucment">
+
+
+        </div><!-- /.row - inside box -->
+    </div><!-- /.box-body -->
+
+</div>
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>*@
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+    //   var custId = $("#CustId").val();
+    //var data = { Custid: custId };
+    var d = loadData("@Url.Action("_PartialgetDirectorDocument", "Director")", {});
+    $('#Doucment').html(d);
+    @*var d = loadData("@Url.Action("_PartialGetDirectorDoc", "Director")", {});
+    $('#Doucment').html(d);*@
+
+  
+    var a = $("#fileuploaded").val();
+    var b = $("#fileuploaded1").val();
+    var c = $("#fileuploaded2").val();
+    var d = $("#fileuploaded3").val();
+    var e = $("#fileuploaded4").val();
+    $('#ddsave').click(function () {
+        debugger;
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Document Upload Sucessfully'
+        })
+    });
+    $("#test").click(function () {
+        if (a != '' && b != '' && c != '' && d != '' && e != '')
+        {
+            alert('Your Appliction Is Under Review');
+        }
+
+    });
+</script>

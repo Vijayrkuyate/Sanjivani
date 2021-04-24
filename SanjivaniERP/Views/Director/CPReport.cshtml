@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "CPReport";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Channal Partner Report</h1>
+            </div><!-- /.col -->
+      
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-12 col-sm-12">
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1" style="background-color: #030358;">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Channal Partner</a>
+                            </li>
+                            <li class="nav-item" id="two">
+                                <a class="nav-link " id="T2" data-toggle="pill" href="#tab_2" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="true">Invoices</a>
+                            </li>
+                            <li class="nav-item" id="three">
+                                <a class="nav-link" id="T3" data-toggle="pill" href="#tab_3" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Product</a>
+                            </li>
+                            <li class="nav-item" id="four">
+                                <a class="nav-link" id="T4" data-toggle="pill" href="#tab_4" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Withdrawl</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                <div class="row col-sm-12" id="TEst">
+                                  
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                <div class="row col-sm-12" id="TEst1">
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                                <div class="row">
+                                   
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                
+                                        <div class="row">
+                                          
+
+                                        </div>
+                                 
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/js/countrystatecity.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+
+<script>
+    var d = loadData("@Url.Action("_partialCPBarchart", "Director")");
+    $('#TEst').html(d);
+
+   
+    $('#T1').click(function () {
+        debugger;
+         var d = loadData("@Url.Action("_partialCPBarchart", "Director")");
+    $('#TEst').html(d);
+        $('#T2').addClass('nav-link active')
+        $('#T1').removeClass('active')
+        $('#T3').removeClass('active')
+        $('#T4').removeClass('active')
+        $('#T5').removeClass('active')
+        $('#tab_2').addClass('tab-pane fade active show')
+
+    });
+
+    $('#T2').click(function () {
+        debugger;
+       
+        var d1 = loadData("@Url.Action("_partialCPProductBarchart", "Director")");
+    $('#TEst1').html(d1);
+     
+        $('#T2').addClass('nav-link active')
+        $('#T1').removeClass('active')
+        $('#T3').removeClass('active')
+        $('#T4').removeClass('active')
+        $('#T5').removeClass('active')
+        $('#tab_2').addClass('tab-pane fade active show')
+
+    });
+</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

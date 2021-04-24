@@ -1,0 +1,142 @@
+﻿@model IEnumerable<ModelView.Order>
+@{
+    ViewBag.Title = "BillingDtl";
+    Layout = "~/Views/Shared/_LayoutCPC.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @*Channal Partner Customer*@
+        @*<small>Control panel</small>*@
+    </h1>
+    <ol class="breadcrumb">
+       
+        <li class="active">Billing Details</li>
+    </ol>
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: #030358;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-3" style="margin-top: 10px;">
+
+                        <ol class="breadcrumb" style="background-color: #030358;">
+                            <a class="btn btn-danger btn-md" href="@Url.Action("PrintBill", "CPC")" style="color:white"><i class="fa fa-plus"></i> Print Bill</a>
+                           
+                        </ol>
+
+                    </div>
+                    @*<div class="form-group col-md-3">
+                            <label for="exampleInputFile">Select Channal Partner</label>
+
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputFile">From Date</label>
+
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputFile">To Date</label>
+
+                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>*@
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #030358;">
+
+                                    <th align="center">Sr.No</th>
+                                    <th>Product</th>
+                                    <th>Taxable Value</th>
+                                    <th>CGST</th>
+                                    <th>SGST</th>
+                                    <th>Total</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @(rowNo += 1)
+                                        </td>
+                                        
+                                        <td>@item.ProductName</td>
+                                        <td>@item.BasePrise</td>
+                                        <td>@item.CGST</td>
+                                        <td>@item.SGST</td>
+                                        <td>@item.InvoiceAmt</td>
+                                       
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                            @*<tfoot>
+                                    <tr>
+                                        <th align="center">Sr.No</th>
+                                        <th>User Name</th>
+                                        <th>Email Id</th>
+                                        <th>Mobile No</th>
+                                        <th>Address</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </tfoot>*@
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>
+

@@ -1,0 +1,130 @@
+﻿@model SanjivaniModalView.BankDetails
+@*@using (Html.BeginForm("_partialSetBankDeatil", "Director", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+@using (Ajax.BeginForm("_partialSetBankDeatil", "Director", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "",
+    OnSuccess = "Success123",
+    OnFailure = "Failure123"
+}, new { @class = "" }))
+{
+    <div class="box box-danger" id="loading-example">
+     
+        <div class="box-body no-padding">
+            <div class="row">
+                @Html.HiddenFor(model => model.CustId)
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Director Business Bank Name</label>
+                    @Html.DropDownListFor(model => model.BankName1, new SelectList(ViewBag.bank, "Value", "Text"), "--Select Bank--", new { @class = "form-control", })
+                    @*@Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Channel Partner Bank Name" } })*@
+                    @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Account No</label>
+                    @Html.EditorFor(model => model.AccountNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.AccountNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">IFSC Code</label>
+                    @Html.EditorFor(model => model.IFSCcode, new { htmlAttributes = new { @class = "form-control", @placeholder = "IFSC Code" } })
+                    @Html.ValidationMessageFor(model => model.IFSCcode, "", new { @class = "text-danger" })
+                </div>
+               
+               
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Account Holder Name</label>
+                    @Html.EditorFor(model => model.AccountHolderName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Account Holder Name", onfocusout = "return validateAccHName(this);" } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Account Type</label>
+                    @Html.DropDownListFor(model => model.AccountType, new SelectList(ViewBag.Accountype, "Value", "Text"), "--Select Account Type--", new { @class = "form-control", })
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <input type="hidden" id="hiddenPerId" name="custId" value=@Session["EditId"].ToString()>
+                       
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                    @*<div class="col-md-3">
+                        <a class="btn btn-danger" onclick="CPBankDtlEnableTrue()"><i class="fa fa-edit"></i> Edit</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>*@
+                    <div class="col-md-1"></div>
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+}
+@*<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>*@
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+    function Success123() {
+        var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        
+            debugger;
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Bank Detail Save Sucessfully'
+            })
+        
+
+    }
+    function Failure123() {
+        alert1('test')
+        $('#errormsg4').html("safdsgsd");
+        $('#trans4').html("Server error please try again");
+        $('#myModalEMB4').modal('show');
+
+    }
+    var cek = /^[a-zA-Z\ \']+$/;
+    function validateAccHName(form) {
+        debugger;
+        var name = $('#AccountHolderName').val();
+        if (name != '') {
+            if (!cek.test(name)) {
+
+                $('#AccountHolderName').focus();
+                alert("Only Alphabetic");
+                $('#AccountHolderName').val('');
+                return false;
+            }
+            return true;
+        }
+
+    }
+
+    var cek = /^[a-zA-Z\ \']+$/;
+    function validateAccHName(form) {
+        debugger;
+        var name = $('#PaymentBankCardName').val();
+        if (name != '') {
+            if (!cek.test(name)) {
+
+                $('#PaymentBankCardName').focus();
+                alert("Only Alphabetic");
+                $('#PaymentBankCardName').val('');
+                return false;
+            }
+            return true;
+        }
+
+    }
+    
+    var name = $('#hiddenPerId').val();
+    //alert(name);
+  
+</script>

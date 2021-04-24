@@ -1,0 +1,137 @@
+﻿@model IEnumerable<SanjivaniModalView.Order>
+
+@{
+    ViewBag.Title = "GetOrder";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">SALES ORDER</h1>
+   
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12" style="border:1px solid;background-color:palegoldenrod">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-6" style="margin-top: 10px;">
+                        <button class="btn btn-success btn-md" onclick="DownloadExcel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                    </div>
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color:#030358;">
+
+                                    
+                                    <th>Order No</th>
+                                    <th>Order Date</th>
+
+                                    <th>Base Price</th>
+                                    <th>CGST</th>
+                                    <th>SGST</th>
+                                    <th>Invoice Amount</th>
+                                   
+                                    <th>Operation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr style="background-color:white">
+                                        @*<td>@item.RegistrationDate</td>*@
+                                       
+                                        <td>@item.OrderId</td>
+                                           
+                                        <td>@item.OrderDate</td>
+
+                                        <td>@item.BasePrise</td>
+
+                                        <td>@item.CGST</td>
+                                        <td>@item.SGST</td>
+                                        <td>@item.InvoiceAmt</td>
+                                     
+                                        <td align="center">
+                                            <a class="btn btn-danger btn-sm" href="@Url.Action("ManageOrder","Product",new { OrderMasterId=item.OrderId})">
+                                                <i class="fa fa-eye">
+                                                </i>
+
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+        function DownloadExcel() {
+            $.ajax({
+                type: "POST",
+                url: "/Product/ExcelExportOrderList",
+                cache: false,
+                success: function (data) {
+                    window.location = '/Product/DownloadOrderList';
+                },
+                error: function (data) {
+                    Materialize.toast("Something went wrong. ", 3000, 'rounded');
+                }
+            });
+        }
+</script>

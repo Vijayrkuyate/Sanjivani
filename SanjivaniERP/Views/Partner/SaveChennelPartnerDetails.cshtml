@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+<section class="content">
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chennel Partner List</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            @*<th>RegistrationDate</th>*@
+                            <th>User Name</th>
+                            <th>Email Id</th>
+                            <th>Mobile No</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.ChennelPartnerList)
+                        {
+                            <tr>
+                                @*<td>@item.RegistrationDate</td>*@
+                                <td>@item.UserName</td>
+                                <td>@item.EmailID</td>
+                                <td>@item.mobileNo</td>
+                                <td>@item.Address</td>
+                            </tr>
+                        }
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="box-footer clearfix">
+            <a href="@Url.Action("Chennelpartner","Partner")"><i class="btn btn-sm btn-info btn-flat pull-left"></i>Add New Channel Partner</a>
+            @*<a href="productspricing.html" class="btn btn-sm btn-info btn-flat pull-left"></a>*@
+            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+        </div>
+
+    </div>
+
+</section>

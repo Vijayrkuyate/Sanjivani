@@ -1,0 +1,235 @@
+﻿@model IEnumerable<ModelView.ProductBusinessModal>
+@{
+    ViewBag.Title = "DoaminPrices";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row featureTab p-top80 bg-pattern">
+    <section class="row pricing pricing2 p-bottom80">
+        <div class="container">
+            <div class="sectionTitle">
+                <h2>Domain Pricing</h2>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="row m0 featureTab_contents">
+        <div class="tab-content domain-pricing2">
+            <!--Tab 1-->
+            <div class="tab-pane active" role="tabpanel" id="tab1">
+                <div class="content_row row m0 section-spacing">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-style table-center shadow">
+                                    <table class="table-list">
+                                        <tbody>
+                                            <tr>
+                                                <th>Domain Name</th>
+                                                <th>Product Name</th>
+                                                <th>Registrartion Price</th>
+                                                <th>Renewal Price</th>
+                                                <th>Transfer Price</th>
+                                                <th>Restoration Price</th>
+                                               
+                                            </tr>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td><img src="https://master.pioneersoft.co.in/Documents/ProductImage/@item.PropductImage" class="img-responsive"></td>
+                                                    
+                                                    <td>@item.ProductName</td>
+                                                   
+                                                    <td>@item.RegistrartionPrice</td>
+                                                    <td>@item.RenewalPrice</td>
+                                                    <td>@item.TransferPrice</td>
+                                                    <td>@item.DomainregistrationPrice</td>
+                                                </tr>
+
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="row faqs_section section-spacing bg-gray">
+                    <div class="container">
+                        <div class="sectionTitle p-bottom80">
+                            <h5>frequently asked</h5>
+                            <h2>question &amp; answers!</h2>
+                        </div>
+                        <div class="panel-group faqs_accordion" id="faqs_accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="panel-heading" role="tab" id="heading1">
+                                            <h4 class="panel-title">
+                                                <a role="button" data-toggle="collapse" data-parent="#faqs_accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                    What is Virtual Private Server (Dedicated) Hosting ?
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                                            <div class="panel-body">
+                                                Nam in justo tempus varius leo siame tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul tincidunt turpis id act accumsan semper.tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul nt turpis id act accumsan semper.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="panel-heading" role="tab" id="heading2">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#faqs_accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                    What Virtualisation software do you use ?
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                            <div class="panel-body">
+                                                Nam in justo tempus varius leo siame tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul tincidunt turpis id act accumsan semper.tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul nt turpis id act accumsan semper.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="panel-heading" role="tab" id="heading3">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#faqs_accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                                    What kind of software can I install on my Dedicated package ?
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                                            <div class="panel-body">
+                                                Nam in justo tempus varius leo siame tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul tincidunt turpis id act accumsan semper.tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul nt turpis id act accumsan semper.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="panel-heading" role="tab" id="heading4">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#faqs_accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                                    Can I install cPanel or Plesk on my Dedicated package ?
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                            <div class="panel-body">
+                                                Nam in justo tempus varius leo siame tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul tincidunt turpis id act accumsan semper.tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul nt turpis id act accumsan semper.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="panel-heading" role="tab" id="heading5">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#faqs_accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                                    Can I upgrade between Dedicated plans ?
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                            <div class="panel-body">
+                                                Nam in justo tempus varius leo siame tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul tincidunt turpis id act accumsan semper.tempor odio sed veid ornarec libero viva acsod orna libero vivamusodal torto estibul nt turpis id act accumsan semper.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--Tab 2-->
+            <div class="tab-pane" role="tabpanel" id="tab2">
+                <div class="content_row row m0 section-spacing">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-style table-center">
+                                    <table class="table-list">
+                                        <tbody>
+                                            <tr>
+                                                <th>Domains</th>
+                                                <th>Restorations (1 Year)</th>
+                                                <th>Renewal Grace Period (Days)</th>
+                                                <th>Redemption Period (Days)</th>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/8.png" class="img-responsive"></td>
+                                                <td> $77.14</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/9.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/10.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/11.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/12.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/13.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/14.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                            <tr>
+                                                <td><img src="images/domains/15.png" class="img-responsive"></td>
+                                                <td> $75.86</td>
+                                                <td> 35</td>
+                                                <td> 29</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

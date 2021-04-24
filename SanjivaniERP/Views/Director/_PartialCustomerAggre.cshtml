@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SanjivaniModalView.CustomerAggrements>
+
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #030358;">
+
+
+            <th align="center">Sr.No</th>
+            <th>Aggrement</th>
+         
+            <th>Operation</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr style="background-color:white">
+                <td>
+                    @(rowNo += 1)
+                </td>
+
+                <td>@item.CustomerAggrement</td>
+                
+
+                <td align="center">
+                    @Html.TextBoxFor(x => @item.CustomerAggrement, new { id = "CustomerAggrement", @style = "display:none" })
+                    @Html.TextBoxFor(x => @item.CustomerAggrementId, new { id = "CustomerAggrementId", @style = "display:none" })
+                   
+                    <a class="btn btn-sm view" id="Edit" data-toggle="modal" data-target="#modal-default" title="Edit">
+                        <img src="~/Content/edit.gif" />
+                    </a>
+                    <input type="hidden" id="GHDId" name="rank" value=@item.CustomerAggrementId>
+                    <a class="btn  btn-sm" id="delete" style="color:white;margin-left: -18px;" title="Delete">
+                        <img src="~/Content/must_have_icons_icons_pack_120704.jpg" />
+                       
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

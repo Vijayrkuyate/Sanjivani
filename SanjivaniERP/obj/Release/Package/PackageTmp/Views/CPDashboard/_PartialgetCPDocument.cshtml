@@ -1,0 +1,126 @@
+﻿@model IEnumerable<SanjivaniModalView.Documents1>
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <embed id="pdf" class="image_modal" src="" type="" height="260" width="460">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close cross" data-dismiss="modal">×</button>
+            <div class="myWallet nobor">
+
+            </div>
+
+            <div id="partial">
+
+
+                <embed id="pdfss" class="image_modal" src="" type="" height="260" width="460">
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="box-body no-padding col-md-12">
+    <div class="box-body table-responsive" id="OrderDtl">
+        <table id="example1" class="table table-bordered table-striped">
+
+            <thead>
+                <tr style="color: white;background-color: #1c7faf;">
+                    <th align="center">Description</th>
+                    <th>Document</th>
+                    <th>View</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int rowNo = 0; }
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        @*<td>@item.RegistrationDate</td>*@
+                        <td>
+                            @item.Description
+
+                        </td>
+
+                        <td>@item.Document</td>
+                        <td align="center">
+                            <input type="hidden" id="WithdrawId1" name="rank" value=@item.Document />
+                            <a class="btn btn-danger btn-sm view" id="view" data-toggle="modal" data-target="#modal-default"><i class="fa fa-eye"></i>
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+<script>
+    $('body').on('click', '#view', function () {
+        debugger;
+        var id = $(this).siblings("#WithdrawId1").val();
+        debugger;
+       // var id = $(this).attr("id");
+        //parts = id.split('.').pop().trim();
+        //var currenturl = window.location.href;
+
+        var Url = id
+        var url = Url
+
+        debugger;
+        $("#pdf").show();
+        $("#pdf").attr("src", url);
+    });
+    $(".btn btn-danger btn-sm view").click(function () {
+        debugger;
+        var id = $(this).attr("id");
+        //parts = id.split('.').pop().trim();
+        //var currenturl = window.location.href;
+
+        var Url = "http://" + currenturl.split("/")[2]  + id
+        var url = Url
+
+        debugger;
+       $("#pdf").show();
+        //$("#pdf").attr("src", url);
+       // $('#myModal').modal('show');
+        //if (parts == "pdf") {
+        //    $("#image1").hide();
+        //    $("#pdf").show();
+       $("#pdf").attr("src", url);
+        //}
+        //else {
+        //    $("#pdf").hide();
+        //    $("#image1").show();
+        //    $("#image1").attr("src", url);
+        //}
+
+        //$('#myModal').modal('show');
+    });
+</script>

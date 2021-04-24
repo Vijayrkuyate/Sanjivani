@@ -1,0 +1,127 @@
+﻿@model SanjivaniModalView.DirectorBusinessModel
+@{
+    ViewBag.Title = "DirectorBusinessOwnersList";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+<div class="panel panel-primary">
+    <section class="content-header">
+        <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">DIRECTOR</h1>
+        @*<ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">   Director</li>
+            </ol>*@
+    </section>
+    <section class="content">
+
+
+        <div class="col-lg-12">
+            <section class="col-lg-12 connectedSortable ui-sortable" style="border: 1px solid;background-color: palegoldenrod;">
+                <!-- Box (with bar chart) -->
+                <div class="box box-danger" id="loading-example">
+                    <div class="box-header col-md-12" style="cursor: move;cursor: move;color: white;">
+                        <!-- tools box -->
+                        <div class="form-group col-md-3" style="margin-top: 10px;">
+
+
+                            <a class="btn btn-danger btn-md" href="@Url.Action("DirectorBusinessOwners","CP",new { CustId="0",EditId="0"})" style="color:white"><i class="fa fa-plus"></i> Add New Director</a>
+                            <button class="btn btn-success btn-md" onclick="DownloadExcel();"><i class="fa fa-file-o"></i> ExportExcel</button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="box-body table-responsive" id="OrderDtl">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr style="color: white;background-color: #030358;">
+
+                                        <th align="center">Sr.No</th>
+                                        <th>DIN Id</th>
+                                        <th>Director Name</th>
+                                        <th>User Name</th>
+                                        <th>Mobile No</th>
+                                        <th>Email Id</th>
+
+                                        <th>Operation</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int rowNo = 0; }
+
+                                    @foreach (var item in ViewBag.DirectorBusinessOwnerList)
+                                {
+                                <tr style="background-color:white">
+                                    <td>
+                                        @(rowNo += 1)
+                                    </td>
+                                    <td>@item.DINId</td>
+                                    <td>@item.OwnerName</td>
+                                    <td>@item.EmailID</td>
+                                    <td>@item.mobileNo</td>
+                                    <td>@item.EmailID</td>
+                                    @*<td align="center"><a href="@Url.Action("DirectorBusinessOwners", "CP", new { CustId = @item.CustId })" class=""><i class="fa fa-circle text-red"></i></a></td>*@
+
+                                    <td align="center">
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("DirectorBusinessOwners", "CP",new { CustId= @item.CustId,EditId="1" })">
+                                            <i class="fa fa-eye">
+                                            </i>
+
+                                        </a>
+
+                                </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            </section>
+        </div>
+
+
+    </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+    function DownloadExcel() {
+        $.ajax({
+            type: "POST",
+            url: "/Director/ExcelExportDirectorList",
+            cache: false,
+            success: function (data) {
+                window.location = '/Director/DownloadDirectorList';
+            },
+            error: function (data) {
+                Materialize.toast("Something went wrong. ", 3000, 'rounded');
+            }
+        });
+    }
+    </script>
+
+
+
+
+

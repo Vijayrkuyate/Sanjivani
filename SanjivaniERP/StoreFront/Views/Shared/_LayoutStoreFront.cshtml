@@ -1,0 +1,621 @@
+﻿@using BusinessLayer;
+@using System.Data;
+@using ModelView
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+   
+
+    <!--Favicons-->
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://master.pioneersoft.co.in/Content/Storefront/favicon/manifest.json">
+
+    <!--Bootstrap-->
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/bootstrap/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/css/spinners.css" rel="stylesheet" />
+    <!--Loader-->
+    <!-- Vendors -->
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/owl.carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
+
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/fontawesome/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/vendors/et-line-icons/et-line-icons.css" rel="stylesheet" />
+    <link href="~/Content/vendors/themify-icons/themify-icons.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/lineariconsFree/style.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/magnificpopup/magnific-popup.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/slick/css/slick.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/slick/css/slick-theme.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/vendors/video-popup/video-popup.css" rel="stylesheet" />
+
+
+
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Nunito:600,700,800|Montserrat:500,600,700|Open+Sans:300,500,600' rel='stylesheet' type='text/css'>
+    <!--Theme Styles-->
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/css/style.css" rel="stylesheet" />
+    <link href="https://master.pioneersoft.co.in/Content/Storefront/css/responsive.css" rel="stylesheet" />
+
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+   
+    <!--Loader-->
+    @{
+        DashboardBAL bld = new DashboardBAL();
+        DashboardModel ds = new DashboardModel();
+        var appUrl = HttpRuntime.AppDomainAppVirtualPath;
+
+        if (appUrl != "/")
+        {
+            appUrl = "/" + appUrl;
+        }
+
+        string CurrentURL = Request.Url.AbsoluteUri;
+        var valueArray = CurrentURL.Split('/');
+        var valueArray1 = "http://storefront.pioneersoft.co.in//Home/DashBoard".Split('/');
+        // var baseUrl = string.Format("{0}://{1}{2}", request.Url.Scheme, request.Url.Authority, appUrl);
+        string abc = valueArray[2].ToString();
+        string a = abc;
+        DataTable dt = bld.GetstoreFront(abc);
+        foreach (DataRow dr in dt.Rows)
+        {
+            ds.ComapnyLogo = dr["Logo"].ToString();
+            ds.ComapnyName = dr["CompanyName"].ToString();
+            ds.PhoneNo = dr["ContactNo"].ToString();
+            ds.Email = dr["EmailId"].ToString();
+            Session["CustId"]= dr["CustId"].ToString();
+            Session["CompanyName"] = dr["CompanyName"].ToString();
+        }
+        // return View();
+    }
+    <div class="preloader">
+        <div class="showbox">
+            <div class="cercle-loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!--Loader End-->
+    <section class="row top_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="nav nav-pills pull-left">
+                        <li><i class="icon-call-out"></i> @ds.PhoneNo </li>
+                        <li><a href="mailto:@ds.Email"><i class="icon-envelope"></i>@ds.Email</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6">
+                    <ul class="nav nav-pills pull-right">
+                        <li>
+                            <div class="btn-group country_select">
+                                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    India <b class="caret"></b>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">India</a></li>
+                                    <li><a href="#">Iran</a></li>
+                                    <li><a href="#">England</a></li>
+                                    <li><a href="#">Syria</a></li>
+                                    <li><a href="#">Bangladesh</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="register.html">Register</a></li>
+                        <li class="header-link"><a href="@Url.Action("Login","Account")" class="btn-xlg"><i class="fa fa-user"></i> Login !</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-default navbar-static-top fluid_header centered">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img src="http://master.pioneersoft.co.in/Documents/Logo/@ds.ComapnyLogo" alt="">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_navigation" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main_navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Domain</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index", "Home")">Register Domain</a></li>
+                            <li><a href="index2.html">Transfer Your Domain</a></li>
+                            <li><a href="@Url.Action("DoaminPrices","CP")">Domain Price</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="dropdown mega-drop">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Hosting</a>
+                        <ul class="dropdown-menu mega-menu">
+                            <li class="service_list">
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Linux</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li> <a href="@Url.Action("SingleDomainHosting", "Product")">Single Domain Linux Hosting</a></li>
+                                                    <li> <a href="@Url.Action("MultieDomainHosting", "Product")">Multi Domain Linux Hosting</a></li>
+                                                    <li> <a href="@Url.Action("ResellarLinuxHosting", "Product")">Reseller Linux Hosting</a></li>
+                                                    <li> <a href="@Url.Action("VPSLinux", "Product")">VPS Linux</a></li>
+                                                    <li> <a href="@Url.Action("DedicateServerLinux", "Product")">Dedicated Servers Linux</a></li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Windows</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li> <a href="domain-pricing.html">Single Domain Windows Hosting</a></li>
+                                                    <li> <a href="domain-pricing2.html">Multi Domain Windows Hosting</a></li>
+                                                    <li> <a href="domain-pricing3.html">Reseller Windows Hosting</a></li>
+                                                    <li> <a href="index.html">VPS Windows</a></li>
+                                                    <li> <a href="datacenter.html">Dedicated Servers Windows</a></li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Domain Pricing</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li> <a href="domain-pricing.html">domain-pricing</a></li>
+                                                    <li> <a href="domain-pricing2.html">domain-pricing 2 </a></li>
+                                                    <li> <a href="domain-pricing3.html">domain-pricing 3</a></li>
+                                                    <li> <a href="index.html">Domain Offers</a></li>
+                                                    <li> <a href="datacenter.html">Datacenter</a></li>
+                                                    <li> <a href="#">Sample List</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="owl-carousel dropdown_slider">
+                                        <div class="item">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient1 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/1.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient2 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/2.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown mega-drop">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Email</a>
+                        <ul class="dropdown-menu mega-menu">
+                            <li class="service_list">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="owl-carousel dropdown_sliderfull">
+                                        <div class="item margin15">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient2 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/1.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item margin15">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient3 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/2.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item margin15">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient4 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/3.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item margin15">
+                                            <div class="start_offer">
+                                                <div class="inner vgredient6 relative">
+                                                    <h2 class="offer-title bg_white radius shadow m-bottom10"><img src="images/domains/4.png" alt="" class="img-responsive"></h2>
+                                                    <div class="regular_price text-line-through">$12</div>
+                                                    <h2 class="offered_price">$5 / year</h2>
+                                                    <a href="cart.html" class="btn btn-white-border white-glow2 m-bottom15 m-top15">Buy Now</a>
+                                                    <p class="offer-valid m-bottom0 text_white opacity1">Offer Valid : 31-November-2017</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="features.html">Security</a></li>
+                    <li class="dropdown mega-drop">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Cloud</a>
+                        <ul class="dropdown-menu mega-menu">
+                            <li class="service_list">
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Home Pages</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li><a href="index.html">Homepage 1 </a></li>
+                                                    <li><a href="index2.html">Homepage 2 </a></li>
+                                                    <li><a href="index3.html">Homepage 3</a></li>
+                                                    <li><a href="index4.html">Homepage 4</a></li>
+                                                    <li><a href="index5.html">Homepage 5</a></li>
+                                                    <li><a href="index6.html">Homepage 6</a></li>
+                                                    <li><a href="index7.html">Homepage 7</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="media">
+                                            <h4 class="text-uppercase relative">
+                                                New Pages
+                                                <span class="left-badge-color-2 main-badge">New</span>
+                                            </h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li><a href="vps-slider-3-plans.html">VPS Slider 3 Plans</a></li>
+                                                    <li><a href="vps-slider-4-plans.html">VPS Slider 4 Plans</a></li>
+                                                    <li><a href="vps-slider-5-plans.html">VPS Slider 5 Plans</a></li>
+                                                    <li><a href="vps-slider-6-plans.html">VPS Slider 6 Plans</a></li>
+                                                    <li><a href="cloud.html">Cloud Plans</a></li>
+                                                    <li><a href="privacy.html">Privacy Policy</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Other Pages</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li><a href="shared-hosting.html">Shared Hosting</a></li>
+                                                    <li><a href="hosting-dedicated.html">Dedicated Hosting</a></li>
+                                                    <li><a href="vps.html">VPS Hosting</a></li>
+                                                    <li><a href="domain-search.html">Domain Search</a></li>
+                                                    <li><a href="domain-pricing.html">Domain Pricing</a></li>
+                                                    <li><a href="404.html">404 Error Page</a></li>
+                                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                                    <li><a href="our-team.html">Team Page</a></li>
+                                                    <li><a href="about-us.html">About Us</a></li>
+                                                    <li><a href="faqs.html">FAQ</a></li>
+                                                    <li><a href="datacenter.html">Datacenter</a></li>
+                                                    <li><a href="dedicated.html">Dedicated Hosting</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <div class="media">
+                                            <h4 class="text-uppercase">Other Pages</h4>
+                                            <div class="media-body">
+                                                <ul class="list-inline">
+                                                    <li><a href="cart-billing.html">Cart Billing</a></li>
+                                                    <li><a href="cart.html">Cart</a></li>
+                                                    <li><a href="cart-billing2.html">Cart Billing2</a></li>
+                                                    <li><a href="cart-checkout.html">Cart Checkout</a></li>
+                                                    <li><a href="shop-four-column.html">Shop Four Column</a></li>
+                                                    <li><a href="shop-three-column.html">Shop Three Column</a></li>
+                                                    <li><a href="shop-product-fullwidth.html">Shop Product Fullwidth</a></li>
+                                                    <li><a href="shop-full-product-left-sidebar.html">Shop Full Product Left Sidebar</a></li>
+                                                    <li><a href="shop-full-product-right-sidebar.html">Shop Full Product Right Sidebar</a></li>
+                                                    <li><a href="shop-three-column-sidebar.html">Shop Three Column Sidebar</a></li>
+                                                    <li><a href="features.html">Features </a></li>
+                                                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xs-12">
+                                    <div class="service-drop">
+                                        <h4 class="text-uppercase">Other Pages</h4>
+                                        <div class="media-body">
+                                            <ul class="list-inline">
+                                                <li> <a href="register.html">Registration</a></li>
+                                                <li> <a href="login.html">Login Page</a></li>
+                                                <li> <a href="resetpassword.html">Reset Password</a></li>
+                                                <li> <a href="blog.html">Blog Page</a></li>
+                                                <li> <a href="blog-single.html">Blog Single</a></li>
+                                                <li> <a href="contact.html">Contact</a></li>
+                                                <li> <a href="pricing.html">Pricing Tables</a></li>
+                                                <li> <a href="portfolio.html">Portfolio</a></li>
+                                                <li><a href="shortcodes.html">Shortcodes <span class="left-badge-color-1">Updated</span></a></li>
+                                                <li><a href="domain-pricing2.html">Domain Pricing 2</a></li>
+                                                <li><a href="domain-pricing3.html">Domain Pricing 3</a></li>
+                                                <li><a href="blank-page.html">Blank Page</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Payment Gateway</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="blog-single.html">Blog Details</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">license</a></li>
+
+                    <li class="dropdown">
+                        <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">Specialized Hosting</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="cart-billing.html">Cart Billing</a></li>
+                            <li><a href="cart-billing2.html">Cart Billing2</a></li>
+                            <li><a href="cart-checkout.html">Cart Checkout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script src="https://master.pioneersoft.co.in/Scripts/jquery.validate.js"></script>
+    <script src="https://master.pioneersoft.co.in/Scripts/jquery.validate.min.js"></script>
+
+    <script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+    <script src="https://master.pioneersoft.co.in/Content/js/Comman.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ajax")
+    <!--Top Header-->
+    @RenderBody()
+    <!-- Footer -->
+    <footer class="row">
+        <div class="subscriber">
+            <div class="container">
+                <div class="row beInContact m0">
+                    <div class="col-sm-6">
+                        <div class="social_icos">
+                            <ul class="nav">
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="subscribe_form clearfix">
+                            <form action="#" class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Subscribe for Instant Updates from our Blog">
+                                        <span class="input-group-addon"><input type="submit" value="Go" class="btn"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-main">
+            <div class="container">
+                <div class="col-sm-3 col-xs-12">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="@Url.Action("AboutUs","Home")">About Us</a></li>
+                        <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
+                        <li><a href="@Url.Action("PrivacyPolicy","Home")">Privacy Policy</a></li>
+                        <li><a href="@Url.Action("TermsConditions","Home")">Terms & Conditions</a></li>
+                        <li><a href="@Url.Action("CancellationRefundPolicies","Home")">Cancellation/Refund Policies</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">My Services</a></li>
+                        <li><a href="#">My Renewals</a></li>
+                        <li><a href="#">Create Account</a></li>
+                        <li><a href="#">IDN Domains</a></li>
+                        <li><a href="#">Digital Certificates</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Webmail</a></li>
+                        <li><a href="#">WHOIS Search</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Compare</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <h4>Payment Modes</h4>
+                    <ul class="list-inline payment-icons">
+                        <li><i class="fa fa-cc-mastercard fa-3x"></i></li>
+                        <li><i class="fa fa-cc-visa fa-3x"></i></li>
+                        <li><i class="fa fa-cc-amex fa-3x"></i></li>
+                        <li><i class="fa fa-cc-discover fa-3x"></i></li>
+                        <li><i class="fa fa-cc-paypal fa-3x"></i></li>
+                        <li><i class="fa fa-google-wallet fa-3x"></i></li>
+                    </ul>
+                    <small>We also accept Indin Debit Cards & Net Banking | See all supported payment options</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright_line">
+            <div class="container">
+                <div class="col-sm-12">
+                    Copyright &copy; 2017 hostpro.com. All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--  Back to Top-->
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+ 
+    <!--jQuery-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/js/jquery-2.2.4.min.js"></script>
+
+    <!--Bootstrap JS-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/js/bootstrap.min.js"></script>
+
+    <!--Magnific Popup-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/js/jquery.magnific-popup.min.js"></script>
+
+    <!--Owl Carousel-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/owl.carousel/owl.carousel.min.js"></script>
+
+    <!--Waypoints-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/waypoints/waypoints.min.js"></script>
+
+    <!--Counter Up-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/counterup/jquery.counterup.min.js"></script>
+
+    <!--Isotope-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/isotope/isotope.min.js"></script>
+
+    <!--Infinite Scroll-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/infinitescrol/jquery.infinitescroll.min.js"></script>
+
+    <!--Video-popup-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/video-popup/video-popup.js"></script>
+
+    <!--Contact Form-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/form/js/contact-form.js"></script>
+
+    <!--Parallax-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/parallax/jquery.parallax-1.1.3.js"></script>
+
+    <!--Circliful-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/circliful/jquery.circliful.min.js"></script>
+
+    <!-- Slick Slider -->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/vendors/slick/js/slick.min.js"></script>
+
+    <!-- equalize -->
+    <script type="text/javascript" src="https://master.pioneersoft.co.in/Content/Storefront/js/equalize.min.js"></script>
+
+    <!--Theme JS-->
+    <script src="https://master.pioneersoft.co.in/Content/Storefront/js/theme.js"></script>
+    <script>
+	jQuery(document).ready(function() {
+		// ______________ VIDEOPOPUP
+		$("a.autoplay").VideoPopUp();
+		$("a.noautoplay").VideoPopUp({
+			autoplay: 0
+		}); // Disable autoplay
+		// ______________ PARALLAX
+		$('.section-parallax').parallax("50%", 0.4);
+		// ______________ STATS
+		$('.statistics').waypoint(function() {
+		 $('#myStat1').circliful();
+		 $('#myStat2').circliful();
+		 $('#myStat3').circliful();
+		 $('#myStat4').circliful();
+		}, { offset: 800, triggerOnce: true });
+	});
+    </script>
+</body>
+</html>
+<title>@Session["CompanyName"]</title>

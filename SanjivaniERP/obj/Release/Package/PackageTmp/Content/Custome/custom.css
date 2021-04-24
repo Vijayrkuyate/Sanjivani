@@ -1,0 +1,37 @@
+/* - Use this file to apply any custom CSS classes. 
+   - This file will load after loading all the other style sheets.
+   - **Change the file name to custom.css to activate it.**
+   - If you modify the theme directly and it is updated, then your modifications will be lost.
+     By using this file you will ensure that your modifications are preserved.
+	 
+   IMPORTANT: 
+   
+			*  Change the file name to custom.css to activate it.
+				
+			*  After changing this file and uploading it to the server, 
+               you'll need to clear the cache memory of your browser.
+               This is done by doing a force refresh as follows :
+
+               Windows: ctrl + F5
+			   Mac/Apple: Apple + R or Command + R
+			   Linux: F5
+*/
+
+.btn-lrpromo{
+  color:#fff;
+  border-color: #eee;
+  background-color: transparent;
+  margin-top: 8px;
+  margin-left: 5px;  
+}
+
+.btn-lrpromo:hover,
+.btn-lrpromo:active,
+.btn-lrpromo:focus{
+  color:#fff;
+}
+
+.skin-black .btn-lrpromo,
+.skin-black-light .btn-lrpromo{
+    color:#333333;
+}

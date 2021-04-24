@@ -1,0 +1,94 @@
+﻿@model SanjivaniModalView.UserIntraction
+
+@using (Ajax.BeginForm("SetUserIntraction", "Partner", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "",
+    OnSuccess = "Success12",
+    OnFailure = "Failure12"
+}, new { @class = "" }))
+{
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: white;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title" style="color:black">CP Intraction</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding" style="background-color: whitesmoke;">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    @Html.HiddenFor(model => model.CustID)
+                    @Html.HiddenFor(model => model.IntractionId)
+                    <label for="exampleInputFile"></label>
+                    @Html.EditorFor(model => model.Intraction, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Intraction, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-12" style="text-align:center">
+
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 13px;background-color:black"><i class="fa fa-save"></i> ADD</button>
+
+
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-12" id="_IntractionList">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+     var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+        $('#_IntractionList').html(d);
+    debugger;
+    function Success12() {
+        var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+        $('#_IntractionList').html(d);
+       // alert('save')
+
+    }
+    function Failure12() {
+        alert1('test')
+        $('#errormsg4').html("safdsgsd");
+        $('#trans4').html("Server error please try again");
+        $('#myModalEMB4').modal('show');
+
+    }
+
+    @*var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", {});
+    $('#_IntractionList').html(d);*@
+
+    //$(function () {
+    //    $("#example1").dataTable();
+    //    $('#example2').dataTable({
+    //        "bPaginate": true,
+    //        "bLengthChange": false,
+    //        "bFilter": false,
+    //        "bSort": true,
+    //        "bInfo": true,
+    //        "bAutoWidth": false
+    //    });
+    //});
+
+
+</script>
+

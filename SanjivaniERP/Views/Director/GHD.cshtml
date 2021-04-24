@@ -1,0 +1,249 @@
+﻿@model SanjivaniModalView.GHDs
+
+@{
+    ViewBag.Title = "GHD";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdf" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen height="260" width="460"></iframe>
+                @*<video id="pdf" name="media" src="http://youtube.com/somevideo" />*@
+                @*<iframe id="pdf" class="embed-responsive-item" src="" frameborder="0" allowfullscreen=""  height="260" width="460"></iframe>*@
+                @*<embed id="pdf" class="image_modal" src="" type="" height="260" width="460">*@
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<style>
+    .nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a {
+        background-color: #b92a37;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Knowledgebase</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Knowledgebase</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+            <div class="col-6 col-sm-6">
+
+
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Knowledgebase</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
+                                <div class="box box-danger" id="loading-example">
+                                    <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                                        <!-- tools box -->
+                                        <div class="pull-right box-tools">
+
+                                            @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+                                        </div><!-- /. tools -->
+
+
+                                       
+                                    </div><!-- /.box-header -->
+                                    @using (Ajax.BeginForm("SetGHD", "Director", new AjaxOptions
+                                    {
+                                        HttpMethod = "POST",
+                                        UpdateTargetId = "",
+                                        OnSuccess = "Success12",
+                                        OnFailure = "Failure12"
+                                    }, new { @class = "" }))
+                                    {
+                                        <div class="box-body no-padding" style="background-color: whitesmoke;">
+                                            <div class="row">
+
+                                                <div class="form-group col-md-12">
+
+                                                    <label for="exampleInputEmail1">Question</label>
+                                                    @Html.HiddenFor(model=>model.GHDId)
+                                                    @Html.EditorFor(model => model.GHD, new { htmlAttributes = new { @class = "form-control", @placeholder = "Knowledgebase" } })
+                                                    @Html.ValidationMessageFor(model => model.GHD, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleInputEmail1">Answer Link</label>
+                                                    @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control", @placeholder = "Youtube Link", onkeypress = "return fnAllowNumeric()" } })
+                                                    @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                                                </div>
+
+
+                                                <div class="col-md-12">
+
+                                                    <div>
+
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+
+
+                                                        <a class="btn btn-danger" href="@Url.Action("Domain", "Product")"><i class="fa fa-edit"></i> Close</a>
+                                                    </div>
+
+
+
+
+                                                </div>
+
+                                            </div><!-- /.row - inside box -->
+                                        </div><!-- /.box-body -->
+                                    }
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+
+
+
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-12" id="child">
+                <section class="content">
+
+
+                    <div class="col-lg-12">
+                        <section class="col-lg-12 connectedSortable ui-sortable">
+                            <!-- Box (with bar chart) -->
+                            <div class="box box-danger" id="loading-example">
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <div class="box-body table-responsive" id="OrderDtl">
+                                        
+                                    </div>
+                                </div><!-- /.box-body -->
+
+                            </div><!-- /.box -->
+                            <!-- Custom tabs (Charts with tabs)-->
+                            <!-- /.nav-tabs-custom -->
+                            <!-- Calendar -->
+                            <!-- /.box -->
+                            <!-- quick email widget -->
+
+
+                        </section>
+
+
+
+
+                    </div>
+
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+
+    $('body').on('click', '#Edit', function () {
+        debugger;
+        var GHD = $(this).siblings("#GHDss").val();
+        var GHDID = $(this).siblings("#GHDIF").val();
+        var Link = $(this).siblings("#Link").val();
+        $('#GHD').val(GHD);
+        $('#Link').val(Link);
+        $('#GHDId').val(GHDID);
+    });
+    var d = loadData("@Url.Action("_partialGHD", "Director")", {});
+    $('#OrderDtl').html(d);
+
+    debugger;
+    function Success12() {
+        debugger;
+
+       window.location.reload();
+        $(function () {
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        });
+    }
+    function Failure12() {
+        alert1('test')
+        $('#errormsg4').html("safdsgsd");
+        $('#trans4').html("Server error please try again");
+        $('#myModalEMB4').modal('show');
+
+    }
+
+
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+    });
+    function write_to_excel() {
+        $("#example1").table2excel({
+            name: "Table2Excel",
+            filename: "myFileName",
+            fileext: ".xls"
+        });
+    }
+
+</script>

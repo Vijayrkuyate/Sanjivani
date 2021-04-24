@@ -1,0 +1,1218 @@
+﻿@model SanjivaniModalView.Dashboard
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">DIRECTOR DASHBOARD</h1>
+            
+            </div><!-- /.col -->
+          
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-12 col-sm-12">
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1" style="background-color: #030358;">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Revenue</a>
+                            </li>
+                            <li class="nav-item" id="two">
+                                <a class="nav-link " id="T2" data-toggle="pill" href="#tab_2" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="true">Partners</a>
+                            </li>
+                            <li class="nav-item" id="three">
+                                <a class="nav-link" id="T3" data-toggle="pill" href="#tab_3" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Product</a>
+                            </li>
+                            <li class="nav-item" id="four">
+                                <a class="nav-link" id="T4" data-toggle="pill" href="#tab_4" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">GHD</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="T5" data-toggle="pill" href="#tab_5" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">CSR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="six" data-toggle="pill" href="#tab_6" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">People Connect</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Seven" data-toggle="pill" href="#tab_7" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">VOC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Eight" data-toggle="pill" href="#tab_8" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Knowledgebase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Nine" data-toggle="pill" href="#tab_9" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">MailBox</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Ten" data-toggle="pill" href="#tab_10" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Orders</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body" style="border:1px solid;background-color:ghostwhite">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                <div class="row">
+                                    @if (ViewBag.Reveneue != null)
+                                    {
+                                        foreach (var item in ViewBag.Reveneue)
+                                        {
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>@item.TotalRevenue</h3>
+
+                                                        <a href="@Url.Action("ChannaPartnerList", "Partner")"><p style="color:white">Total Revenue</p></a>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                            </div>
+                                    <!-- ./col -->
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>@item.TodaysRevenue</h3>
+                                                        <a href="@Url.Action("ChannaPartnerList", "Partner")"><p style="color:white">Today's Revenue</p></a>
+                                                      
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                    <!-- ./col -->
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>@item.WeekRevenue</h3>
+
+                                                        <p>Week Revenue</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                 
+                                                </div>
+                                            </div>
+                                    <!-- ./col -->
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>@item.MonthRevenue</h3>
+
+                                                        <p>Month Revenue</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>@item.YearRevenue</h3>
+
+                                                        <p>Year Revenue</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                  
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Wallet Amount</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                            </div>
+                                    <!-- ./col -->
+                                            <div class="col-lg-2 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Pending Invoices</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                <div class="row">
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <a href="@Url.Action("ChannaPartnerList","Partner")"><p style="color:white">Channel Partner</p></a> 
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <a href="@Url.Action("CPCChennelPartnerList","CP")"><p style="color:white">CP Customer</p></a> 
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>@Model.Customer</h3>
+
+                                                <p style="color:white">Customer</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Director</h3>
+
+                                                <p style="color:white">Freelancer</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <a href="@Url.Action("ChannaPartnerList","Partner")"><p style="color:white">Silver CP</p></a>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <p style="color:white">Gold CP</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                         
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-2 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>@Model.Customer</h3>
+
+                                                <p style="color:white">Diamond CP</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                                <div class="row">
+                                    @if (ViewBag.Reveneue != null)
+                                    {
+                                        foreach (var item in ViewBag.ProductCount)
+                                        {
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>@item.Domain</h3>
+
+                                                        <p>Domains</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>SSL Certificates</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Google Workspace - Business Starter</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Google Workspace - Business Standard</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Google Workspace - Business Plus</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Microsoft 365 - Business Basic</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Microsoft 365 - Business Standard</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Microsoft 365 - Business Premium</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>@item.gsuite</h3>
+
+                                                        <p>Gsuite</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Windows Hosting Shared</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Linux Hosting Shared</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Linux Reseller Hosting</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Windows Reseller Hosting</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Dedicated Server</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Linux Virtual Private Server</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Windows Virtual Private Server</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Co-Location option</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>C Panel Licence</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Plesk Panel Licence</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p> AWS Hosting option</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Microsoft Azure Hosting</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Digital Ocean Hosting</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Google Cloud Hosting</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Anti-Virus</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-danger">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Firewall As a Service</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-pie-graph"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-info">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Operating Systems</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-bag"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("ChannaPartnerList", "Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>Desktop / PC</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-stats-bars"></i>
+                                                    </div>
+                                                    <a href="@Url.Action("CPCChennelPartnerList", "CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        <!-- ./col -->
+                                            <div class="col-lg-3 col-6">
+                                                <!-- small box -->
+                                                <div class="small-box bg-warning">
+                                                    <div class="inner">
+                                                        <h3>0</h3>
+
+                                                        <p>CCTV</p>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="ion ion-person-add"></i>
+                                                    </div>
+                                                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                @if (ViewBag.GHD != null)
+                                {
+                                    foreach (var item in ViewBag.GHD)
+                                    {
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@item.TotalTicket</h3>
+
+                                                <p>Total Tickets</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@item.Ticketpool</h3>
+
+                                                <p>Ticket Pool</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>0</h3>
+
+                                                <p>User Tickets Answered</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>0</h3>
+
+                                                <p>User Tickets Closed</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@item.SystemTicketClose</h3>
+
+                                                <p>System Tickets Closed</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                    }
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Total Tickets</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_6" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Bulk Email Sent</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <p>Bulk SMS Sent</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                            <a href="@Url.Action("CPCChennelPartnerList","CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>@Model.Customer</h3>
+
+                                                <p>Bulk Voice Call Sent</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Director</h3>
+
+                                                <p>Email Database</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Freelancer</h3>
+
+                                                <p>Mobile Number Database</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Live Campaigns</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_7" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Customer Satisfaction Index</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_8" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <p>Questions</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                            <a href="@Url.Action("CPCChennelPartnerList","CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_9" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Total Email Received</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <p>Total Email Sent</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                            <a href="@Url.Action("CPCChennelPartnerList","CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>@Model.Customer</h3>
+
+                                                <p>New Emails</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Director</h3>
+
+                                                <p>Tech Emails</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Freelancer</h3>
+
+                                                <p>Billing Emails</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Sales Emails</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>complaints Emails</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_10" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3>@Model.CP</h3>
+
+                                                <p>Total Orders</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="@Url.Action("ChannaPartnerList","Partner")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-success">
+                                            <div class="inner">
+                                                <h3>@Model.CPC</h3>
+
+                                                <p>Purchase Order With GST</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+                                            <a href="@Url.Action("CPCChennelPartnerList","CP")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3>@Model.Customer</h3>
+
+                                                <p>Purchase Order Without GST</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Director</h3>
+
+                                                <p>Sales Order With GST</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h3>@Model.Freelancer</h3>
+
+                                                <p>Sales Order Without GST</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .no-js #loader {
+        display: none;
+    }
+
+    .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+    }
+
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+    }
+</style>
+<div class="se-pre-con"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });
+
+</script>

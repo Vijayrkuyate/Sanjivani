@@ -1,0 +1,278 @@
+﻿@model SanjivaniModalView.EmpAttendance
+
+@{
+    ViewBag.Title = "LeaveAttendance";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">LEAVE & ATTENDANCE</h1>
+
+</section>
+
+<section class="content">
+
+    <!-- /.box-body -->
+
+    <div class="col-lg-12" style="border:1px solid;background-color: ghostwhite;">
+      @using (Ajax.BeginForm("SetEmpAttendance", "Director", new AjaxOptions
+      {
+          HttpMethod = "POST",
+          UpdateTargetId = "",
+          OnSuccess = "Success12",
+          OnFailure = "Failure12"
+      }, new { @class = "" }))
+      {
+            @Html.AntiForgeryToken()
+            <div class="box-body no-padding">
+                <div class="row">
+                    <div class="form-group col-md-3">
+
+                        <label for="exampleInputEmail1">Channal Partner</label>
+                        @Html.DropDownListFor(model => model.chennelpartName, new SelectList(ViewBag.Emplyoee, "Value", "Text"), "--Select CP--", new { @class = "form-control", })
+
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.HiddenFor(model => model.CustId)
+                        <label for="exampleInputEmail1">Date</label>
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @type = "date", @required = "required" } })
+
+                    </div>
+                    <div class="form-group col-md-3">
+
+                        <label for="exampleInputFile">Status</label>
+                        <select name="cars" id="cars" class="form-control">
+                            <option value="Select">--Select--</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                            <option value="Leave">Leave</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                    
+                        <label for="exampleInputEmail1">Notes</label>
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-danger" style=""><i class="fa fa-save"></i> Update</button>
+                    </div>
+                </div><!-- /.row - inside box -->
+            </div>
+        }
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: #bb1e2d;cursor: move;color: white;">
+                    <!-- tools box -->
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+    function Success12() {
+    alert(hii)
+
+    }
+    function Failure12() {
+        alert1('test')
+        $('#errormsg4').html("safdsgsd");
+        $('#trans4').html("Server error please try again");
+        $('#myModalEMB4').modal('show');
+
+    }
+
+    debugger;
+    var t1 = document.getElementById("chennelpartName");
+    var Name = t1.options[t1.selectedIndex].text;
+    var Date1 = $('#Date').val();
+    var data = { CustName: Name, Date: Date1 };
+    var d = loadData("@Url.Action("EmpCalender", "Director")", data)
+    $('#OrderDtl').html(d);
+
+    $('#chennelpartName').change(function () {
+        debugger;
+
+
+        var t1 = document.getElementById("chennelpartName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var Date1 = $('#Date').val();
+        var data = { CustName: Name, Date: Date1 };
+           var d = loadData("@Url.Action("EmpCalender", "Director")", data)
+    $('#OrderDtl').html(d);
+
+    });
+
+    $('#Date').change(function () {
+        debugger;
+
+
+        var t1 = document.getElementById("chennelpartName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var Date1 = $('#Date').val();
+        var data = { CustName: Name, Date: Date1 };
+        var d = loadData("@Url.Action("EmpCalender", "Director")", data)
+        $('#OrderDtl').html(d);
+
+    });
+    $('#ProductCat').change(function () {
+        debugger;
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var data = { CustName: Name, Categeory: Cat };
+        if (Cat == 'Domain') {
+            var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Email') {
+            var d = loadData("@Url.Action("_partialEmailSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Hosting') {
+            var d = loadData("@Url.Action("_partialHostingSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        @*var dd = getJsonResult("@Url.Action("DeleteUserIntraction", "Partner")", { IntractionId });
+            var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+            $('#_IntractionList').html(d);
+            var messege = '';
+            if (dd.Status == 200) {
+                messege = 'Record saved successfully';
+            }
+            else {
+                messege = 'Internal server error please try again';
+            }*@
+    });
+    $('#SaveCat').click(function () {
+        debugger;
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+        var amount = $('#Amount').val()
+
+        var data = { CustName: Name, Categeory: Cat };
+
+        var dd = getJsonResult("@Url.Action("SetPriceList", "Product")", { Cat, Name, amount });
+
+        var messege = '';
+        if (dd.Status == 200) {
+            if (Cat == 'Domain') {
+                var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+
+
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+
+
+    });
+</script>
+
+<style>
+    .no-js #loader {
+        display: none;
+    }
+
+    .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+    }
+
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+    }
+</style>
+<div class="se-pre-con"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });
+
+</script>

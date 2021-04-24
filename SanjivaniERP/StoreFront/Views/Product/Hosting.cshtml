@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Hosting";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Hosting
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Hosting</li>
+    </ol>
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-6" style="margin-top: 10px;">
+
+
+                      
+                        <button class="btn btn-success btn-md" onclick="write_to_excel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                    </div>
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #1c7faf;">
+
+                                    <th style="width: 20px;">Image</th>
+
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Domain</th>
+                                    @*<th>SSD Disk Space</th>*@
+                                    <th>Transfer</th>
+                                    <th>Email Account</th>
+                                    <th> Databases Size</th>
+                                    @*<th> Free Let's Encrypt SSL </th>*@
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>@item.RegistrationDate</td>*@
+                                        <td>
+                                            <div class="pull-left image">
+                                                <img src="~/Documents/ProductImage/@item.ProductImage" class="img-circle" alt="User Image" style="height: 47px;">
+                                            </div>
+                                        </td>
+
+
+                                        <td>@item.ProductName</td>
+                                        <td>@item.Price</td>
+                                        <td>@item.DomainSize</td>
+                                        @*<td>@item.SSDDiskSapce</td>*@
+                                        <td>@item.TransferSize</td>
+                                        <td>@item.EmailAccount</td>
+                                        <td>@item.DatabaseSize</td>
+                                        @*<td>@item.SSL</td>*@
+                                   
+                                    </tr>
+                                }
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>
+

@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Wallet";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Wallet
+
+    </h1>
+
+</section>
+
+<section class="content">
+
+    <!-- /.box-body -->
+    <div class="col-lg-12">
+        <div class="box-body no-padding" style="background-color: whitesmoke;">
+            <div class="row">
+                <div class="col-lg-3 col-6" id="walletAmt">
+                    <!-- small box -->
+
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <a class="btn btn-danger btn-md" id="SaveCat" style="color:white;margin-top: 30px;" href="@Url.Action("Withdrwal","CP")"><i class="fa fa-wallet"></i> Withdraw Amount</a>
+
+                </div>
+               
+
+            </div><!-- /.row - inside box -->
+        </div>
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="CPOrderDtl">
+
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+    debugger;
+  
+    var d = loadData("@Url.Action("_WalletAmount", "CP")")
+    $('#walletAmt').html(d);
+    var d = loadData("@Url.Action("_OrderCPLst", "CP")")
+    $('#CPOrderDtl').html(d);
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+    });
+    function write_to_excel() {
+        $("#example1").table2excel({
+            name: "Table2Excel",
+            filename: "myFileName",
+            fileext: ".xls"
+        });
+    }
+    $('#chennelpartName').change(function () {
+        debugger;
+
+        var t1 = document.getElementById("chennelpartName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var data = { CPName: Name};
+
+            var d = loadData("@Url.Action("_WalletAmount", "Partner")", data)
+        $('#walletAmt').html(d);
+
+
+            var d = loadData("@Url.Action("_WalletAmountLst", "Partner")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+            var d = loadData("@Url.Action("_OrderCPLst", "Partner")", data)
+            $('#CPOrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+    });
+
+</script>

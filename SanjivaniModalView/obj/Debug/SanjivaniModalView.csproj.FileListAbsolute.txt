@@ -1,0 +1,23 @@
+D:\sanjivani\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.dll
+D:\sanjivani\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.pdb
+D:\sanjivani\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.dll
+D:\sanjivani\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\bin\Debug\SanjivaniModalView.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Debug\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\bin\Debug\SanjivaniModalView.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\bin\Debug\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Debug\SanjivaniModalView.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Debug\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Debug\SanjivaniModalView.csprojResolveAssemblyReference.cache

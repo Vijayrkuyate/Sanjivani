@@ -1,0 +1,39 @@
+﻿
+<table id="example1" class="table table-bordered table-striped">
+
+    <thead>
+        <tr style="color: white;background-color: #1c7faf;">
+            <th align="center">Type</th>
+            <th>Name</th>
+            <th>Content</th>
+            <th>TTL</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in ViewBag.DNSMang)
+        {
+            
+            <tr>
+                @*<td>@item.RegistrationDate</td>*@
+                <td>
+                    @item.DNSType
+                    @*@(rowNo += 1)*@
+                </td>
+
+                <td>@item.Name</td>
+                <td>@item.Value</td>
+                <td>@item.TTL</td>
+                <td align="center">
+                    <input type="hidden" id="IntractId" name="rank" value=0>
+                    <a class="btn btn-danger btn-sm" id=Delete>
+                        <i class="fa fa-trash">
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Product</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Product</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="col-lg-12">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <div class="#">
+                <br>
+                <a href="@Url.Action("Domain","Product")"><i class="btn btn-app"><i class="fa fa-save"></i>Domain</i></a>
+                <a href="@Url.Action("Hosting","Product")"><i class="btn btn-app"><i class="fa fa-edit"></i> Hosting</i></a>
+                <a href="@Url.Action("Email","Product")"><i class="btn btn-app"><i class="fa fa-barcode"></i>Email</i></a>
+                <a href="#"><i class="btn btn-app"><i class="fa fa-save"></i>Security</i></a>
+                <a class="btn btn-app">
+                    <i class="fa fa-save"></i>Cloud
+                </a>
+            </div>
+        </section>
+    </div>
+</section>
+

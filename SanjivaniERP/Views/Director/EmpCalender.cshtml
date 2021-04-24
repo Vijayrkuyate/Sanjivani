@@ -1,0 +1,222 @@
+﻿@model IEnumerable<SanjivaniModalView.Calendera>
+
+<table id="example1" class="table table-bordered">
+    <thead>
+        <tr style="color: white;background-color: #030358;">
+
+
+            <th style="text-align:center">Mon</th>
+            <th style="text-align:center">Tue</th>
+            <th style="text-align:center">Wed</th>
+            <th style="text-align:center">Thu</th>
+            <th style="text-align:center">Fri</th>
+            <th style="text-align:center">Sat</th>
+            <th style="text-align:center">Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            var mon1 = @item.Mon;
+            var mon = mon1.Split('-').Last();
+
+            var Tue1 = @item.Tue;
+            var Tue = Tue1.Split('-').Last();
+
+            var Wed1 = @item.Wed;
+            var Wed = Wed1.Split('-').Last();
+
+            var Thu1 = @item.Thu;
+            var Thu = Thu1.Split('-').Last();
+
+            var Fri1 = @item.Fri;
+            var Fri = Fri1.Split('-').Last();
+
+            var Sat1 = @item.Sat;
+            var Sat = Sat1.Split('-').Last();
+
+            var Sun1 = @item.Sun;
+            var Sun = Sun1.Split('-').Last();
+
+            <tr style="background-color:white">
+                @if (mon == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Mon
+                    </td>
+                }
+                else if (mon == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Mon
+                    </td>
+                }
+                else if (mon == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Mon
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Mon
+                    </td>
+                }
+                @if (Tue == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Tue
+                    </td>
+                }
+                else if (Tue == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Tue
+                    </td>
+                }
+                else if (Tue == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Tue
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Tue
+                    </td>
+                }
+                @if (Wed == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Wed
+                    </td>
+                }
+                else if (Wed == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Wed
+                    </td>
+                }
+                else if (Wed == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Wed
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Wed
+                    </td>
+                }
+               @if (Thu == "P")
+                {
+                <td style="height:71px;background-color: chartreuse;">
+                    @item.Thu
+                </td>
+               }
+               else if (Thu == "A")
+               {
+                <td style="height:71px;background-color: red;">
+                    @item.Thu
+                </td>
+               }
+               else if (Thu == "L")
+               {
+                <td style="height:71px;background-color: yellow;">
+                    @item.Thu
+                </td>
+               }
+               else
+               {
+                <td style="height:71px">
+                    @item.Thu
+                </td>
+               }
+                @if (Fri == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Fri
+                    </td>
+                }
+                else if (Fri == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Fri
+                    </td>
+                }
+                else if (Fri == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Fri
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Fri
+                    </td>
+                }
+                @if (Sat == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Sat
+                    </td>
+                }
+                else if (Sat == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Sat
+                    </td>
+                }
+                else if (Sat == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Sat
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Sat
+                    </td>
+                }
+                @if (Sun == "P")
+                {
+                    <td style="height:71px;background-color: chartreuse;">
+                        @item.Sun
+                    </td>
+                }
+                else if (Sun == "A")
+                {
+                    <td style="height:71px;background-color: red;">
+                        @item.Sun
+                    </td>
+                }
+                else if (Sun == "L")
+                {
+                    <td style="height:71px;background-color: yellow;">
+                        @item.Sun
+                    </td>
+                }
+                else
+                {
+                    <td style="height:71px">
+                        @item.Sun
+                    </td>
+                }
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

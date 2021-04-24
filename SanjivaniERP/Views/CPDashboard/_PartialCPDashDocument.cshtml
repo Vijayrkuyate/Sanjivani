@@ -1,0 +1,85 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+@using (Html.BeginForm("_SetCPDashDocument", "CPDashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+            </div><!-- /. tools -->
+            <h3 class="box-title"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding" style="background-color: whitesmoke;">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company Logo</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded" accept="image/png,image/jpeg,image/jpg,application/pdf" required />
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+    </div>
+    <div style="text-align: center;"><button type="submit" class="btn btn-primary" id="test"><i class="fa fa-mail-forward"></i> Submit</button></div>
+}
+
+<div class="box box-danger" id="loading-example" style="margin-top:10px">
+    <div class="box-header" style="cursor: move;background-color: white;cursor: move;color: white;">
+        <!-- tools box -->
+        <div class="pull-right box-tools">
+
+            @*<button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>*@
+
+        </div><!-- /. tools -->
+
+
+        <h3 class="box-title" style="color:black">Document List</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body no-padding" style="background-color: whitesmoke;">
+        <div class="row" id="Doucment">
+
+
+        </div><!-- /.row - inside box -->
+    </div><!-- /.box-body -->
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+    //function Success1234() {
+    //    var userId = $('#CustId').val();
+    //    var data = { CustId: userId };
+    //    alert('Save Succesfully');
+
+    //}
+    //function Failure1234() {
+    //    alert1('test')
+    //    $('#errormsg4').html("safdsgsd");
+    //    $('#trans4').html("Server error please try again");
+    //    $('#myModalEMB4').modal('show');
+
+    //}
+
+    var d = loadData("@Url.Action("_PartialgetCPDocument", "CPDashboard")", {});
+    $('#Doucment').html(d);
+    debugger;
+    var a = $("#fileuploaded").val();
+    //var b = $("#fileuploaded1").val();
+    //var c = $("#fileuploaded2").val();
+    //var d = $("#fileuploaded3").val();
+    //var e = $("#fileuploaded4").val();
+    $("#test").click(function () {
+        if (a != '' && b != '' && c != '' && d != '' && e != '')
+        {
+            alert('Your Appliction Is Under Review');
+        }
+
+    });
+</script>
+

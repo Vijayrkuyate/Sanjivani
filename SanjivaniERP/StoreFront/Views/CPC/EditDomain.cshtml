@@ -1,0 +1,578 @@
+﻿@model ModelView.DomainDNS
+@{
+    ViewBag.Title = "EditDomain";
+    Layout = "~/Views/Shared/_LayoutCPC.cshtml";
+}
+
+<style>
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: 400;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Product Management</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Channal Partner</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                @Html.HiddenFor(model => model.CustDomainProductId)
+
+            </div>
+            <div class="col-12 col-sm-12">
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1" style="background-color: #030358;">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Ragistrant Details</a>
+                            </li>
+                            <li class="nav-item" id="two">
+                                <a class="nav-link " id="T2" data-toggle="pill" href="#tab_2" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="true">Admin Details</a>
+                            </li>
+                            <li class="nav-item" id="three">
+                                <a class="nav-link" id="T3" data-toggle="pill" href="#tab_3" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Technical Details</a>
+                            </li>
+                            <li class="nav-item" id="four">
+                                <a class="nav-link" id="T4" data-toggle="pill" href="#tab_4" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Billing Detils</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="T5" data-toggle="pill" href="#tab_5" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">DNS Managment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="six" data-toggle="pill" href="#tab_6" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="false">Domain Details</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                <div class="box-body no-padding">
+                                    <div class="row">
+                                  
+                                        <div class="form-group col-md-3">
+                                            @Html.HiddenFor(model => model.CustId)
+                                            <label for="exampleInputEmail1">Registrant Name</label>
+                                            @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant Email Id</label>
+                                            @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant Address</label>
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant Country</label>
+                                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant State</label>
+                                            @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant City</label>
+                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Postal COde</label>
+                                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="exampleInputEmail1">Registrant Phone</label>
+                                            @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                        </div>
+                                    </div><!-- /.row - inside box -->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                <div class="row">
+
+                                    <div class="form-group col-md-3">
+                                        @Html.HiddenFor(model => model.CustId)
+                                        <label for="exampleInputEmail1">Registrant Name</label>
+                                        @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Email Id</label>
+                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Address</label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Country</label>
+                                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant State</label>
+                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant City</label>
+                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Postal COde</label>
+                                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Phone</label>
+                                        @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                </div><!-- /.row - inside box -->
+                            </div>
+                            <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                                <div class="row">
+
+                                    <div class="form-group col-md-3">
+                                        @Html.HiddenFor(model => model.CustId)
+                                        <label for="exampleInputEmail1">Registrant Name</label>
+                                        @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Email Id</label>
+                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Address</label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Country</label>
+                                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant State</label>
+                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant City</label>
+                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Postal COde</label>
+                                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Phone</label>
+                                        @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                </div><!-- /.row - inside box -->
+                            </div>
+                            <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+
+                                    <div class="form-group col-md-3">
+                                        @Html.HiddenFor(model => model.CustId)
+                                        <label for="exampleInputEmail1">Registrant Name</label>
+                                        @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Email Id</label>
+                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Address</label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Country</label>
+                                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant State</label>
+                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant City</label>
+                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Postal COde</label>
+                                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registrant Phone</label>
+                                        @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                </div><!-- /.row - inside box -->
+                            </div>
+                            <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                               @using (Html.BeginForm("SetDNS", "CPC", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                               {
+                                @Html.AntiForgeryToken()
+                                 <div class="row">
+                                    <div class="form-group col-md-3">
+                                        @Html.HiddenFor(model => model.CustDomainProductId)
+                                        <label for="exampleInputEmail1">Type</label>
+                                        @Html.DropDownListFor(model => model.DNSTypeId, new SelectList(ViewBag.DNS, "Value", "Text"), "--Select Type--", new { @class = "form-control", })
+                               
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1" id="lblname">Name</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1" id="lblvalue">Value</label>
+                                        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control", @placeholder = "Value" } })
+                                        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-3" id="lblTTL">
+                                        <label for="exampleInputEmail1">TTL</label>
+                                        <select id="TTL" class = "form-control">
+                                            <option value="volvo">Auto</option>
+                                            
+                                        </select>
+                                       
+                                    </div>
+                                     
+                                     <div class="form-group col-md-3" id="lblPriority">
+                                         <label for="exampleInputEmail1">Priority</label>
+                                         @Html.EditorFor(model => model.Priority, new { htmlAttributes = new { @class = "form-control", @placeholder = "Priority" } })
+                                       @Html.ValidationMessageFor(model => model.TTL, "", new { @class = "text-danger" })
+                                     </div>
+                                     <div class="form-group col-md-3" id="lblProtocol">
+                                         <label for="exampleInputEmail1">Protocol</label>
+                                         <select id="Protocol" class="form-control">
+                                             <option value="volvo">TCP</option>
+                                             <option value="volvo">UDP</option>
+                                             <option value="volvo">TLS</option>
+                                             
+                                         </select>
+                                         @*@Html.EditorFor(model => model.Protocol, new { htmlAttributes = new { @class = "form-control", @placeholder = "Protocol" } })*@
+
+                                     </div>
+                                     <div class="form-group col-md-3" id="lblWeight">
+                                         <label for="exampleInputEmail1">Weight</label>
+                                         @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control", @placeholder = "Weight" } })
+
+                                     </div>
+                                     <div class="form-group col-md-3" id="lblPort">
+                                         <label for="exampleInputEmail1">Port</label>
+                                         @Html.EditorFor(model => model.Port, new { htmlAttributes = new { @class = "form-control", @placeholder = "Port" } })
+
+                                     </div>
+                                     <div class="form-group col-md-3" id="lblTarget">
+                                         <label for="exampleInputEmail1">Target</label>
+                                         @Html.EditorFor(model => model.Target, new { htmlAttributes = new { @class = "form-control", @placeholder = "Target" } })
+
+                                     </div>
+                                    <div class="col-md-3">
+                                        
+                                        <button type="submit" class="btn btn-primary" style="background: black;"><i class="fa fa-save"></i> Save</button>
+                                    </div>
+                                    </div>
+                               }
+                                <div class="form-group col-md-12" id="_IntractionList">
+                                    <table id="example1" class="table table-bordered table-striped">
+
+                                        <thead>
+                                            <tr style="color: white;background-color: #030358;">
+                                                <th align="center">Type</th>
+                                                <th>Name</th>
+                                                <th>Content</th>
+                                                <th>TTL</th>
+                                                <th>Operation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int rowNo = 0; }
+                                            @foreach (var item in ViewBag.DNSMang)
+                                            {
+
+                                                <tr>
+                                                    @*<td>@item.RegistrationDate</td>*@
+                                                    <td>
+                                                        @item.DNSType
+                                                        @*@(rowNo += 1)*@
+                                                    </td>
+
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Value</td>
+                                                    <td>@item.TTL</td>
+                                                    <td align="center">
+                                                        <input type="hidden" id="IntractId" name="rank" value=0>
+                                                        <a class="btn btn-danger btn-sm" id=Delete>
+                                                            <i class="fa fa-trash">
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                </div>
+                              
+                            <div class="tab-pane fade" id="tab_6" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+                                <div class="row">
+
+                                    <div class="form-group col-md-3">
+                                  
+                                        <label for="exampleInputEmail1">Product Code</label>
+                                        @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Domain EPP Code</label>
+                                        @Html.EditorFor(model => model.DomainEPPCOde, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Domain Provider Code</label>
+                                        @Html.EditorFor(model => model.DomainProviderCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">SAC Code</label>
+                                        @Html.EditorFor(model => model.SACCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Domain Name</label>
+                                        @Html.EditorFor(model => model.DomainName, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Creation Date</label>
+                                        @Html.EditorFor(model => model.creatationdate, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Expiration Date</label>
+                                        @Html.EditorFor(model => model.Expirationdate, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Deletion Date</label>
+                                        @Html.EditorFor(model => model.Deletiondate, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Registration Period</label>
+                                        @Html.EditorFor(model => model.Subscription, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Renewal Prise</label>
+                                        @Html.EditorFor(model => model.Renewalprise, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Transfer Prise</label>
+                                        @Html.EditorFor(model => model.Transferprise, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="exampleInputEmail1">Restoration Prise</label>
+                                        @Html.EditorFor(model => model.Restorationprise, new { htmlAttributes = new { @class = "form-control", @placeholder = "CP Account No.", @disabled = "disabled" } })
+                                    </div>
+                                </div><!-- /.row - inside box -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                    <div class="col-md-12" style="text-align:center">
+                       
+                        <a type="submit" class="btn btn-primary" style="color:white" href="@Url.Action("CPCDomainProduct","CPC")"><i class="fa fa-times"></i> Close</a>
+                       
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    debugger;
+  
+    $(document).ready(function () {
+       
+
+        var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        var data = getJsonResult("@Url.Action("getuserdat", "CPC")", data);
+        var country = data.Country;
+        $("#countryId").val(data.Country);
+
+        $('#countryId').trigger("change");
+        $('#countryId').prop('disabled', false);
+        $("#stateId").val(data.StateId);
+        $("#stateId").trigger("change");
+        $("#cityId").val(data.City);
+        $("#Address2").val(data.Address2);
+        $("#EmailId2").val(data.EmailId2);
+        $("#MobileNo2").val(data.MobileNo2);
+
+ 
+  
+    });
+    $('#DNSTypeId').change(function () {
+        debugger;
+        var t = document.getElementById("DNSTypeId");
+        var  Cat= t.options[t.selectedIndex].text;
+        
+        if (Cat == 'A')
+        {
+            document.getElementById("lblvalue").innerHTML='IPv4 address';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'AAAA') {
+            document.getElementById("lblvalue").innerHTML = 'IPv6 address';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'CNAME') {
+            document.getElementById("lblvalue").innerHTML = 'Target';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'MX') {
+            document.getElementById("lblvalue").innerHTML = 'Mail Server';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = null;
+            document.getElementById("Priority").style.display = null;
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'NS') {
+            document.getElementById("lblvalue").innerHTML = 'Name Server';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'PTR') {
+            document.getElementById("lblvalue").innerHTML = 'Domain Name';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'SPF') {
+            document.getElementById("lblvalue").innerHTML = 'Content';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        if (Cat == 'SRV') {
+            document.getElementById("lblvalue").innerHTML = 'Service';
+            document.getElementById("lblProtocol").style.display = null;
+            document.getElementById("Protocol").style.display = null;
+            document.getElementById("lblPriority").style.display = null;
+            document.getElementById("Priority").style.display = null;
+            document.getElementById("lblWeight").style.display = null;
+            document.getElementById("Weight").style.display = null;
+            document.getElementById("lblPort").style.display = null;
+            document.getElementById("Port").style.display = null;
+            document.getElementById("lblTarget").style.display = null;;
+            document.getElementById("Target").style.display = null;
+        }
+        if (Cat == 'TXT') {
+            document.getElementById("lblvalue").innerHTML = 'Content';
+            document.getElementById("lblProtocol").style.display = 'none';
+            document.getElementById("Protocol").style.display = 'none';
+            document.getElementById("lblPriority").style.display = 'none';
+            document.getElementById("Priority").style.display = 'none';
+            document.getElementById("lblWeight").style.display = 'none';
+            document.getElementById("Weight").style.display = 'none';
+            document.getElementById("lblPort").style.display = 'none';
+            document.getElementById("Port").style.display = 'none';
+            document.getElementById("lblTarget").style.display = 'none';
+            document.getElementById("Target").style.display = 'none';
+        }
+        var data = { TicketTypeId: ticketId };
+        var d = loadData("@Url.Action("_partialTicketCount", "Director")", data)
+        $('#TicketCount').html(d);
+  
+        var dd = loadData("@Url.Action("_partialGetOpenTicket", "Director")", data)
+        $('#OrderDtl').html(dd);
+        $(function () {
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+    });
+    
+
+</script>

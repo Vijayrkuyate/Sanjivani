@@ -1,0 +1,28 @@
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.csprojResolveAssemblyReference.cache
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.csprojResolveAssemblyReference.cache
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.csprojResolveAssemblyReference.cache
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\bin\Release\SanjivaniDataLinkLayer.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\bin\Release\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.csprojResolveAssemblyReference.cache
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniDataLinkLayer\obj\Release\SanjivaniDataLinkLayer.pdb

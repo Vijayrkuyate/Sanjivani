@@ -1,0 +1,425 @@
+﻿@model ModelView.Withdrawal
+@{
+    ViewBag.Title = "Withdrwal";
+    Layout = "~/Views/Shared/_LayoutCP.cshtml";
+}
+
+<style>
+    .nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a {
+        background-color: #b92a37;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Withdrawal</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Withdrawal</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+            <div class="col-6 col-sm-6">
+               
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Withdrawal</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                @using (Html.BeginForm("UpdarteWithdrawlAmt", "CP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="box box-danger" id="loading-example">
+                                        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                                            <!-- tools box -->
+                                            <div class="pull-right box-tools">
+
+                                                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+                                            </div><!-- /. tools -->
+
+
+                                            <h3 class="box-title" style="background-color:#007bff"></h3>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body no-padding" style="background-color: whitesmoke;">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                  
+                                                    <label for="exampleInputEmail1">Wallet Amount</label>
+
+                                                    @Html.EditorFor(model => model.WalletAmount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                                    @Html.ValidationMessageFor(model => model.WalletAmount, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="exampleInputEmail1">Withdrawal Amount</label>
+                                                    @Html.EditorFor(model => model.WithdrawalAmt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Domain EPP Code", onkeypress = "return fnAllowNumeric()" } })
+                                                    @Html.ValidationMessageFor(model => model.WithdrawalAmt, "", new { @class = "text-danger" })
+                                                </div>
+                                               
+                                                <div class="col-md-12">
+
+                                                    <div>
+                                                       
+                                                            <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+                                                      
+
+                                                        <a class="btn btn-danger" href="@Url.Action("Domain","Product")"><i class="fa fa-edit"></i> Close</a>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div><!-- /.row - inside box -->
+                                        </div><!-- /.box-body -->
+
+                                    </div>
+
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+
+
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: 400;
+    }
+</style>
+
+
+
+
+
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("dd");
+        $('#WalletAmount').prop('disabled', true);
+     
+    });
+    function fnAllowNumeric() {
+        if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8) {
+            event.keyCode = 0;
+            alert("Accept only Number..!");
+            return false;
+        }
+    }
+
+    function IsMobileNumber() {
+        var mob = /^[1-9]{1}[0-9]{9}$/;
+        var txtMobile = document.getElementById("mobileNo").value;
+        if (txtMobile != '') {
+            if (mob.test(txtMobile) == false) {
+
+                $("#mobileNo").val('');
+                ////$("#msg").show();
+                //document.getElementById("span").innerHTML = "Please enter valid mobile number";
+                alert("Please enter valid mobile number");
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function CnfirmPassword() {
+
+        var pass = document.getElementById("pwd").value;
+        var Confpass = document.getElementById("Cpwd").value;
+        if (Confpass != '') {
+            if (Confpass != pass) {
+
+                $("#Cpwd").val('');
+               // $("#msg").show();
+                //document.getElementById("span").innerHTML = "Confirm Password Does Not Match";
+                alert("Confirm Password Does Not Match");
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function validateCaseSensitiveEmail() {
+
+        debugger;
+        var EmailId = $('#EmailID').val();
+        if (EmailId != '')
+        {
+            var data = {Email: EmailId };
+            credit = 0;
+
+            var d = getJsonResult("@Url.Action("checEmailIdExits", "CP")",data);
+            if(d.Status==400)
+            {
+
+                alert('Email Id Already Exists Please Enter Another');
+
+                $('#EmailID').val('');
+                $('#EmailID').focus();
+            }
+
+            var email = document.getElementById("EmailID").value;
+
+
+            var reg = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (reg.test(email)) {
+
+            }
+            else {
+
+                $("#EmailID").val('');
+                $("#EmailID").focus();
+                alert('Please Enter Valid Email');
+                // $("#msg").show();
+                //document.getElementById("span").innerHTML = "Please Enter Valid Email";
+            }
+        }
+
+    }
+    function CheckPassword(inputtxt) {
+        var res;
+        var str =
+            document.getElementById("pwd").value;
+        if (str.match(/[a-z]/g) && str.match(
+                /[A-Z]/g) && str.match(
+                /[0-9]/g) && str.match(
+                /[^a-zA-Z\d]/g) && str.length >= 8)
+            res = "TRUE";
+        else {
+            res = "FALSE";
+            // alert("Password Should be Strong");
+            $("#pwd").val('');
+           // $("#msg").show();
+            alert('Password Should be Strong');
+           // document.getElementById("span").innerHTML = "Password Should be Strong";
+        }
+
+        document.getElementById("t2").value = res;
+    }
+    $("#MobileNo").change(function () {
+        var MobileMo = $("#MobileNo").val();
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetCutomerFromMobile",
+            contentType: "application/json; charset=utf-8",
+            data: 'MobileMo=' + MobileMo,
+            dataType: "json",
+            success: function (response) {
+                if (response != null) {
+                    $('#CustName').val(response.Name);
+
+                } else {
+                    alert("Something went wrong");
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    $(document).ready(function () {
+        var session = '@Session["Tab"]';
+
+        debugger;
+
+        $('.nav li').removeClass('active');
+
+        if (session == '2')
+        {
+            $('#tab_1').html('');
+            $('#two').addClass('active')
+            $('#tab_1').removeClass('active')
+            $('#tab_3').removeClass('active')
+            $('#tab_4').removeClass('active')
+            $('#tab_2').addClass('tab-pane active')
+        }
+        else if (session == '3')
+        {
+
+            $('#three').addClass('active')
+            $('#tab_1').removeClass('active')
+            $('#tab_2').removeClass('active')
+            $('#tab_4').removeClass('active')
+            $('#tab_3').addClass('tab-pane active')
+        }
+        else if (session == '4') {
+
+            $('#four').addClass('active')
+            $('#tab_1').removeClass('active')
+            $('#tab_2').removeClass('active')
+            $('#tab_3').removeClass('active')
+            $('#tab_4').addClass('tab-pane active')
+        }
+        else
+        {
+            $('#one').addClass('active')
+            $('#tab_4').removeClass('active')
+            $('#tab_2').removeClass('active')
+            $('#tab_3').removeClass('active')
+            $('#tab_1').addClass('tab-pane active')
+        }
+        //e.preventDefault();
+
+    });
+
+
+    $('#UserName').change(function () {
+
+        debugger;
+        var userId =$('#UserName').val();
+        var data={UserId:userId};
+        credit = 0;
+
+        var d = getJsonResult("@Url.Action("CheckUserIdExits", "CP")",data);
+        if(d.Status==400)
+        {
+
+            alert('User Id Already Exists Please Enter Another');
+
+            $('#UserName').val('');
+            $('#UserName').focus();
+        }
+        else
+        {
+
+        }
+
+    });
+
+
+    $('#EmailID').focusout(function () {
+
+        debugger;
+        var EmailId = $('#EmailID').val();
+        var data = { Email: EmailId };
+        credit = 0;
+
+        var d = getJsonResult("@Url.Action("CheckEmailExists", "CP")",data);
+        if(d.Status==400)
+        {
+
+            alert('Email Id Already Exists Please Enter Another');
+
+            $('#EmailID').val('');
+            $('#EmailID').focus();
+        }
+        else
+        {
+
+        }
+
+    });
+
+    $(function () {
+
+        $('#txtNumeric').keydown(function (e) {
+
+            if (e.shiftKey || e.ctrlKey || e.altKey) {
+
+                e.preventDefault();
+
+            } else {
+
+                var key = e.keyCode;
+
+                if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+
+                    e.preventDefault();
+
+                }
+
+            }
+
+        });
+
+    });
+
+    var cek = /^[a-zA-Z\ \']+$/;
+    function validate(form) {
+        debugger;
+        var name = $('#chennelpartName').val();
+        if (name != '')
+        {
+            if (!cek.test(name)) {
+
+                $('#chennelpartName').focus();
+                alert("Only Alphabetic");
+                $('#chennelpartName').val('');
+                return false;
+            }
+            return true;
+        }
+
+    }
+    $(document).ready(function () {
+        $(".wideSlider").each(function () {
+            var $this = $(this);
+            var $slider = $this.find(".flexslider");
+            var startat = $slider.attr("data-startat");
+            if (startat = 0) {
+            }
+            $slider.flexslider({
+                animation: 'slide',
+                easing: 'linear',
+                slideshow: true,
+                slideshowSpeed: 7000,
+                animationLoop: true,
+                startAt: startat,
+                controlNav: false,
+                directionNav: true,
+                nextText: " ",
+                prevText: " ",
+            });
+        });
+    })
+</script>
+

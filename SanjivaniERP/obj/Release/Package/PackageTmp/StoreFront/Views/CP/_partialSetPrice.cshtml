@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ModelView.ProductBusinessModal>
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #1c7faf;">
+
+            <th style="width: 20px;">Image</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+
+            <th>Cost Prise</th>
+            <th>Selling Prise</th>
+            <th>Registrartion Price</th>
+            <th>Renewal Price</th>
+            <th>Transfer Price</th>
+            <th>Restoration Price</th>
+            <th>Customerwise Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@item.RegistrationDate</td>*@
+                <td>
+                    <div class="pull-left image">
+                        <img src="https://master.pioneersoft.co.in/Documents/ProductImage/@item.PropductImage" class="img-circle" alt="User Image" style="height: 47px;">
+                    </div>
+                </td>
+                <td>@item.ProductCode</td>
+
+                <td>@item.ProductName</td>
+                <td>@item.CostPrice</td>
+                <td>@item.SellingPrice</td>
+                <td>@item.RegistrartionPrice</td>
+                <td>@item.RenewalPrice</td>
+                <td>@item.TransferPrice</td>
+                <td>@item.DomainregistrationPrice</td>
+                <td align="center">
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("CPCChennelPartner", "CP",new { CustId= @item.ProductId })">
+                        <i class="fa fa-edit">
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

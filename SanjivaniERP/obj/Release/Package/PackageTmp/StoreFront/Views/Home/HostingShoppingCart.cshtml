@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "HostingShoppingCart";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row page_header section-spacing">
+    <div class="container">
+        <h3>Shopping Cart</h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">home</a></li>
+            <li class="active">Cart</li>
+        </ol>
+    </div>
+</section>
+
+<!--Cart Details-->
+<section class="row shopping-cart section-spacing bg-pattern">
+    <div class="container">
+        <div class="sectionTitle p-bottom80">
+            <h2>Shopping Cart</h2>
+            <p>Review & Checkout</p>
+        </div>
+
+        <div class="row">
+            <!--Order Details-->
+            <div class="col-sm-8">
+                <div class="table-responsive border shadow radius m-bottom30" id="cartlist">
+
+                </div>
+                @*<form class="thirds text-center">
+                        <h3 class="text-left m-bottom30">Add a coupon code</h3>
+                        <input class="col-sm-3 radius-round shadow" type="text" placeholder="Coupon Code" />
+                        <input class="btn btn-primary btn-xlg col-sm-3" type="submit" value="Apply" />
+                    </form>*@
+            </div>
+
+            <!--Order Summary-->
+            <div class="col-sm-4">
+                <div class="summary-box m-bottom30 bg-gray border shadow radius" id="ordersummary">
+
+
+                </div>
+                <form>
+                    <a href="@Url.Action("Payment","Home")" class="btn btn-primary btn-xlg m-bottom20">
+                        Make Payment
+                    </a>
+
+                    @*<input class="btn btn-primary btn-xlg m-bottom20" type="submit" value="Proceed To Checkout" />
+                        <input class="btn btn-pink btn-xlg" type="submit" value="Continue Shopping" />*@
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script>
+    debugger;
+    var d = loadData("@Url.Action("_partialHostingCartList", "Home")");
+    $('#cartlist').html(d);
+
+    var d = loadData("@Url.Action("_partialHostingorderSummary", "Home")");
+    $('#ordersummary').html(d);
+</script>
+

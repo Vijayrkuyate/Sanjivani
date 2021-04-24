@@ -1,0 +1,362 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row page_header section-spacing">
+    <div class="container">
+        <h3>Paymnet</h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">home</a></li>
+            <li class="active">Cart</li>
+        </ol>
+    </div>
+</section>
+
+<!--Shopping Cart-->
+<section class="row shopping-cart payment section-spacing bg-pattern">
+    <div class="container">
+        <div class="sectionTitle p-bottom80">
+            <h2>Billing Address</h2>
+        </div>
+
+        <div class="row">
+
+            <!--Payment Details-->
+            <div class="col-sm-8">
+                <section class=" serviceTab serviceTab_byside">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row service_tab_menu">
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <li class="active" role="presentation">
+                                        <a aria-controls="serviceT1" data-toggle="tab" href="#serviceT1" role="tab">
+                                            <i class="fa fa-credit-card fa-2x"></i> <span>Credit Card</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a aria-controls="serviceT2" data-toggle="tab" href="#serviceT2" role="tab">
+                                            <i class="fa fa-globe fa-2x"></i> <span>Net Banking</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a aria-controls="serviceT3" data-toggle="tab" href="#serviceT3" role="tab">
+                                            <i class="fa fa-paypal fa-2x"></i> <span>PayPal</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a aria-controls="serviceT4" data-toggle="tab" href="#serviceT4" role="tab">
+                                            <i class="fa fa-cc-mastercard fa-2x"></i> <span>Debit Card</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="container m0 serviceTab_contents">
+                            <div class="tab-content clearfix">
+                                <div class="tab-pane active clearfix" id="serviceT1" role="tabpanel">
+                                    <div class="form text-left bg-gray padding15 shadow border clearfix radius m-top30">
+                                        <div class="sectionTitle m-top30 m-bottom20">
+                                            <h2>Personal Information</h2>
+                                            <p>I agree to the Terms & Conditions & Privacy Policy.</p>
+                                        </div>
+                                        <form class="clearfix">
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>First Name</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Last Name</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Company Name</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Email Address</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Phone Number</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Address</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="sectionTitle m-bottom20 m-top20">
+                                            <h2>Credit Card Info</h2>
+                                            <p>I agree to the Terms & Conditions & Privacy Policy.</p>
+                                        </div>
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-xs-12 form-group required">
+                                                    <label class='control-label'>Name on Card</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-xs-12 form-group card required">
+                                                    <label class='control-label'>Card Number</label>
+                                                    <input autocomplete="off" class="card-number" size="20" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-xs-4 form-group cvc required">
+                                                    <label class="control-label">CVC</label>
+                                                    <input autocomplete="off" class="card-cvc" placeholder="ex. 311" size="4" type="text">
+                                                </div>
+                                                <div class="col-xs-4 form-group expiration required">
+                                                    <label class="control-label">Expiration</label>
+                                                    <input class="card-expiry-month" placeholder="MM" size="2" type="text">
+                                                </div>
+                                                <div class="col-xs-4 form-group expiration required">
+                                                    <label class="control-label">Year</label>
+                                                    <input class="card-expiry-year" placeholder="YYYY" size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 error form-group hide">
+                                                    <div class="alert-danger alert">
+                                                        Please correct the errors and try again.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="checkbox">
+                                                <div class="col-sm-12">
+                                                    <input id="example_check1" name="example_check" type="checkbox">
+                                                    <label for="example_check1">By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                                    <button class="btn btn-primary btn-xlg btn-block m-top20 text-uppercase">Pay Now</button>
+                                                    <p class="message p-top30 btn-xlg p-bottom20">Already Account ? <a href="#">Login Account</a></p>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="serviceT2" role="tabpanel">
+                                    <div class="form text-left bg-gray padding15 shadow border clearfix radius m-top30">
+                                        <div class="sectionTitle m-top30 m-bottom20">
+                                            <h2>Net Banking</h2>
+                                            <p>Please select any bank</p>
+                                        </div>
+                                        <form class="clearfix net-banking">
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad1" name="example_rad" type="radio">
+                                                        <label for="example_rad1">Andhra Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad2" name="example_rad" type="radio">
+                                                        <label for="example_rad2">City Union Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad3" name="example_rad" type="radio">
+                                                        <label for="example_rad3">Allahabad Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad4" name="example_rad" type="radio">
+                                                        <label for="example_rad4">HDFC Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad5" name="example_rad" type="radio">
+                                                        <label for="example_rad5">Bank of Baroda</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad6" name="example_rad" type="radio">
+                                                        <label for="example_rad6">IndusInd Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad7" name="example_rad" type="radio">
+                                                        <label for="example_rad7">Canara Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad8" name="example_rad" type="radio">
+                                                        <label for="example_rad8">UCO Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 col-xs-12 col-md-4 required'>
+                                                    <div class="radio">
+                                                        <input id="example_rad9" name="example_rad" type="radio">
+                                                        <label for="example_rad9">UCO Bank</label><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-primary btn-xlg btn-block m-top20">Pay Now</button>
+                                                <p class="message p-top30 btn-xlg p-bottom20">Already Account ? <a href="#">Login Account</a></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="serviceT3" role="tabpanel">
+                                    <div class="form text-left bg-gray padding15 shadow border clearfix radius m-top30">
+                                        <div class="sectionTitle m-top30 m-bottom20">
+                                            <h2>PayPal</h2>
+                                            <p>Already Have A PayPal Account?</p>
+                                        </div>
+                                        <form class="clearfix">
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Paypal ID</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class='col-sm-6 form-group required'>
+                                                    <label class='control-label'>Password</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="checkbox">
+                                                    <input id="example_check2" name="example_check" type="checkbox"> <label for="example_check2">Remember me?</label>
+                                                </div><button class="btn btn-primary btn-xlg btn-block m-top20">Pay Now</button>
+                                                <p class="message p-top30 btn-xlg p-bottom20">Already Account ? <a href="#">Login Account</a></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="serviceT4" role="tabpanel">
+                                    <div class="form text-left bg-gray padding15 shadow border clearfix radius m-top30">
+                                        <div class=" sectionTitle m-top30 m-bottom20">
+                                            <h2>Credit Card Info</h2>
+                                            <p>I agree to the Terms & Conditions & Privacy Policy.</p>
+                                        </div>
+                                        <form class="clearfix">
+                                            <div class="form-row">
+                                                <div class="col-xs-12 form-group required">
+                                                    <label class='control-label'>Name on Card</label>
+                                                    <input size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-xs-12 form-group card required">
+                                                    <label class='control-label'>Card Number</label>
+                                                    <input autocomplete="off" class="card-number" size="20" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-xs-4 form-group cvc required">
+                                                    <label class="control-label">CVC</label>
+                                                    <input autocomplete="off" class="card-cvc" placeholder="ex. 311" size="4" type="text">
+                                                </div>
+                                                <div class="col-xs-4 form-group expiration required">
+                                                    <label class="control-label">Expiration</label>
+                                                    <input class="card-expiry-month" placeholder="MM" size="2" type="text">
+                                                </div>
+                                                <div class="col-xs-4 form-group expiration required">
+                                                    <label class="control-label">Year</label>
+                                                    <input class="card-expiry-year" placeholder="YYYY" size="4" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 error form-group hide">
+                                                    <div class="alert-danger alert">
+                                                        Please correct the errors and try again.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                            <div class="col-sm-12">
+                                                <div class="checkbox">
+                                                    <input id="example_check3" name="example_check" type="checkbox">
+                                                    <label for="example_check3">By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                                </div>
+                                                <button class="btn btn-primary btn-xlg btn-block m-top20">Pay Now</button>
+                                                <p class="message p-top30 btn-xlg p-bottom20">Already Account ? <a href="#">Login Account</a></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--Payment Summary-->
+            <div class="col-sm-4">
+                <div class="summary-box m-bottom30 bg-gray radius shadow">
+                    <h3 class="text-center padding20 summary-boxtitle">Order Summary</h3>
+                    <table class="table m-bottom0">
+                        <tbody>
+                            <tr class="">
+                                <th scope="row">Cart Subtotal</th>
+                                <td class="text-right">$239.85</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><small class="text-muted">Totals</small></th>
+                                <td class="text-right text-muted"><small>$239.85</small></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Order Total</th>
+                                <td>
+                                    <h2 class="price text-right">$239.85</h2>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @using (Html.BeginForm("SetOrder", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form clearfix bg-gray border shadow radius" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input class="btn btn-primary btn-xlg m-bottom20" type="submit" value="Proceed To Checkout">
+                    <input class="btn btn-pink btn-xlg" type="submit" value="Continue Shopping">
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

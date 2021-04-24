@@ -1,0 +1,20 @@
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.pdb
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.dll
+D:\Projects\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.pdb
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.dll
+D:\Vijay Project\DellBackUp\Sanjivani\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\bin\Release\SanjivaniModalView.pdb
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.dll
+D:\Sanjivani Project\SanjivaniERP\SanjivaniModalView\obj\Release\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\bin\Release\SanjivaniModalView.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\bin\Release\SanjivaniModalView.pdb
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Release\SanjivaniModalView.csprojResolveAssemblyReference.cache
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Release\SanjivaniModalView.dll
+D:\Vijay Project\New folder\SanjivaniVersion1\SanjivaniModalView\obj\Release\SanjivaniModalView.pdb

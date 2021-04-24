@@ -1,0 +1,162 @@
+﻿@model SanjivaniModalView.ProductEmail
+
+@using (Html.BeginForm("SetEmailProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title" style="background-color:#007bff"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.HiddenFor(model => model.EmailProductId)
+                    <label for="exampleInputEmail1">Product Code</label>
+
+                    @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                    @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
+                </div>
+              
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Service Provider</label>
+                    @*<select name="cars" id="ProductProvider" class = "form-control">
+                        <option value="volvo">--Select Provider--</option>
+                        <option value="saab">Microsoft</option>
+                        <option value="mercedes">Google</option>
+
+                    </select>*@
+                    @Html.EditorFor(model => model.ProductProvider, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Provider Code" } })
+                    @Html.ValidationMessageFor(model => model.ProductProvider, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">SAC Code</label>
+                    @Html.EditorFor(model => model.SACCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "SAC Code" } })
+                    @Html.ValidationMessageFor(model => model.SACCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Product Name</label>
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Name" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Price</label>
+                    @Html.EditorFor(model => model.RegistrationPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration Price", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.RegistrationPrice, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Renewal Price</label>
+                    @Html.EditorFor(model => model.RenewalPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Renewal Price", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.RenewalPrice, "", new { @class = "text-danger" })
+                </div>
+              
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Product Image</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded4" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="col-md-12">
+
+                    <div>
+                        @if (Model.EmailProductId != 0)
+                        {
+                            <a class="btn btn-danger"  onclick="EnableTrue()" style="color:white"><i class="fa fa-edit"></i> Edit</a>
+                        }
+                        @if (Model.EmailProductId != 0)
+                        {
+                            <button type="submit" id="usave" class="btn btn-danger"><i class="fa fa-save"></i> Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" id="dsave" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+                        }
+                        @if (Model.EmailProductId != 0)
+                        {
+                            <a class="btn btn-danger" id="esave" href="@Url.Action("DeleteEmailProduct","Product",new { ProductId=Model.EmailProductId})"><i class="fa fa-edit"></i> Delete</a>
+                        }
+
+                        <a class="btn btn-danger" href="@Url.Action("Email","Product")"><i class="fa fa-edit"></i> Close</a>
+                    </div>
+
+
+
+
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<style>
+    .no-js #loader {
+        display: none;
+    }
+
+    .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+    }
+
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+    }
+</style>
+<div class="se-pre-con"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });
+
+</script>
+<script type="text/javascript">
+    var name = $('#EmailProductId').val();
+    if (name != '0') {
+        $(document).ready(function () {
+            console.log("dd");
+            $('#ProductCode').prop('disabled', true);
+            $('#ProductProvider').prop('disabled', true);
+            $('#DomainProviderCode').prop('disabled', true);
+            $('#SACCode').prop('disabled', true);
+            $('#ProductName').prop('disabled', true);
+            $('#RegistrationPrice').prop('disabled', true);
+
+            $('#RenewalPrice').prop('disabled', true);
+            $('#TransferPrice').prop('disabled', true);
+            $('#DomainregistrationPrice').prop('disabled', true);
+
+        });
+    }
+    function EnableTrue() {
+        $('#ProductCode').prop('disabled', false);
+        $('#ProductProvider').prop('disabled', false);
+        $('#DomainProviderCode').prop('disabled', false);
+        $('#SACCode').prop('disabled', false);
+        $('#ProductName').prop('disabled', false);
+        $('#RegistrationPrice').prop('disabled', false);
+
+        $('#RenewalPrice').prop('disabled', false);
+        $('#TransferPrice').prop('disabled', false);
+        $('#DomainregistrationPrice').prop('disabled', false);
+    }
+</script>

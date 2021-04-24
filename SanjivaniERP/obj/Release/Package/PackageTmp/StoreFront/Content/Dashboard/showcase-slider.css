@@ -1,0 +1,516 @@
+.flex-container a:active,
+.flex-container a:focus,
+.flexslider a:active,
+.flexslider a:focus {
+  outline: 0;
+}
+.flex-control-nav,
+.flex-direction-nav,
+.slides {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@font-face {
+  font-family: flexslider-icon;
+  src: url(/core/fileparse.php/6/urlt/_resources/fonts/flexslider-icon.eot);
+  src: url(/_resources/fonts/flexslider-icon.eot?#iefix) format('embedded-opentype'), url(/core/fileparse.php/6/urlt/_resources/fonts/flexslider-icon.woff) format('woff'), url(/core/fileparse.php/6/urlt/_resources/fonts/flexslider-icon.ttf) format('truetype'), url(/_resources/fonts/flexslider-icon.svg#flexslider-icon) format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+.flexslider {
+  padding: 0;
+}
+.flexslider .slides > li {
+  display: none;
+  -webkit-backface-visibility: hidden;
+}
+.flexslider .slides img {
+  width: 100%;
+  display: block;
+}
+.flex-pauseplay span {
+  text-transform: capitalize;
+}
+.slides:after {
+  content: "\0020";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+html[xmlns] .slides {
+  display: block;
+}
+* html .slides {
+  height: 1%;
+}
+.no-js .slides > li:first-child {
+  display: block;
+}
+.flexslider {
+  margin: 0 0 60px;
+  background: #fff;
+  border: 4px solid #fff;
+  position: relative;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  zoom: 1;
+}
+.flex-viewport {
+  max-height: 2000px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.loading .flex-viewport {
+  max-height: 300px;
+}
+.flexslider .slides {
+  zoom: 1;
+}
+.carousel li {
+  margin-right: 5px;
+}
+.flex-direction-nav {
+  *height: 0;
+}
+.flex-direction-nav a {
+  text-decoration: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  overflow: hidden;
+  opacity: 0;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all 0.3s ease;
+}
+.flex-direction-nav .flex-prev {
+  left: -50px;
+}
+.flex-direction-nav .flex-next {
+  right: -50px;
+  text-align: right;
+}
+.flexslider:hover .flex-prev {
+  opacity: .7;
+  left: 10px;
+}
+.flexslider:hover .flex-next {
+  opacity: .7;
+  right: 10px;
+}
+.flexslider:hover .flex-next:hover,
+.flexslider:hover .flex-prev:hover {
+  opacity: 1;
+}
+.flex-direction-nav .flex-disabled {
+  opacity: 0!important;
+  filter: alpha(opacity=0);
+  cursor: default;
+}
+.flex-direction-nav a:before {
+  font-family: flexslider-icon;
+  font-size: 40px;
+  display: inline-block;
+  content: '\f001';
+}
+.flex-direction-nav a.flex-next:before {
+  content: '\f002';
+}
+.flex-pauseplay a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  opacity: .8;
+  z-index: 10;
+  overflow: hidden;
+  cursor: pointer;
+  color: #000000;
+}
+.flex-pauseplay a:before {
+  font-family: flexslider-icon;
+  font-size: 20px;
+  display: inline-block;
+  content: '\f004';
+}
+.flex-pauseplay a:hover {
+  opacity: 1;
+}
+.flex-pauseplay a.flex-play:before {
+  content: '\f003';
+}
+.flex-control-nav {
+  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  text-align: center;
+}
+.flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+.flex-control-paging li a {
+  width: 11px;
+  height: 11px;
+  display: block;
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.flex-control-paging li a:hover {
+  background: #333;
+  background: rgba(0, 0, 0, 0.7);
+}
+.flex-control-paging li a.flex-active {
+  background: #000;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: default;
+}
+.flex-control-thumbs {
+  margin: 5px 0 0;
+  position: static;
+  overflow: hidden;
+}
+.flex-control-thumbs li {
+  width: 25%;
+  float: left;
+  margin: 0;
+}
+.flex-control-thumbs img {
+  width: 100%;
+  display: block;
+  opacity: .7;
+  cursor: pointer;
+}
+.flex-control-thumbs img:hover {
+  opacity: 1;
+}
+.flex-control-thumbs .flex-active {
+  opacity: 1;
+  cursor: default;
+}
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: 10px;
+  }
+  .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: 10px;
+  }
+}
+/* reset styles */
+.flexslider {
+  margin: 0;
+  background: transparent;
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+.flexslider .flex-direction-nav a {
+  opacity: 1;
+  text-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+}
+.flexslider .flex-direction-nav a {
+  opacity: 1;
+  text-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+}
+.flexslider .flex-direction-nav .flex-prev {
+  left: -100px;
+}
+.flexslider .flex-direction-nav .flex-next {
+  right: -100px;
+  text-align: center;
+}
+.flexslider:hover .flex-prev {
+  opacity: 1;
+  left: -100px;
+}
+.flexslider:hover .flex-next {
+  opacity: 1;
+  right: -100px;
+}
+.flexslider .slides > li {
+  -webkit-backface-visibility: visible;
+}
+.flexslider .slides img {
+  width: 100%;
+}
+.flexslider .flex-direction-nav a {
+  text-align: center;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  color: #333;
+  line-height: 1;
+}
+.flexslider .flex-direction-nav a:hover {
+  color: #1d8fad;
+}
+.flexslider .flex-direction-nav .flex-disabled {
+  display: none;
+}
+.outerWideSlider {
+  width: 100%;
+  max-width: none;
+  margin: 0px auto 5px auto;
+  overflow: hidden;
+  position: relative;
+}
+.wideSlider {
+  width: 1170px;
+  margin: 0 auto;
+  position: relative;
+}
+.wideSlider .flexslider .flex-viewport {
+  overflow: visible !important;
+}
+.wideSlider .flexslider .flex-direction-nav a {
+  display: block;
+  width: 70px;
+  height: 120px;
+  margin-top: -60px;
+  background: transparent url("https://www.solodev.com/assets/flexslider/slider-arrow-sprite.png") no-repeat 0 0;
+  -webkit-transition: none;
+  transition: none;
+}
+.wideSlider .flexslider .flex-direction-nav a:before {
+  display: none;
+  height: 0;
+}
+.wideSlider .flexslider .flex-direction-nav a:hover {
+  background-position: 0 -200px;
+}
+.wideSlider .flexslider .flex-direction-nav a.flex-next {
+  background-position: -200px 0;
+}
+.wideSlider .flexslider .flex-direction-nav a.flex-next:hover {
+  background-position: -200px -200px;
+}
+.wideSlider .flexslider .slides > li {
+  position: relative;
+  -webkit-backface-visibility: visible;
+}
+.wideSlider .flexslider .slides > li img {
+  width: 99.5%;
+  margin: 0 0.25%;
+}
+@media (max-width: 1200px) {
+  .wideSlider {
+    width: 940px;
+  }
+  .flexslider .flex-direction-nav .flex-prev {
+    left: -20px;
+  }
+  .flexslider .flex-direction-nav .flex-next {
+    right: -20px;
+  }
+  .flexslider:hover .flex-prev {
+    left: -20px;
+  }
+  .flexslider:hover .flex-next {
+    right: -20px;
+  }
+}
+@media (max-width: 1005px) {
+  .wideSlider {
+    width: 720px;
+  }
+}
+@media (max-width: 768px) {
+  .wideSlider {
+    width: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .flexslider .flex-direction-nav .flex-prev {
+    left: 10px;
+  }
+  .flexslider .flex-direction-nav .flex-next {
+    right: 10px;
+  }
+  .flexslider:hover .flex-prev {
+    left: 10px;
+  }
+  .flexslider:hover .flex-next {
+    right: 10px;
+  }
+}
+.flex-active-slide .text-caption {
+  display: block;
+}
+.text-caption {
+  background: #fff;
+  padding-top: 4px;
+  position: absolute;
+  left: 294px;
+  right: 3px;
+  bottom: 0;
+  top: auto;
+  color: #fff;
+  display: none;
+}
+.text-caption .btn-big {
+  margin-left: 4px;
+}
+.text-caption p {
+  color: #fff;
+  margin: 0;
+  font-size: 13px;
+  line-height: 17px;
+}
+.text-caption h1,
+.text-caption h2,
+.text-caption h3,
+.text-caption h4,
+.text-caption h5,
+.text-caption h6 {
+  color: #fff;
+  margin: 0 0 4px 0;
+}
+.text-caption h3 {
+  font-size: 23px;
+}
+.text-caption .inner {
+  overflow: hidden;
+  background: #123142;
+  padding: 12px 24px;
+}
+.text-caption .btn-big.btn-block {
+  margin-top: 20px;
+}
+.text-size2 .sideMenu {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+.text-size2 p,
+.text-size2 li,
+.text-size2 li a {
+  font-size: 120% !important;
+  line-height: 1.2 !important;
+}
+.text-size2 .text-caption h3 {
+  font-size: 25px;
+}
+.text-size2 .media .media-heading a {
+  font-size: 23px;
+}
+.text-size2 .btn {
+  font-size: 18px;
+}
+.text-size2 .media .dateEl {
+  font-size: 18px;
+}
+.text-size2 h3 {
+  font-size: 28px;
+}
+.text-size2 h4 {
+  font-size: 20px;
+}
+.text-size2 .media .longDate,
+.text-size2 .media .timeEl {
+  font-size: 16px;
+  line-height: 16px;
+}
+.text-size2 .dropdown-menu li,
+.text-size2 .dropdown-menu li a {
+  font-size: 16px !important;
+  line-height: 18px !important;
+}
+.text-size3 .sideMenu {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+.text-size3 p,
+.text-size3 li,
+.text-size3 li a {
+  font-size: 130% !important;
+  line-height: 1.2 !important;
+}
+.text-size3 .text-caption h3 {
+  font-size: 27px;
+}
+.text-size3 .media .media-heading a {
+  font-size: 25px;
+}
+.text-size3 .btn {
+  font-size: 20px;
+}
+.text-size3 .media .dateEl {
+  font-size: 20px;
+}
+.text-size3 h3 {
+  font-size: 30px;
+}
+.text-size3 h4 {
+  font-size: 22px;
+}
+.text-size3 .media .longDate,
+.text-size3 .media .timeEl {
+  font-size: 18px;
+  line-height: 18px;
+}
+.text-size3 .dropdown-menu li,
+.text-size3 .dropdown-menu li a {
+  font-size: 18px !important;
+  line-height: 20px !important;
+}
+.wideSlider .flexslider .flex-direction-nav a {
+    display: block;
+    width: 35px;
+    height: 60px;
+    margin-top: -30px;
+    background: transparent url("https://www.solodev.com/assets/flexslider/slider-arrow-sprite-mobile.png") no-repeat 0 0;
+  }
+  .wideSlider .flexslider .flex-direction-nav a:hover {
+    background-position: 0 -100px;
+  }
+  .wideSlider .flexslider .flex-direction-nav a.flex-next {
+    background-position: -100px 0;
+  }
+  .wideSlider .flexslider .flex-direction-nav a.flex-next:hover {
+    background-position: -100px -100px;
+  }
+  .wideSlider .flexslider .slides li:not(.flex-active-slide) img {
+  opacity: 0.4;
+}

@@ -1,0 +1,53 @@
+﻿
+<table class="table cart m-bottom0">
+    <tbody>
+        <tr>
+            <th>Product / Options</th>
+            <th>Description</th>
+
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in ViewBag.CartList)
+        {
+            <tr>
+                <td>
+                    <a href="#">@item.Domain</a>
+                </td>
+                <td><span>@item.ProductName</span></td>
+
+                <td><span>@item.Price</span></td>
+                <td scope="row">
+                    <input type="hidden" id="IntractId" name="rank" value=@item.CartId>
+                    <a id="Delete"><i class="fa fa-trash fa-2x"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script>
+    $('body').on('click', '#Delete', function () {
+        debugger;
+        var CartId = $(this).siblings("#IntractId").val();
+
+        var dd = getJsonResult("@Url.Action("DeleteHostingCartItem", "Home")", { CartId });
+          var d = loadData("@Url.Action("_partialHostingCartList", "Home")");
+        $('#cartlist').html(d);
+
+        var d = loadData("@Url.Action("_partialHostingorderSummary", "Home")");
+        $('#ordersummary').html(d);
+        var messege = '';
+        if (dd.Status == 200) {
+            messege = 'Record saved successfully';
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+    });
+</script>

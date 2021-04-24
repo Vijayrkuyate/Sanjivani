@@ -1,0 +1,366 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+@{
+    ViewBag.Title = "CPCustomerDashAddNew";
+    Layout = "~/Views/Shared/_LayoutCP&CPC.cshtml";
+}
+
+<style>
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: 400;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">CP Customer </h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                @Html.HiddenFor(model => model.CustId)
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">CPC Personal Info</a>
+                            </li>
+                            <li class="nav-item" id="two">
+                                <a class="nav-link " id="T2" data-toggle="pill" href="#tab_2" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="true">Bank Deatils</a>
+                            </li>
+                            <li class="nav-item" id="three">
+                                <a class="nav-link" id="T3" data-toggle="pill" href="#tab_3" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Documents Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+
+                            </div>
+                            <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+
+                            </div>
+                            <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                    @*<div class="col-md-12" style="text-align:center">
+                        <a class="btn btn-success" style="color:white" href="@Url.Action("ApproveCp","Partner")"><i class="fa fa-check"></i> Approve</a>
+                        <a type="submit" class="btn btn-primary" style="color:white" href="@Url.Action("RejectCP","Partner")"><i class="fa fa-times"></i> Reject</a>
+                        <a type="submit" class="btn btn-danger" style="color:white" href="@Url.Action("DeleteCP","Partner")"><i class="fa fa-trash"></i> Delete</a>
+                    </div>*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Content/js/countrystatecity.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    var userId = $('#CustId').val();
+    var data = { CustId: userId };
+    debugger
+    var d = loadData("@Url.Action("_PartialCPPerstionalDtl", "CPDashboard")", data);
+    $('#tab_1').html(d);
+
+    $('#T1').click(function () {
+        debugger
+        $('#tab_2').html('');
+        $('#tab_3').html('');
+        var d = loadData("@Url.Action("_PartialCPPerstionalDtl", "CPDashboard")", data);
+        $('#tab_1').html(d);
+        $('#T1').addClass('nav-link active')
+        $('#T2').removeClass('active')
+        $('#T3').removeClass('active')
+        $('#tab_1').addClass('tab-pane fade active show')
+    });
+
+    $('#T2').click(function () {
+        debugger
+        var d = loadData("@Url.Action("_PartialCPDashBankDtl", "CPDashboard")", data);
+        $('#tab_2').html(d);
+        $('#T2').addClass('nav-link active')
+        $('#T1').removeClass('active')
+        $('#T3').removeClass('active')
+        $('#tab_2').addClass('tab-pane fade active show')
+
+    });
+    $('#T3').click(function () {
+        debugger
+        var d = loadData("@Url.Action("_PartialCPDashDocument", "CPDashboard")", data);
+        $('#tab_3').html(d);
+        $('#T3').addClass('nav-link active')
+        $('#T1').removeClass('active')
+        $('#T2').removeClass('active')
+        $('#tab_3').addClass('tab-pane fade active show')
+
+    });
+
+    var session = '@Session["Tab"]';
+    if (session == '3') {
+        $('#T3').addClass('nav-link active')
+        $('#tab_1').html('');
+        $('#T1').removeClass('active')
+        $('#T2').removeClass('active')
+        var d = loadData("@Url.Action("_PartialCPDashDocument", "CPDashboard")", {});
+        $('#tab_3').html(d);
+        $('#tab_3').addClass('tab-pane fade active show')
+    }
+
+    function fnAllowNumeric() {
+        if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8) {
+            event.keyCode = 0;
+            alert("Accept only Number..!");
+            return false;
+        }
+    }
+
+    function IsMobileNumber() {
+        var mob = /^[1-9]{1}[0-9]{9}$/;
+        var txtMobile = document.getElementById("mobileNo").value;
+        if (txtMobile != '') {
+            if (mob.test(txtMobile) == false) {
+
+                $("#mobileNo").val('');
+                ////$("#msg").show();
+                //document.getElementById("span").innerHTML = "Please enter valid mobile number";
+                alert("Please enter valid mobile number");
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function CnfirmPassword() {
+
+        var pass = document.getElementById("pwd").value;
+        var Confpass = document.getElementById("Cpwd").value;
+        if (Confpass != '') {
+            if (Confpass != pass) {
+
+                $("#Cpwd").val('');
+                // $("#msg").show();
+                //document.getElementById("span").innerHTML = "Confirm Password Does Not Match";
+                alert("Confirm Password Does Not Match");
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function validateCaseSensitiveEmail() {
+        var EmailId = $('#EmailID').val();
+        if (EmailId != '') {
+            var data = { Email: EmailId };
+            credit = 0;
+
+            var d = getJsonResult("@Url.Action("checEmailIdExits", "CP")", data);
+            if (d.Status == 400) {
+
+                alert('Email Id Already Exists Please Enter Another');
+
+                $('#EmailID').val('');
+                $('#EmailID').focus();
+            }
+
+            var email = document.getElementById("EmailID").value;
+
+
+            var reg = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (reg.test(email)) {
+
+            }
+            else {
+
+                $("#EmailID").val('');
+                $("#EmailID").focus();
+                alert('Please Enter Valid Email');
+                // $("#msg").show();
+                //document.getElementById("span").innerHTML = "Please Enter Valid Email";
+            }
+        }
+
+    }
+    function CheckPassword(inputtxt) {
+        var res;
+        var str =
+            document.getElementById("pwd").value;
+        if (str.match(/[a-z]/g) && str.match(
+                /[A-Z]/g) && str.match(
+                /[0-9]/g) && str.match(
+                /[^a-zA-Z\d]/g) && str.length >= 8)
+            res = "TRUE";
+        else {
+            res = "FALSE";
+            // alert("Password Should be Strong");
+            $("#pwd").val('');
+            // $("#msg").show();
+            alert('Password Should be Strong');
+            // document.getElementById("span").innerHTML = "Password Should be Strong";
+        }
+
+        document.getElementById("t2").value = res;
+    }
+    $("#MobileNo").change(function () {
+        var MobileMo = $("#MobileNo").val();
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetCutomerFromMobile",
+            contentType: "application/json; charset=utf-8",
+            data: 'MobileMo=' + MobileMo,
+            dataType: "json",
+            success: function (response) {
+                if (response != null) {
+                    $('#CustName').val(response.Name);
+
+                } else {
+                    alert("Something went wrong");
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+
+
+    $('#UserName').change(function () {
+
+
+        var userId = $('#UserName').val();
+        var data = { UserId: userId };
+        credit = 0;
+
+        var d = getJsonResult("@Url.Action("CheckUserIdExits", "CP")", data);
+        if (d.Status == 400) {
+
+            alert('User Id Already Exists Please Enter Another');
+
+            $('#UserName').val('');
+            $('#UserName').focus();
+        }
+        else {
+
+        }
+
+    });
+
+
+    $('#EmailID').focusout(function () {
+
+
+        var EmailId = $('#EmailID').val();
+        var data = { Email: EmailId };
+        credit = 0;
+
+        var d = getJsonResult("@Url.Action("CheckEmailExists", "CP")", data);
+        if (d.Status == 400) {
+
+            alert('Email Id Already Exists Please Enter Another');
+
+            $('#EmailID').val('');
+            $('#EmailID').focus();
+        }
+        else {
+
+        }
+
+    });
+
+    $(function () {
+
+        $('#txtNumeric').keydown(function (e) {
+
+            if (e.shiftKey || e.ctrlKey || e.altKey) {
+
+                e.preventDefault();
+
+            } else {
+
+                var key = e.keyCode;
+
+                if (!((key == 8) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+
+                    e.preventDefault();
+
+                }
+
+            }
+
+        });
+
+    });
+
+    var cek = /^[a-zA-Z\ \']+$/;
+    function validate(form) {
+
+        var name = $('#chennelpartName').val();
+        if (name != '') {
+            if (!cek.test(name)) {
+
+                $('#chennelpartName').focus();
+                alert("Only Alphabetic");
+                $('#chennelpartName').val('');
+                return false;
+            }
+            return true;
+        }
+
+    }
+    $(document).ready(function () {
+        $(".wideSlider").each(function () {
+            var $this = $(this);
+            var $slider = $this.find(".flexslider");
+            var startat = $slider.attr("data-startat");
+            if (startat = 0) {
+            }
+            $slider.flexslider({
+                animation: 'slide',
+                easing: 'linear',
+                slideshow: true,
+                slideshowSpeed: 7000,
+                animationLoop: true,
+                startAt: startat,
+                controlNav: false,
+                directionNav: true,
+                nextText: " ",
+                prevText: " ",
+            });
+        });
+    })
+</script>
+
+
+

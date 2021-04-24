@@ -1,0 +1,102 @@
+<style> .text { mso-number-format:\@; } </style> <div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">ReportDate</th><th scope="col">EngineerName</th><th scope="col">ActivityName</th><th scope="col">Notes</th><th scope="col">Total Hours</th>
+		</tr><tr>
+			<td class="text">18/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">17/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">16/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">&nbsp;</td><td class="text">12</td>
+		</tr><tr>
+			<td class="text">14/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">AMC machine</td><td class="text">0</td>
+		</tr><tr>
+			<td class="text">13/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">machine under AMC</td><td class="text">14</td>
+		</tr><tr>
+			<td class="text">12/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Residence</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">11/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">ONLINE 2</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">10/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">machine under AMC</td><td class="text">10.50</td>
+		</tr><tr>
+			<td class="text">08/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">machine under AMC.</td><td class="text">9.50</td>
+		</tr><tr>
+			<td class="text">07/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">report will be made after work finish.
+machine und</td><td class="text">11.50</td>
+		</tr><tr>
+			<td class="text">06/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">05/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">04/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">01/08/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">31/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">30/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">29/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">28/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Chargeable Visit</td><td class="text">&nbsp;</td><td class="text">9</td>
+		</tr><tr>
+			<td class="text">27/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Chargeable Visit</td><td class="text">&nbsp;</td><td class="text">9</td>
+		</tr><tr>
+			<td class="text">26/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">Machine under AMC
+
+machine is under observation</td><td class="text">6</td>
+		</tr><tr>
+			<td class="text">25/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">4TH SATURDAY</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">24/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">*customer has given AMC and requested to consider </td><td class="text">8.50</td>
+		</tr><tr>
+			<td class="text">24/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">2</td>
+		</tr><tr>
+			<td class="text">23/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">5</td>
+		</tr><tr>
+			<td class="text">23/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">MACHINE UNDER AMC
+
+machine is under observation</td><td class="text">5</td>
+		</tr><tr>
+			<td class="text">22/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">21/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">20/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">18/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">17/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">16/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">15/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">14/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">13/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">11/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">MACHINE UNDER AMC</td><td class="text">15.50</td>
+		</tr><tr>
+			<td class="text">10/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Residence</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">09/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">08/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">07/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">06/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">05/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">AMC</td><td class="text">MACHINE UNDER AMC</td><td class="text">15.50</td>
+		</tr><tr>
+			<td class="text">04/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Residence</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">03/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">02/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr><tr>
+			<td class="text">01/07/2020</td><td class="text">ASHISH NIPANKAR</td><td class="text">Online Service</td><td class="text">&nbsp;</td><td class="text">8</td>
+		</tr>
+	</table>
+</div>

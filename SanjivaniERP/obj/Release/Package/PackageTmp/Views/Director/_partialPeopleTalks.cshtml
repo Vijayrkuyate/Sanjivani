@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SanjivaniModalView.CPPeopleTalks>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Customerwise Set Prise</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input type="hidden" id="ProductId2" name="rank" />
+                        <label for="exampleInputFile">Set Margin</label>
+
+                        <input type="text" name="postedFile" class="form-control" id="fileuploaded" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="setprice" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #030358;">
+
+
+
+            <th>Name</th>
+            <th>Peoples Talk</th>
+            <th>File</th>
+
+            <th>Operation</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in ViewBag.CPBanner)
+        {
+            <tr style="background-color:white">
+                @*<td>@item.RegistrationDate</td>*@
+
+                <td>@item.CustName</td>
+                <td>@item.PeoplesTalk</td>
+                <td>@item.PeopleImage</td>
+
+                <td align="center">
+                    <input type="hidden" id="ProductId1" name="rank" value=@item.PeopleTalksId />
+                    <a class="btn btn-danger btn-sm view" id="view" data-toggle="modal" data-target="#modal-default"><i class="fa fa-eye"></i></a>
+                </td>
+
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

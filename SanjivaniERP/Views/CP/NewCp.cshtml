@@ -1,0 +1,285 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+@{
+    ViewBag.Title = "NewCp";
+    Layout = "~/Views/Shared/_LayoutChannelPartner.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Channal Partner
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Channal Partner</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="col-lg-12">
+        <section class="col-lg-6 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+
+                    </div><!-- /. tools -->
+                    <i class="fa fa-user"></i>
+
+                    <h3 class="box-title">Personal Detail</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding" style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">CP Registration Date</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="CP Registration Date">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Channel Partner Id</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Channel Partner Id">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">User Id</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter User Id">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Password</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Mobile No</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Channel Partner Name</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Channel Partner Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Channel Partner Email Id</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Email Id">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">CP Categeory</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="CP Categeory">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputPassword1">Address</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">State</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter State">
+                        </div>
+
+
+                    </div><!-- /.row - inside box -->
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+        <section class="col-lg-6 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+
+                    </div><!-- /. tools -->
+                    <i class="fa fa-home"></i>
+
+                    <h3 class="box-title">Bank Detail</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding"style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Channel Partner Bank Name</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Channel Partner Bank Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Account No</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Account No">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">IFSC Code</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter IFSC Code">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Channel Partner Payment Bank Card Name</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Channel Partner Payment Bank Card Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Channel Partner Last 4 digit Card Number</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Last 4 digit Card Number">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Channel Partner Payment Mode</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Payment Mode">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Account Type</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Account Type">
+                        </div>
+                    </div><!-- /.row - inside box -->
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+    </div>
+    <div class="col-lg-12">
+
+        
+        <section class="col-lg-6 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+
+                    </div><!-- /. tools -->
+                    <i class="fa fa-calendar"></i>
+
+                    <h3 class="box-title">Business Detail</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding" style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">CP Registration Date</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="CP Registration Date">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Channel Partner Id</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Channel Partner Id">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">User Id</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter User Id">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Password</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Mobile No</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Channel Partner Name</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Channel Partner Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1">Channel Partner Email Id</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Email Id">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">CP Categeory</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="CP Categeory">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputPassword1">Address</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">State</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter State">
+                        </div>
+
+
+                    </div><!-- /.row - inside box -->
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+        <section class="col-lg-6 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+
+                        <button class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+
+                    </div><!-- /. tools -->
+                    <i class="fa fa-file"></i>
+
+                    <h3 class="box-title">Document Detail</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding" style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputFile">Upload Company Logo</label>
+                            <input type="file" name="postedFile" webkitdirectory mozdirectory class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputFile">Upload Company PAN Card</label>
+
+                            <input type="file" name="postedFile" webkitdirectory mozdirectory class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputFile">Upload Company Reg Document</label>
+
+                            <input type="file" name="postedFile" webkitdirectory mozdirectory class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputFile">Upload Account Profile Photo</label>
+
+                            <input type="file" name="postedFile" webkitdirectory mozdirectory class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputFile">Upload Company Owner Signature</label>
+
+                            <input type="file" name="postedFile" webkitdirectory mozdirectory class="form-control" />
+                        </div>
+                       
+                    </div><!-- /.row - inside box -->
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+        </div>
+
+</section>

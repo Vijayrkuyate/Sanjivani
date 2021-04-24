@@ -1,0 +1,166 @@
+﻿@model SanjivaniModalView.ProductHosting
+
+@using (Html.BeginForm("SetHostingProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+
+                @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+            </div><!-- /. tools -->
+
+
+            <h3 class="box-title" style="background-color:#007bff"></h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.HiddenFor(model => model.HostintProductId)
+                    <label for="exampleInputEmail1">Hosting Categeory</label>
+
+                    @Html.DropDownListFor(model => model.HostingCat, new SelectList(ViewBag.BindHostingCat, "Value", "Text"), "--Select Hosting Categeory--", new { @class = "form-control", })
+                   
+                </div>
+
+                <div class="form-group col-md-6">
+                    
+                    <label for="exampleInputEmail1">Hosting SubCategeory</label>
+
+                    @Html.DropDownListFor(model => model.HostingSubCat, new SelectList(ViewBag.BindHostingSubCat, "Value", "Text"), "--Select Hosting SubCategeory--", new { @class = "form-control", })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Product Name</label>
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Name" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Price</label>
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @placeholder = "Price" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Domain Size</label>
+                    @Html.EditorFor(model => model.DomainSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Domain Size" } })
+                    @Html.ValidationMessageFor(model => model.DomainSize, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Transfer Size</label>
+                    @Html.EditorFor(model => model.TransferSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Transfer Size" } })
+                    @Html.ValidationMessageFor(model => model.TransferSize, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Email Account</label>
+                    @Html.EditorFor(model => model.EmailAccount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Account" } })
+                    @Html.ValidationMessageFor(model => model.EmailAccount, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Database Size</label>
+                    @Html.EditorFor(model => model.DatabaseSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Database Size" } })
+                    @Html.ValidationMessageFor(model => model.DatabaseSize, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Product Image</label>
+                    <input type="file" name="postedFile" class="form-control" id="fileuploaded4" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="col-md-12">
+
+                    <div>
+                        @if (Model.HostintProductId != 0)
+                        {
+                            <a class="btn btn-danger" onclick="EnableTrue()" style="color:white"><i class="fa fa-edit"></i> Edit</a>
+                        }
+                        @if (Model.HostintProductId != 0)
+                        {
+                            <button type="submit" id="usave" class="btn btn-danger"><i class="fa fa-save"></i> Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" id="dsave" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+                        }
+                        @if (Model.HostintProductId != 0)
+                        {
+                            <a class="btn btn-danger" id="esave" href="@Url.Action("DeleteHostingProduct","Product",new { ProductId=Model.HostintProductId})"><i class="fa fa-edit"></i> Delete</a>
+                        }
+
+                        <a class="btn btn-danger" href="@Url.Action("Hosting","Product")"><i class="fa fa-edit"></i> Close</a>
+                    </div>
+
+
+
+
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<style>
+    .no-js #loader {
+        display: none;
+    }
+
+    .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+    }
+
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+    }
+</style>
+<div class="se-pre-con"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script>
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });
+
+</script>
+<script type="text/javascript">
+    var name = $('#HostintProductId').val();
+    if (name != '0') {
+        $(document).ready(function () {
+            console.log("dd");
+            $('#HostingCat').prop('disabled', true);
+            $('#HostingSubCat').prop('disabled', true);
+            $('#Price').prop('disabled', true);
+            $('#DomainSize').prop('disabled', true);
+            $('#ProductName').prop('disabled', true);
+            $('#TransferSize').prop('disabled', true);
+
+            $('#EmailAccount').prop('disabled', true);
+            $('#DatabaseSize').prop('disabled', true);
+            $('#DomainregistrationPrice').prop('disabled', true);
+
+        });
+    }
+    function EnableTrue() {
+        $('#HostingCat').prop('disabled', false);
+        $('#HostingSubCat').prop('disabled', false);
+        $('#Price').prop('disabled', false);
+        $('#DomainSize').prop('disabled', false);
+        $('#ProductName').prop('disabled', false);
+        $('#TransferSize').prop('disabled', false);
+
+        $('#EmailAccount').prop('disabled', false);
+        $('#DatabaseSize').prop('disabled', false);
+        $('#DomainregistrationPrice').prop('disabled', false);
+    }
+</script>

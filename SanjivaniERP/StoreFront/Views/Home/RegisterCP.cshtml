@@ -1,0 +1,211 @@
+﻿@model ModelView.CPCchannelPartnerModel
+@{
+    ViewBag.Title = "RegisterCP";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+<section class="row page_header section-spacing">
+    <div class="container">
+        <h3>Register</h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">home</a></li>
+            <li class="active">Register</li>
+        </ol>
+    </div>
+</section>
+<section class="row section-spacing bg-pattern">
+    <div class="container">
+        <div class="sectionTitle p-bottom80">
+            <h5>Account</h5>
+            <h2>Register</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 center-block register-form">
+                <div class="form">
+                    @using (Html.BeginForm("_PartialCPCRegister", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form clearfix bg-gray border shadow radius" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(model => model.CustId)
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Customer Name.", onblur = "IsMobileNumber()" } })
+                            @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @placeholder = "User Id", onblur = "validateCaseSensitiveEmail();" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Channel Partner Email Id", onblur = "validateCaseSensitiveEmail();" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.mobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mobile No.", onblur = "IsMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                            @Html.ValidationMessageFor(model => model.mobileNo, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class="col-sm-6">
+                            @Html.EditorFor(model => model.AlterMobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Alternate Mobile No.", onblur = "IsMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                            @Html.ValidationMessageFor(model => model.AlterMobileNo, "", new { @class = "text-danger" })
+                        </div>*@
+
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Address" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.PostedCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Posted Code", onkeypress = "return fnAllowNumeric()" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.pwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @required = "required", @type = "password", onfocusout = "CheckPassword()" } })
+                            @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.Cpwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @required = "required", @type = "password", onfocusout = "CnfirmPassword()" } })
+                            @Html.ValidationMessageFor(model => model.Cpwd, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.DropDownListFor(model => model.Country,
+Enumerable.Empty<SelectListItem>
+(),
+"Select Country",
+new { @class = "countries order-alpha dropdown form-control", @id = "countryId" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.DropDownListFor(m => m.State,
+new SelectList(Enumerable.Empty<SelectListItem>
+(), "StateId", "State"),
+"Select State",
+new { @class = "states order-alpha dropdown form-control", @id = "stateId" })
+                        </div>
+                        <div class="col-sm-6" style="margin-top: 10px;">
+                            @Html.DropDownListFor(m => m.City,
+new SelectList(Enumerable.Empty<SelectListItem>
+(), "StateId", "State"),
+"Select City",
+new { @class = "cities order-alpha dropdown form-control", @id = "cityId" })
+                        </div>
+
+
+
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-primary btn-xlg col-sm-8 col-xs-12 center-block m-top30">Register</button>
+                            <p class="message p-top30 margin-bottom0">Already registered ? <a href="login.html">Account Login</a></p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        var data = getJsonResult("@Url.Action("getuserdat", "Home")", data);
+        var country = data.Country;
+        $("#countryId").val(data.Country);
+
+        $('#countryId').trigger("change");
+        $('#countryId').prop('disabled', false);
+        $("#stateId").val(data.StateId);
+        $("#stateId").trigger("change");
+        $("#cityId").val(data.City);
+        $("#Address2").val(data.Address2);
+        $("#EmailId2").val(data.EmailId2);
+        $("#MobileNo2").val(data.MobileNo2);
+
+    });
+
+
+
+    function CPPersonalEnableTrue() {
+
+        $('#CPId').prop('disabled', false);
+        $('#UserName').prop('disabled', false);
+        $('#mobileNo').prop('disabled', false);
+        $('#CustomerName').prop('disabled', false);
+        $('#EmailID').prop('disabled', false);
+        $('#Address').prop('disabled', false);
+        $('#PostedCode').prop('disabled', false);
+        $('#RegiDate').prop('disabled', false);
+        $('#pwd').prop('disabled', false);
+        $('#Cpwd').prop('disabled', false);
+        $('#CpCategory').prop('disabled', false);
+        $('#UserId').prop('disabled', false);
+        $('#AlterMobileNo').prop('disabled', false);
+        $('#CpCustomer').prop('disabled', false);
+        $('#countryId').prop('disabled', false);
+        $('#stateId').prop('disabled', false);
+        $('#cityId').prop('disabled', false);
+    }
+    function IsMobileNumber() {
+        var mob = /^[1-9]{1}[0-9]{9}$/;
+        var txtMobile = document.getElementById("mobileNo").value;
+        if (txtMobile != '') {
+            if (mob.test(txtMobile) == false) {
+
+                $("#mobileNo").val('');
+                $("#msg").show();
+                document.getElementById("span").innerHTML = "Please enter valid mobile number";
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function CnfirmPassword() {
+        debugger
+        var pass = document.getElementById("pwd").value;
+        var Confpass = document.getElementById("Cpwd").value;
+        if (Confpass != '') {
+            if (Confpass != pass) {
+
+                $("#Cpwd").val('');
+                $("#msg").show();
+                document.getElementById("span").innerHTML = "Confirm Password Does Not Match";
+                return false;
+            }
+            return true;
+        }
+
+    }
+    function validateCaseSensitiveEmail() {
+        debugger
+        var email = document.getElementById("EmailID").value;
+
+
+        var reg = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        if (reg.test(email)) {
+
+        }
+        else {
+
+            $("#EmailID").val('');
+            $("#msg").show();
+            document.getElementById("span").innerHTML = "Please Enter Valid Email";
+        }
+    }
+    function CheckPassword(inputtxt) {
+        debugger
+        var res;
+        var str =
+            document.getElementById("pwd").value;
+        if (str.match(/[a-z]/g) && str.match(
+                /[A-Z]/g) && str.match(
+                /[0-9]/g) && str.match(
+                /[^a-zA-Z\d]/g) && str.length >= 8)
+            res = "TRUE";
+        else {
+            res = "FALSE";
+            alert("Password Should be Strong");
+            $("#pwd").val('');
+            $("#msg").show();
+            document.getElementById("span").innerHTML = "Password Should be Strong";
+        }
+
+        document.getElementById("t2").value = res;
+    }
+</script>

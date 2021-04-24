@@ -1,0 +1,66 @@
+﻿@model SanjivaniModalView.CPCchannelPartnerModel
+@using (Html.BeginForm("_SetCPCDocument", "CPC", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+       
+        <div class="box-body no-padding">
+            @Html.HiddenFor(model => model.CustId)
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Profile photo</label>
+                    <input type="file" name="postedFile" class="form-control" style="background-color: transparent;border: none;" id="fileuploaded" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Company PAN Card</label>
+
+                    <input type="file" name="postedFile" class="form-control" style="background-color: transparent;border: none;" id="fileuploaded1" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Adhaar Card </label>
+
+                    <input type="file" name="postedFile" class="form-control" style="background-color: transparent;border: none;" id="fileuploaded2" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Light Bill</label>
+
+                    <input type="file" name="postedFile" class="form-control" style="background-color: transparent;border: none;" id="fileuploaded3" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputFile">Upload Passport</label>
+                    <input type="file" name="postedFile" class="form-control" style="background-color: transparent;border: none;" id="fileuploaded4" accept="image/png,image/jpeg,image/jpg,application/pdf" />
+                </div>
+
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+    <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+}
+<div class="box box-danger" id="loading-example" style="margin-top:10px">
+   
+    <div class="box-body no-padding" style="background-color: whitesmoke;">
+        <div class="row" id="Doucment">
+
+
+        </div><!-- /.row - inside box -->
+    </div><!-- /.box-body -->
+
+</div>
+<script type="text/javascript">
+    var d = loadData("@Url.Action("_PartialgetCPCDocument", "CPC")", {});
+    $('#Doucment').html(d);
+    debugger;
+    var a = $("#fileuploaded").val();
+    var b = $("#fileuploaded1").val();
+    var c = $("#fileuploaded2").val();
+    var d = $("#fileuploaded3").val();
+    var e = $("#fileuploaded4").val();
+    $("#test").click(function () {
+        if (a != '' && b != '' && c != '' && d != '' && e != '')
+        {
+            alert('Your Appliction Is Under Review');
+        }
+
+    });
+</script>

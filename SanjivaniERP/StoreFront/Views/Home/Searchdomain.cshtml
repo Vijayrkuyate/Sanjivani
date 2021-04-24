@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Searchdomain";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row page_header section-spacing">
+    <div class="container">
+        <h3>@Session["DomainName"]</h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">home</a></li>
+            <li class="active">Cart</li>
+        </ol>
+    </div>
+</section>
+
+<!--Cart Details-->
+<section class="row shopping-cart payment section-spacing bg-pattern">
+    <div class="container">
+    
+
+        <div class="row">
+            <!--Billing Form-->
+            <div class="col-sm-8">
+                <div class="col-sm-12">
+                    <div class="table-style table-center shadow">
+                        <table class="table-list">
+                            <tbody>
+                                <tr>
+                                    <th>Domain Name</th>
+                                 
+                                    <th>Renewals</th>
+                                    <th>Transfers</th>
+                                   
+                                </tr>
+                                <tr>
+                                    <td>.com</td>
+                                    
+                                    <td> $12</td>
+                                    <td> $12</td>
+                                   
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--Billing Summary-->
+            <div class="col-sm-4">
+                <div class="summary-box m-bottom30 bg-gray radius shadow">
+                    <h3 class="text-center padding20 summary-boxtitle">Order Summary</h3>
+                    <table class="table m-bottom0">
+                        <tbody>
+                            <tr class="">
+                                <th scope="row">Cart Subtotal</th>
+                                <td class="text-right">$239.85</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><small class="text-muted">Totals</small></th>
+                                <td class="text-right text-muted"><small>$239.85</small></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Order Total</th>
+                                <td>
+                                    <h2 class="price text-right">$239.85</h2>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form>
+                    <a href="@Url.Action("EmailWithDomain","Home")" class="btn btn-primary btn-xlg m-bottom20">
+                      Add And Proceed To Checkout
+                    </a>
+                    <a href="@Url.Action("EmailWithDomain","Home")" class="btn btn-pink btn-xlg">
+                        No Thanx And Proceed To Checkout
+                    </a>
+                    @*<input class="btn btn-primary btn-xlg m-bottom20" type="submit" value="Proceed To Checkout" />
+                    <input class="btn btn-pink btn-xlg" type="submit" value="Continue Shopping" />*@
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

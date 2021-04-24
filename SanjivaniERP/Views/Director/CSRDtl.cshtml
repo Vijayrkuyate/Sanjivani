@@ -1,0 +1,13 @@
+﻿@model SanjivaniModalView.CSR
+
+<div class="form-group col-md-12">
+    @using (Html.BeginForm("_SetDirectorDocument", "Director", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+    <label for="exampleInputFile">Upload Profile photo</label>
+    <input type="file" name="postedFile" class="form-control" id="fileuploaded" style="background-color: transparent;border: none;" accept="image/png,image/jpeg,image/jpg,application/pdf" required />
+
+    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Save</button>
+    }
+</div>
+

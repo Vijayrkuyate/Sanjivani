@@ -1,0 +1,590 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+
+<section class="row find_domain find_domain3 banner-domain-search">
+    @if (Session["Banner"].ToString() == "")
+    {
+        <div class="row m0 find_domain_cover overly5">
+            <div class="container overly-content">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h2 class="text-shadow1">Find Your Domain Name</h2>
+                        <p>Your Online address is now ready,its time to get your Business online. </p>
+                        <div class="domainpricing col-lg-8 center-block m-top30">
+                            @foreach (var item in ViewBag.DomainHomepage)
+                            {
+                                <div class="domaincircle domaincircle1"><span>@item.ProductName</span><br><span class="fa fa-inr"></span>@item.RegistrartionPrice</div>
+                            }
+
+                            @*<div class="domaincircle domaincircle2"><span>.net</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle3"><span>.in</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle4"><span>.org</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle-last"><span>.biz</span><br><span class="fa fa-inr"></span>11.99 per year</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="row m0 find_domain_cover" style="background-image:url(https://master.pioneersoft.co.in/CPStorefront/Banner/@Session["Banner"])">
+            <div class="container overly-content">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h2 class="text-shadow1">Find Your Domain Name</h2>
+                        <p>Your Online address is now ready,its time to get your Business online. </p>
+                        <div class="domainpricing col-lg-8 center-block m-top30">
+                            @foreach (var item in ViewBag.DomainHomepage)
+                            {
+                                <div class="domaincircle domaincircle1"><span>@item.ProductName</span><br><span class="fa fa-inr"></span>@item.RegistrartionPrice</div>
+                            }
+
+                            @*<div class="domaincircle domaincircle2"><span>.net</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle3"><span>.in</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle4"><span>.org</span><br><span class="fa fa-inr"></span>11.99 per year</div>
+                                <div class="domaincircle domaincircle-last"><span>.biz</span><br><span class="fa fa-inr"></span>11.99 per year</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @using (Html.BeginForm("Searchdomain", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "row m0 domain_search" }))
+
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-8 center-block doamin_search_container">
+
+            <div class="input-group">
+                <input type="search" name="Domain" class="form-control" placeholder="Type Your Domain Name">
+                <span class="input-group-addon">
+                    <select name="tld" class="e1 form-control searchFilters fleft select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                        <option>.com</option>
+                        <option>.net</option>
+                        <option>.org</option>
+                        <option>.eu</option>
+                        <option>.in</option>
+                        <option>.au</option>
+                        <option>.global</option>
+                        <option>.host</option>
+                        <option>.shop</option>
+                        <option>.gov</option>
+                        <option>.edu</option>
+                        <option>.forsale</option>
+                        <option>.forum</option>
+                    </select>
+                    <span class="select2 select2-container select2-container--default select2-container--above" dir="ltr" style="width: 112px;">
+                        <span class="selection">
+                            <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-tld-u9-container">
+
+                                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                            </span>
+                        </span><span class="dropdown-wrapper" aria-hidden="true"></span>
+                    </span>
+                    <input type="submit" value="search" class="btn btn-dark">
+                    @*<a class="btn btn-dark" href="@Url.Action("Searchdomain","Home")">
+                           Search
+                        </a>*@
+                </span>
+            </div>
+
+        </div>
+    }
+</section>
+<section class="row serviceTab">
+    <div class="container serviceTab_contents section-spacing bg_white">
+        <div class="row service_tab_menu m0">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+
+                        <li role="presentation" class="active">
+                            <a href="#Tab1" aria-controls="Tab1" role="tab" data-toggle="tab">
+                                <i class="icon-global fa-2x"></i> <span>Domain Offers</span>
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#Tab2" aria-controls="Tab2" role="tab" data-toggle="tab">
+                                <i class="ti-server fa-2x"></i> <span>Specialized Hosting</span>
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#Tab3" aria-controls="Tab3" role="tab" data-toggle="tab">
+                                <i class="fa fa-server fa-2x"></i> <span>Windows Hosting</span>
+                            </a>
+                        </li>
+
+                        <li role="presentation">
+                            <a href="#Tab4" aria-controls="Tab4" role="tab" data-toggle="tab">
+                                <i class="icon-layers fa-2x"></i> <span>Linux Hosting</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tab-content">
+                <!--Tab 1 -->
+                <div class="tab-pane active" role="tabpanel" id="Tab1">
+                    <div class="pricing_slider_row">
+                        <div class="container">
+
+                            <div class="row sectionTitle p-top80 p-bottom30">
+                                <h5>Daily New</h5>
+                                <h2>Offer Plans</h2>
+                            </div>
+
+                            <div class="owl-carousel pricing_slider m-top40">
+                                <div class="item bg-white shadow border">
+
+                                    <div class="ribbon ribbon-small text-white">
+                                        <div class="ribbon-content bg_orange text-uppercase text_white">Popular</div>
+                                    </div>
+
+                                    <div class="domain_ext row text-success"> <img src="https://master.pioneersoft.co.in/Content/Storefront/images/domains/1.png" alt=""></div>
+                                    <div class="price row m0">
+                                        <span class="fa fa-inr"></span>
+                                        <span class="amount text-gredient3">18</span>
+                                        <small>/ Year</small>
+                                    </div>
+                                    <div class="through-line text-muted m-bottom15"><span class="regular-price">$35</span></div>
+                                    <a href="#" class="btn btn-primary btn-xlg"><i class="icon-basket"></i> Buy Now</a>
+                                </div>
+
+                                <div class="item bg-white shadow border">
+
+                                    <div class="ribbon ribbon-small text-white">
+                                        <div class="ribbon-content bg_pink text-uppercase text_white">Offer</div>
+                                    </div>
+
+                                    <div class="domain_ext row m0 text-primary"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/domains/2.png" alt=""></div>
+                                    <div class="price row m0">
+                                        <span class="fa fa-inr"></span>
+                                        <span class="amount text-gredient19">14</span>
+                                        <small>/Year</small>
+                                    </div>
+                                    <div class="through-line text-muted m-bottom15"><span class="regular-price">$35</span></div>
+                                    <a href="#" class="btn btn-success btn-xlg"><i class="icon-basket"></i> Buy Now</a>
+                                </div>
+
+                                <div class="item bg-white shadow border">
+                                    <div class="domain_ext row m0 text-danger"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/domains/3.png" alt=""></div>
+                                    <div class="price row m0">
+                                        <span class="fa fa-inr"></span>
+                                        <span class="amount text-gredient1">21</span>
+                                        <small>/ Year</small>
+                                    </div>
+                                    <div class="through-line text-muted m-bottom15"><span class="regular-price">$35</span></div>
+                                    <a href="#" class="btn btn-dark btn-xlg"><i class="icon-basket"></i> Buy Now</a>
+                                </div>
+
+                                <div class="item bg-white shadow border">
+
+                                    <div class="ribbon ribbon-small text-white">
+                                        <div class="ribbon-content bg_red text-uppercase text_white">New</div>
+                                    </div>
+
+                                    <div class="domain_ext row m0 text-warning"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/domains/4.png" alt=""></div>
+                                    <div class="price row m0">
+                                        <span class="fa fa-inr"></span>
+                                        <span class="amount text-gredient17">12</span>
+                                        <small>/ Year</small>
+                                    </div>
+                                    <div class="through-line text-muted m-bottom15"><span class="regular-price">$35</span></div>
+                                    <a href="#" class="btn btn-info btn-xlg"><i class="icon-basket"></i> Buy Now</a>
+                                </div>
+
+                                <div class="item bg-white shadow border">
+                                    <div class="domain_ext row m0"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/domains/5.png" alt=""></div>
+                                    <div class="price row m0">
+                                        <span class="fa fa-inr"></span>
+                                        <span class="amount text-gredient10">13</span>
+                                        <small>/ Year</small>
+                                    </div>
+                                    <div class="through-line text-muted m-bottom15"><span class="regular-price">$35</span></div>
+                                    <a href="#" class="btn btn-warning btn-xlg"><i class="icon-basket"></i> Buy Now</a>
+                                </div>
+                            </div>
+
+                            <!--Free Features-->
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tab 2 -->
+                <div class="tab-pane" role="tabpanel" id="Tab2">
+                    <div class="row pricing pricing2">
+                        <div class="container">
+                            <div class="row sectionTitle p-top80 p-bottom30">
+                                <h5>our package &amp;</h5>
+                                <h2>VPS Hosting plan</h2>
+                            </div>
+                            <div class="row">
+                                @foreach (var item in ViewBag.VPSHostingHomepage)
+                                {
+                                    <div class="col-sm-4 price_plan">
+                                        <div class="inner m0 bg-white shadow border radius">
+                                            <div class="plan_intro">
+                                                <div class="price row m0">
+                                                    <span class="fa fa-inr"></span>
+                                                    <span class="amount text-gredient1 text-shadow1">@item.Price</span>
+                                                    <small>/mo</small>
+                                                </div>
+                                                <div class="planType row m0">
+                                                    <h4>@item.ProductName</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row m0 service_provide_row">
+                                                <ul class="nav service_provide">
+                                                    <li>@item.DomainSize Domain</li>
+                                                    <li>@item.DatabaseSize Disk Space</li>
+                                                    <li>@item.TransferSize Data Transfer</li>
+                                                    <li>@item.EmailAccount Email Accounts</li>
+                                                    @*<li>SEO</li>
+                                                        <li>99.9% Uptime</li>
+                                                        <li>MySQL Databases</li>*@
+                                                </ul>
+                                                <a href="#" class="btn btn-primary btn-xlg"><i class="fa fa-external-link"></i> Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tab 3 -->
+                <div class="tab-pane" role="tabpanel" id="Tab3">
+                    <div class="row pricing pricing2">
+                        <div class="container">
+                            <div class="row sectionTitle p-top80 p-bottom30">
+                                <h5>our package &amp;</h5>
+                                <h2>Dedicated Hosting plans</h2>
+                            </div>
+                            <div class="row">
+                                @foreach (var item in ViewBag.DedicatedHostingHomepage)
+                                {
+                                    <div class="col-sm-4 price_plan">
+                                        <div class="inner m0 bg-white shadow border radius">
+                                            <div class="plan_intro">
+                                                <div class="price row m0">
+                                                    <span class="fa fa-inr"></span>
+                                                    <span class="amount text-gredient1 text-shadow1">@item.Price</span>
+                                                    <small>/mo</small>
+                                                </div>
+                                                <div class="planType row m0">
+                                                    <h4>@item.ProductName</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row m0 service_provide_row">
+                                                <ul class="nav service_provide">
+                                                    <li>@item.DomainSize Domain</li>
+                                                    <li>@item.DatabaseSize Disk Space</li>
+                                                    <li>@item.TransferSize Data Transfer</li>
+                                                    <li>@item.EmailAccount Email Accounts</li>
+                                                    @*<li>SEO</li>
+                                                        <li>99.9% Uptime</li>
+                                                        <li>MySQL Databases</li>*@
+                                                </ul>
+                                                <a href="#" class="btn btn-primary btn-xlg"><i class="fa fa-external-link"></i> Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tab 4 -->
+                <div class="tab-pane" role="tabpanel" id="Tab4">
+                    <div class="row pricing pricing2">
+                        <div class="container">
+                            <div class="row sectionTitle p-top80 p-bottom30">
+                                <h5>our package &amp;</h5>
+                                <h2>Shared Hosting plans</h2>
+                            </div>
+                            <div class="row">
+                                @foreach (var item in ViewBag.SharedHostingHomepage)
+                                {
+                                    <div class="col-sm-4 price_plan">
+                                        <div class="inner m0 bg-white shadow border radius">
+                                            <div class="plan_intro">
+                                                <div class="price row m0">
+                                                    <span class="fa fa-inr"></span>
+                                                    <span class="amount text-gredient1 text-shadow1">@item.Price</span>
+                                                    <small>/mo</small>
+                                                </div>
+                                                <div class="planType row m0">
+                                                    <h4>@item.ProductName</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row m0 service_provide_row">
+                                                <ul class="nav service_provide">
+                                                    <li>@item.DomainSize Domain</li>
+                                                    <li>@item.DatabaseSize Disk Space</li>
+                                                    <li>@item.TransferSize Data Transfer</li>
+                                                    <li>@item.EmailAccount Email Accounts</li>
+                                                    @*<li>SEO</li>
+                                                        <li>99.9% Uptime</li>
+                                                        <li>MySQL Databases</li>*@
+                                                </ul>
+                                                <a href="#" class="btn btn-primary btn-xlg"><i class="fa fa-external-link"></i> Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @*<div class="col-sm-4 price_plan best_plan">
+                                        <div class="inner m0 relative bg-white shadow border radius">
+
+                                            <div class="ribbon ribbon-small">
+                                                <div class="ribbon-content bg_yellow text-uppercase">Best</div>
+                                            </div>
+
+                                            <div class="plan_intro">
+                                                <div class="price row m0">
+                                                    <span class="fa fa-inr"></span>
+                                                    <span class="amount text-gredient1 text-shadow1">29</span>
+                                                    <small>/mo</small>
+                                                </div>
+                                                <div class="planType row m0">
+                                                    <h4>business plan</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row m0 service_provide_row">
+                                                <ul class="nav service_provide">
+                                                    <li>50GB Bandwidth</li>
+                                                    <li>5TB Storage Space</li>
+                                                    <li>100 Free Sub-Domains</li>
+                                                    <li>Cpanel &amp; FTP</li>
+                                                    <li>SEO</li>
+                                                    <li>99.9% Uptime</li>
+                                                    <li>MySQL Databases</li>
+                                                </ul>
+                                                <a href="#" class="btn btn-primary btn-xlg"><i class="fa fa-external-link"></i> Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 price_plan">
+                                        <div class="inner m0 bg-white shadow border radius">
+                                            <div class="plan_intro">
+                                                <div class="price row m0">
+                                                    <span class="fa fa-inr"></span>
+                                                    <span class="amount text-gredient1 text-shadow1">39</span>
+                                                    <small>/mo</small>
+                                                </div>
+                                                <div class="planType row m0">
+                                                    <h4>premium plan</h4>
+                                                </div>
+                                            </div>
+                                            <div class="row m0 service_provide_row">
+                                                <ul class="nav service_provide">
+                                                    <li>50GB Bandwidth</li>
+                                                    <li>10TB Storage Space</li>
+                                                    <li>500 Free Sub-Domains</li>
+                                                    <li>Cpanel &amp; FTP</li>
+                                                    <li>SEO</li>
+                                                    <li>99.9% Uptime</li>
+                                                    <li>MySQL Databases</li>
+                                                </ul>
+                                                <a href="#" class="btn btn-primary btn-xlg"><i class="fa fa-external-link"></i> Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Slider Section End-->
+<!-- Features Section -->
+<!-- Features Section End -->
+<!--Why Section -->
+<section class="row why_choose bg-gray section-spacing">
+    <div class="container">
+        <div class="row sectionTitle p-bottom40">
+            <h2><strong>Free</strong> Add-Ons with every Domain Name!</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white relative border shadow">
+
+                    <div class="ribbon ribbon-small text-white">
+                        <div class="ribbon-content bg_dark text-uppercase text_white">Limited</div>
+                    </div>
+
+                    <div class="media-left">
+                        <i class="icon-paintbrush text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1">Domain Theft Protection</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white relative border shadow">
+                    <div class="media-left">
+                        <i class="icon-global text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1">Domain Re-directing</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white border shadow">
+                    <div class="media-left">
+                        <i class="icon-tools-2 text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1">Domain Lock</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white border shadow">
+                    <div class="media-left">
+                        <i class="icon-basket text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1 ">Fast DNS Management</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white border shadow">
+                    <div class="media-left">
+                        <i class="icon-envelope text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1 ">Easy to use Control Panel</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 cause2choose m-top40">
+                <div class="media bg_white border shadow">
+                    <div class="media-left">
+                        <i class="icon-aperture text-gredient1 text-shadow1 fa-5x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="text-gredient1">Award winning Support</h4>
+                        <p>Lorem ipsum dolor sit amet, ectetur adipiscing elit. Nullam eget</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Why Section End-->
+<!-- Pricing Table Style 5-->
+<!-- End Pricing Table Style 5-->
+<!--Stats-->
+<!--Stats End-->
+<!-- Section start -->
+<!-- section End-->
+<!-- Section start -->
+<!-- section End-->
+<!--Service Tabs-->
+<!--start offer  area -->
+<!--end offer  area -->
+<!--Facts-->
+<!--Facts End-->
+<!-- Testimonials -->
+<section class="row section-spacing bg-gray">
+    <div class="container">
+        <div class="sectionTitle text-center p-bottom80">
+            <h3>FREE application install with every hosting package in just 1 - click!</h3>
+        </div>
+        <div class="col-sm-12">
+            <div class="logo_slider">
+                @foreach (var item in ViewBag.Client)
+                {
+                    <div class="item"><img src="https://master.pioneersoft.co.in/CPStorefront/Client/@item.BannerImage" class="border shadow radius" alt=""></div>
+                }
+                @*<div class="item"><img src="https://master.pioneersoft.co.in/Content/StorefrontContent/images/logos/1.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/StorefrontContent/images/logos/2.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/3.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/4.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/5.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/6.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/3.png" class="border shadow radius" alt=""></div>
+                    <div class="item"><img src="https://master.pioneersoft.co.in/Content/Storefront/images/logos/4.png" class="border shadow radius" alt=""></div>*@
+            </div>
+        </div>
+    </div>
+</section>
+<section class="row testi_news section-spacing vgredient2">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row sectionTitle text-center p-bottom80">
+                    <h2 class="text_white">Clients Says</h2>
+                </div>
+                <div class="testimonial_slider owl-carousel">
+                    @foreach (var item in ViewBag.PeopleTalks)
+                    {
+                        <div class="item">
+                            <div class="row slide m0">
+                                <div class="fleft client_img"><img alt="" class="img-responsive" src="https://master.pioneersoft.co.in/CPStorefront/PeopleTalks/@item.PeopleImage"></div>
+                                <div class="fleft content">
+                                    <div class="row m0">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <i class="fa fa-quote-left"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p>@item.PeoplesTalk</p>
+                                                <div class="row m0 quote_writer">
+                                                    - @item.CustName
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts -->
+<!-- Blog Posts End-->
+<!-- Dividing block-->
+<!-- Dividing block-->
+<!-- Support -->
+<!-- Apps -->
+<!-- Apps End-->
+<!-- Downloads -->
+<!-- Downloads End-->
+<!-- Request a call back -->
+<!-- Request a call back-->
+<!-- Top Clients -->
+<!-- Top Clients End-->

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "OrgChartNew";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Org Chart
+
+    </h1>
+
+</section>
+<section class="content">
+    <div class="col-lg-12">
+        <div class="row">
+
+            <div class="form-group col-md-12">
+
+                <label for="exampleInputEmail1">Search</label>
+                <input class="form-control" id="search" type="text" placeholder="Search By Name">
+            </div>
+          
+                </div>
+        </div>
+    <div class="col-md-12" id="org">
+
+    </div>
+ 
+</section>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/Comman.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/ajax")
+<script type="text/javascript">
+    var EmailId = $('#search').val();
+    var data = { CPName: EmailId };
+    var d = loadData("@Url.Action("_OrgChartNew", "Director")", data);
+    $('#org').html(d);
+    $('#search').focusout(function () {
+        var EmailId = $('#search').val();
+        var data = { CPName: EmailId };
+        var d = loadData("@Url.Action("_OrgChartNew", "Director")", data);
+        $('#org').html(d);
+
+       
+
+    });
+    </script>
+

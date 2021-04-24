@@ -1,0 +1,173 @@
+﻿@model SanjivaniModalView.DirectorBusinessModel
+
+@using (Html.BeginForm("_PartialDirectorRegister", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-danger" id="loading-example">
+       
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.HiddenFor(model => model.CustId)
+                    <label for="exampleInputEmail1">Business Owner Registration Date</label>
+                    @Html.EditorFor(model => model.RegiDate, "{dd-MM-yyyy}", new { htmlAttributes = new { @class = "form-control", @type = "date", @required = "required", @value = System.DateTime.Now } })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">User Id</label>
+                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @placeholder = "User Id", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Password</label>
+                    @Html.EditorFor(model => model.pwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @required = "required", @type = "password", onfocusout = "CheckPassword()" } })
+                    @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    @Html.EditorFor(model => model.Cpwd, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @required = "required", @type = "password", onfocusout = "CnfirmPassword()" } })
+                    @Html.ValidationMessageFor(model => model.Cpwd, "", new { @class = "text-danger" })
+                </div>
+                @*<div class="form-group col-md-3">
+                        <label for="exampleInputPassword1">Business Owner Id</label>
+                        @Html.EditorFor(model => model.OwnerID, new { htmlAttributes = new { @class = "form-control", @placeholder = "User Id" } })
+                        @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+                    </div>*@
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Mobile No</label>
+                    @Html.EditorFor(model => model.mobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mobile No.", onblur = "IsMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.mobileNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Alternate Mobile No</label>
+                    @Html.EditorFor(model => model.AlterMobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Alternate Mobile No.", onblur = "IsAltMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.AlterMobileNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Owner Name</label>
+                    @Html.EditorFor(model => model.OwnerName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Owner Name", onblur = "IsMobileNumber()" } })
+                    @Html.ValidationMessageFor(model => model.OwnerName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Email Id</label>
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Id", onblur = "validateCaseSensitiveEmail();" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Channel Partner Email Id">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">DIN Id</label>
+                    @Html.EditorFor(model => model.DINId, new { htmlAttributes = new { @class = "form-control", @placeholder = "DIN Id" } })
+                    @Html.ValidationMessageFor(model => model.DINId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Address</label>
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Address" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Postal Code</label>
+                    @Html.EditorFor(model => model.PostedCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Posted Code", onkeypress = "return fnAllowNumeric()" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Country</label>
+                    @Html.DropDownListFor(model => model.Country,
+Enumerable.Empty<SelectListItem>
+    (),
+    "Select Country",
+    new { @class = "countries order-alpha dropdown form-control", @id = "countryId" })
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">State</label>
+                    @Html.DropDownListFor(m => m.State,
+        new SelectList(Enumerable.Empty<SelectListItem>
+            (), "StateId", "State"),
+            "Select State",
+            new { @class = "states order-alpha dropdown form-control", @id = "stateId" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">City</label>
+                    @Html.DropDownListFor(m => m.City,
+new SelectList(Enumerable.Empty<SelectListItem>
+    (), "StateId", "State"),
+    "Select City",
+    new { @class = "cities order-alpha dropdown form-control", @id = "cityId" })
+                </div>
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+    <div class="col-md-12">
+        @*<div class="col-md-3">
+            <a class="btn btn-danger" onclick="EventsTitleList()" style="color:white"><i class="fa fa-edit"></i> Edit</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+        </div>*@
+        <div class="col-md-3">
+            <input type="hidden" id="hiddenPerId" name="custId" value=@Session["EditId"].ToString()>
+           
+            <button type="submit" id="dsave" class="btn btn-danger"><i class="fa fa-save"></i> Save</button>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+}
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/countrystatecity.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+       
+        //$('#MessegeBox').modal('show');
+        //$('#sub').prop('disabled',true);
+        var userId = $('#CustId').val();
+        var data = { CustId: userId };
+        var data = getJsonResult("@Url.Action("getuserdat", "Partner")", data);
+        var country = data.Country;
+        //var state=
+        $("#countryId").val(data.Country);
+
+        $('#countryId').trigger("change");
+        $("#stateId").val(data.StateId);
+        $("#stateId").trigger("change");
+        $("#cityId").val(data.City);
+        $("#Address2").val(data.Address2);
+        $("#EmailId2").val(data.EmailId2);
+        $("#MobileNo2").val(data.MobileNo2);
+
+    });
+
+    $('#UserId').change(function () {
+        var userId = $('#UserId').val();
+        var data = { UserId: userId };
+        credit = 0;
+
+        var d = getJsonResult("@Url.Action("CheckUserIdExits", "CP")", data);
+        if (d.Status == 400) {
+
+            alert('User Id Already Exists Please Enter Another');
+
+            $('#UserId').val('');
+            $('#UserId').focus();
+        }
+        else {
+
+        }
+
+    });
+    $('#dsave').click(function () {
+        debugger;
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Personal Detail Save Sucessfully'
+        })
+    });
+</script>

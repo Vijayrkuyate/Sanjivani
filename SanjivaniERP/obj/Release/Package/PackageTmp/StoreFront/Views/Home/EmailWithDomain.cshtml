@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "EmailWithDomain";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row page_header section-spacing">
+    <div class="container">
+        <h3>Email</h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">home</a></li>
+            <li class="active">Cart</li>
+        </ol>
+    </div>
+</section>
+
+<!--Cart Details-->
+<section class="row shopping-cart payment section-spacing bg-pattern">
+    <div class="container">
+
+
+        <div class="row">
+            <!--Billing Form-->
+            <div class="col-sm-8">
+                <h3><a href="single.html">Create an email address that matches your domain.</a></h3>
+                <div><p><span>Look professional and build trust with a custom email address like <strong>You@apanapro.in</strong></span></p><p>10GB per mailbox<br>Industry-leading spam and virus protection<br>Works with Outlook, Apple Mail and other clients</p><h4 class="font-primary-bold price-title">As low as <span class="text-secondary">₹29.00/mo</span></h4><div><div class="ux-select-dropdown dropdown full-screen" role="menubar"><div aria-expanded="false" aria-label="dropdown" aria-disabled="false" tabindex="0" class="form-control"><div class="dropdown-toggle" aria-label="dropdown toggle"><svg class="uxicon-svg-container" height="16" width="16" role="img"><use fill="currentColor" xlink:href="#svg-container-chevron-down-lt"></use></svg></div><div class="dropdown-text"><div><h5><span class="selected-plan">Professional Email</span> <span class="selected-pricing text-primary-o font-base">- <span class="text-primary-o">₹29.00/mo</span></span></h5><div class="dropdown-details"><div class="dropdown-pricing"><span class="list-price"><s>₹49.00</s></span> <span class="text-primary-o">₹29.00/mo</span></div><ul></ul></div></div></div></div><input type="hidden" name="professionalEmailSelected" readonly="" value=""><div class="dropdown-menu dropdown-menu-left full-screen" role="menu"><div class="dropdown-overlay" role="button" tabindex="-1"></div><div class="dropdown-menu-background"><button type="button" class="close" aria-label="Close"></button><div class="dropdown-list"><a value="[object Object]" data-eid="gce.dpp.config.professionalEmail-no-thanks.click" name="professionalEmailSelected" href="#" class="dropdown-item" role="menuitem" aria-disabled="false"><div><h5><span class="selected-plan">No Thanks</span> </h5></div></a><a value="[object Object]" data-eid="gce.dpp.config.professionalEmail.click" name="professionalEmailSelected" href="#" class="dropdown-item active" role="menuitem" aria-disabled="false"><div><h5><span class="selected-plan">Professional Email</span> <span class="selected-pricing text-primary-o font-base">- <span class="text-primary-o">₹29.00/mo</span></span></h5><div class="dropdown-details"><div class="dropdown-pricing"><span class="list-price"><s>₹49.00</s></span> <span class="text-primary-o">₹29.00/mo</span></div><ul></ul></div></div></a></div></div></div></div></div></div>
+            </div>
+
+            <!--Billing Summary-->
+            <div class="col-sm-4">
+                <div class="summary-box m-bottom30 bg-gray radius shadow">
+                    <h3 class="text-center padding20 summary-boxtitle">Order Summary</h3>
+                    <table class="table m-bottom0">
+                        <tbody>
+                            <tr class="">
+                                <th scope="row">Cart Subtotal</th>
+                                <td class="text-right">$239.85</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><small class="text-muted">Totals</small></th>
+                                <td class="text-right text-muted"><small>$239.85</small></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Order Total</th>
+                                <td>
+                                    <h2 class="price text-right">$239.85</h2>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form>
+                    <a href="@Url.Action("SSLWithDomain","Home")" class="btn btn-primary btn-xlg m-bottom20">
+                        Add And Proceed To Checkout
+                    </a>
+                    <a href="@Url.Action("SSLWithDomain","Home")" class="btn btn-pink btn-xlg">
+                        No Thanx And Proceed To Checkout
+                    </a>
+                    @*<input class="btn btn-primary btn-xlg m-bottom20" type="submit" value="Proceed To Checkout" />
+                    <input class="btn btn-pink btn-xlg" type="submit" value="Continue Shopping" />*@
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,173 @@
+﻿@model SanjivaniModalView.ChennelpartnerModel
+@using (Html.BeginForm("_partialSetCPDashPersonalDeatil", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <div class="box box-danger shadow" id="loading-example">
+        <div class="box-header" style="cursor: move;background-color: #007bff;cursor: move;color: white;">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+            </div><!-- /. tools -->
+
+            <h3 class="box-title">Personal Detail</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding" style="background-color: whitesmoke;">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.HiddenFor(model => model.CustId)
+                    <label for="exampleInputPassword1">User Id</label>
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "User Id", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Password</label>
+                    @Html.EditorFor(model => model.pwd, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password", @required = "required", onfocusout = "CheckPassword()" } })
+                    @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    @Html.EditorFor(model => model.Cpwd, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Confirm Password", @required = "required", onfocusout = "CnfirmPassword()" } })
+                    @Html.ValidationMessageFor(model => model.Cpwd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Mobile No</label>
+                    @Html.EditorFor(model => model.mobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mobile No.", onblur = "IsMobileNumber()", onkeypress = "return fnAllowNumeric()" } })
+                    @Html.ValidationMessageFor(model => model.mobileNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Channel Partner Name</label>
+                    @Html.EditorFor(model => model.chennelpartName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Channel Partner Name", onfocusout = "return validate(this);" } })
+                    @Html.ValidationMessageFor(model => model.chennelpartName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Channel Partner Email Id</label>
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Channel Partner Email Id", onfocusout = "validateCaseSensitiveEmail();" } })
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">CP Categeory</label>
+                    @Html.DropDownListFor(model => model.CpCategory, new SelectList(ViewBag.BindCPCategory, "Value", "Text"), "--Select CPCategory--", new { @class = "form-control", })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Address</label>
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Address" } })
+                    @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Address">*@
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputPassword1">Postal Code</label>
+                    @Html.EditorFor(model => model.PostedCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Postal Code", onkeypress = "return fnAllowNumeric()" } })
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">Country</label>
+                    @Html.DropDownListFor(model => model.Country,
+Enumerable.Empty<SelectListItem>
+    (),
+    "Select Country",
+    new { @class = "countries order-alpha dropdown form-control", @id = "countryId" })
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">State</label>
+                    @Html.DropDownListFor(m => m.State,
+        new SelectList(Enumerable.Empty<SelectListItem>
+            (), "StateId", "State"),
+            "Select State",
+            new { @class = "states order-alpha dropdown form-control", @id = "stateId" })
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="exampleInputEmail1">City</label>
+                    @Html.DropDownListFor(m => m.City,
+new SelectList(Enumerable.Empty<SelectListItem>
+    (), "StateId", "State"),
+    "Select City",
+    new { @class = "cities order-alpha dropdown form-control", @id = "cityId" })
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <input type="hidden" id="hiddenPerId" name="custId" value=@Session["EditId"].ToString()>
+                        @if (Session["EditId"].ToString() != "0")
+                        {
+                            <a class="btn btn-danger" onclick="CPPersonalEnableTrue()" style="color:white"><i class="fa fa-edit"></i> Edit</a>
+                        }
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+            </div><!-- /.row - inside box -->
+        </div><!-- /.box-body -->
+
+    </div>
+}
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Content/js/jquery.min.js"></script>
+<script src="~/Content/js/countrystatecity.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
+@if (Session["Msg"] != "")
+{
+    <script type="text/javascript">
+        alert("Save Succesfull");
+    </script>
+}
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            debugger;
+            var userId = $('#CustId').val();
+            var data = { CustId: userId };
+            var data = getJsonResult("@Url.Action("getuserdat", "Partner")", data);
+            var country = data.Country;
+            $("#countryId").val(data.Country);
+
+            $('#countryId').trigger("change");
+            $('#countryId').prop('disabled', false);
+            $("#stateId").val(data.StateId);
+            $("#stateId").trigger("change");
+            $("#cityId").val(data.City);
+            $("#Address2").val(data.Address2);
+            $("#EmailId2").val(data.EmailId2);
+            $("#MobileNo2").val(data.MobileNo2);
+        });
+    
+    function CPPersonalEnableTrue() {
+        $('#CPId').prop('disabled', false);
+        $('#UserName').prop('disabled', false);
+        $('#mobileNo').prop('disabled', false);
+        $('#chennelpartName').prop('disabled', false);
+        $('#EmailID').prop('disabled', false);
+        $('#Address').prop('disabled', false);
+        $('#PostedCode').prop('disabled', false);
+        $('#stateId').prop('disabled', false);
+        $('#RegiDate').prop('disabled', false);
+        $('#pwd').prop('disabled', false);
+        $('#Cpwd').prop('disabled', false);
+        $('#cityId').prop('disabled', false);
+        $('#CpCategory').prop('disabled', false);
+        $('#countryId').prop('disabled', false);
+        $('#City').prop('disabled', false);
+        $('#State').prop('disabled', false);
+    }
+    var name = $('#hiddenPerId').val();
+    debugger;
+    if (name != "0") {
+        $(document).ready(function () {
+            console.log("dd");
+            $('#CPId').prop('disabled', true);
+            $('#UserName').prop('disabled', true);
+            $('#mobileNo').prop('disabled', true);
+            $('#chennelpartName').prop('disabled', true);
+            $('#EmailID').prop('disabled', true);
+            $('#Address').prop('disabled', true);
+            $('#PostedCode').prop('disabled', true);
+            $('#stateId').prop('disabled', true);
+            $('#RegiDate').prop('disabled', true);
+            $('#pwd').prop('disabled', true);
+            $('#Cpwd').prop('disabled', true);
+            $('#CpCategory').prop('disabled', true);
+            $('#cityId').prop('disabled', true);
+            $('#countryId').prop('disabled', true);
+            $('#City').prop('disabled', true);
+            $('#State').prop('disabled', true);
+        });
+    }
+</script>

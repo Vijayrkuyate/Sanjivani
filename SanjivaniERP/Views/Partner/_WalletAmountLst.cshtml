@@ -1,0 +1,40 @@
+﻿<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #030358;">
+
+           
+            <th>Channal Partner</th>
+            <th>Mobile No</th>
+
+            <th>Email</th>
+            <th>CPId</th>
+            <th>Wallet Amount</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in ViewBag.WalletAmountCPList)
+        {
+            <tr style="background-color:white">
+                @*<td>@item.RegistrationDate</td>*@
+                <td>@item.chennelpartName</td>
+                <td>@item.mobileNo</td>
+
+                <td>@item.EmailID</td>
+                <td>@item.CPId</td>
+                <td>@item.CPWalletAmount</td>
+               
+
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

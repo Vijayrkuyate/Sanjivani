@@ -1,0 +1,96 @@
+﻿
+@model ModelView.ProductEmail
+@{
+    ViewBag.Title = "SetLinuxDomaintHostint";
+    Layout = "~/Views/Shared/_LayoutStoreFront.cshtml";
+}
+
+<section class="row featureTab p-top80 bg_white">
+    
+   
+    <!--Domain Pricing Tabs-->
+    <div class="row feature_tab_menu m0">
+        <div class="container">
+            <div class="col-lg-6 center-block ">
+                <ul class="nav nav-tabs nav-justified " role="tablist">
+                    <li role="presentation" class="text-uppercase active">
+                        <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" aria-expanded="true">
+                            <i aria-hidden="true" class="fa fa-shopping-cart fa-2x"></i>  I already have a Domain Name
+                        </a>
+                    </li>
+
+                    <li class="text-uppercase" role="presentation">
+                        <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab" aria-expanded="false">
+                            <i aria-hidden="true" class="fa fa-refresh fa-2x"></i> I want to buy a new Domain Name
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+@using (Html.BeginForm("LinuxCartHosting", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row m0 featureTab_contents">
+        <div class="tab-content">
+            <!--Tab 1-->
+            @Html.HiddenFor(model => model.EmailProductId)
+            <div class="tab-pane active" role="tabpanel" id="tab1">
+                <div class="content_row row m0 section-spacing">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4 center-block register-form">
+                                    <div class="form">
+                                        <div class="login-form clearfix bg-gray border shadow radius">
+                                            <div class="col-sm-12">
+                                                <input name="have" placeholder="www." type="text">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-primary btn-xlg col-sm-8 col-xs-12 center-block m-top30">Register</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!--Tab 2-->
+            <div class="tab-pane" role="tabpanel" id="tab2">
+                <div class="content_row row m0 section-spacing">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-4 center-block register-form">
+                                    <div class="form">
+                                        <div class="login-form clearfix bg-gray border shadow radius">
+                                            <div class="col-sm-12">
+                                                <input name="Donthave" placeholder="Search Domain" type="text">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <button class="btn btn-primary btn-xlg col-sm-8 col-xs-12 center-block m-top30">Register</button>
+
+                    </div>
+                </div>
+              
+            </div>
+         
+        </div>
+        
+    </div>
+}
+</section>

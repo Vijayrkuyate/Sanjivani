@@ -1,0 +1,134 @@
+﻿@model SanjivaniModalView.GHDView
+
+@{
+    ViewBag.Title = "ViewSalesTicket";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<style>
+    .nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a {
+        background-color: #b92a37;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+            <div class="col-6 col-sm-6">
+                @Html.HiddenFor(model => model.TicketId)
+                <div class="card card-primary card-tabs">
+                    <div class="card-header p-0 pt-1" style="background-color:#030358">
+                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                            <li class="nav-item" id="one">
+                                <a class="nav-link active" id="T1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Sales Ticke</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body" style="border:1px solid;background-color:ghostwhite">
+                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                            <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                <div class="box box-danger" id="loading-example">
+                                    <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                                        <!-- tools box -->
+                                        <div class="pull-right box-tools">
+
+                                            @*<a class="btn btn-danger btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></a>*@
+
+                                        </div><!-- /. tools -->
+
+
+                                        <h3 class="box-title" style="background-color:#007bff"></h3>
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <div class="row">
+                                            <div class="form-group col-md-3">
+
+                                                <label for="exampleInputEmail1">Ticket No</label>
+
+                                                @Html.EditorFor(model => model.TicketId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+
+                                            </div>
+                                            <div class="form-group col-md-3">
+
+                                                <label for="exampleInputEmail1">Ticket Cat.</label>
+
+                                                @Html.EditorFor(model => model.TicketCat, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Customer Name</label>
+                                                @Html.EditorFor(model => model.CustName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Mobile No</label>
+                                                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Customer Email</label>
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Product Name</label>
+                                                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Creation Date</label>
+                                                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Expiration Date</label>
+                                                @Html.EditorFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Deletion Date</label>
+                                                @Html.EditorFor(model => model.DeletionDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Product Code" } })
+                                            </div>
+                                            <div class="col-md-12">
+
+                                                <div>
+                                                   
+                                                        <a href="@Url.Action("UpdateTicketStatus", "Director",new {Type="S",TicketId=Model.TicketId })"  class="btn btn-warning"><i class="fa fa-envelope"></i> Close Ticket</a>
+                                                    
+                                                        <a href="@Url.Action("TicketOpen","Director")" class="btn btn-danger"><i class="fa fa-close"></i> Close</a>
+                                                    
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div><!-- /.row - inside box -->
+                                    </div><!-- /.box-body -->
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+
+
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: 400;
+    }
+</style>

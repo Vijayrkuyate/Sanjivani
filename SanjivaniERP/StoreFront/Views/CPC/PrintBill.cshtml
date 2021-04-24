@@ -1,0 +1,194 @@
+﻿@model ModelView.InvoicePrint
+@{
+    ViewBag.Title = "PrintBill";
+    Layout = "~/Views/Shared/_LayoutCPC.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Invoice</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Invoice</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3" style="border: 1px solid;">
+                    <p2><strong>Tax Invoice</strong> </p2>
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                <div class="row invoice-info" style="border: 1px solid;">
+                                    <div class="col-sm-3 invoice-col">
+                                        <img src="~/Documents/PanSanjivani.png" class="img-circle" alt="User Image" style="height: 161px;" />
+                                    </div>
+                                    <div class="col-sm-4 invoice-col" style="font-size: initial;">
+
+                                        <address>
+
+                                            <br>
+                                            <br>
+                                            <strong>@Model.CompanyName</strong><br>
+                                            CIN : @Model.ServiceProviderRegNo<br>
+                                            PAN : <br>
+                                            
+                                            GSTIN : @Model.ServiceProviderGSTIN
+                                        </address>
+                                    </div>
+                                </div>
+
+                            </h4>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <strong>Service Provider</strong>
+
+                            <address>
+                                @Model.ServiceProviderName <br>
+                                @Model.CompanyName <br>
+                                @Model.ServiceProviderAddress, @Model.ServiceProviderCity - @Model.ServiceProviderPostalCode<br>
+                                M : @Model.ServiceProviderMobileNo <br>
+                                Email: @Model.ServiceProviderEmail
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <strong>Customer</strong>
+                            <address>
+                                 @Model.CustomerName<br>
+                                @Model.CustomerAddress<br>
+                                @Model.CustomerCity-@Model.CustomerPostalCode<br>
+                                Phone: @Model.CustomerMoNo<br>
+                                Email: @Model.CustomerEmail
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <b>Invoice #007612</b><br>
+                            <br>
+                            <b>Order ID:</b> @Model.OrderId<br>
+                            <b>Order Date:</b> @Model.OrderDate<br>
+                            <b>Account:</b> 968-34567
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-12 table-responsive" style="border: 1px solid;">
+                            <table class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+
+
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Rate Per Qty</th>
+                                        <th>Taxable Value</th>
+                                        <th>CGST</th>
+                                        <th>SGST</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Productlst)
+                                    {
+                                        <tr>
+
+
+                                            <td>@item.ProductName</td>
+                                            <td>@item.Qty</td>
+                                            <th>@item.RatePerQty</th>
+                                            <th>@item.BasePrise</th>
+                                            <th>@item.CGST</th>
+                                            <th>@item.SGST</th>
+                                            <td>@item.Price</td>
+                                        </tr>
+                                    }
+                                    
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <!-- accepted payments column -->
+                        <div class="col-6" style="border: 1px solid;margin-top:10px">
+                            <address style="text-align:center">
+
+                                <strong>Signiture!</strong>
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-6" style="border: 1px solid;margin-top:10px">
+
+                            <div class="table-responsive">
+                                @foreach (var item in Model.OrderDetail)
+                                {
+                                    <table class="table">
+                                        <tr>
+                                            <th style="width:50%">Subtotal:</th>
+                                            <td>@item.Subtotal</td>
+                                        </tr>
+                                        <tr>
+                                            <th>CGST (18%):</th>
+                                            <td>@item.CGST</td>
+                                        </tr>
+                                        <tr>
+                                            <th>SGST (18%):</th>
+                                            <td>@item.SGST</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total:</th>
+                                            <td>@item.InvoiceTotal</td>
+                                        </tr>
+                                    </table>
+                                }
+                                
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row invoice-info">
+                        <div class="col-sm-12 invoice-col" style="border: 1px solid;margin-top:10px">
+                            <address style="text-align:center">
+                                If you have any questions about this Invoice, please contact<br>
+                                [ @Model.ServiceProviderName , @Model.ServiceProviderMobileNo #, E-mail : @Model.ServiceProviderEmail ]<br>
+                                <strong>Thank You For Your Business!</strong>
+                            </address>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print" style="margin-top:10px">
+                        <div class="col-12">
+                            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                            <a type="submit" class="btn btn-primary" style="color:white" href="@Url.Action("Billing","CPC")"><i class="fa fa-times"></i> Close</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.invoice -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+

@@ -1,0 +1,54 @@
+﻿<div class="card card-solid">
+    <div class="card-body pb-0">
+        <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-12 d-flex align-items-stretch">
+                <div class="row col-md-12">
+                    @foreach (var item in ViewBag.Org)
+                    {
+                        <div class="card bg-light col-md-4">
+                            <div class="card-header text-muted border-bottom-0">
+                                @item.CustCategeory
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b>@item.CustName</b></h2>
+
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="larger"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: @item.Address, @item.City @item.PostedCode</li>
+                                            <li class="larger"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: @item.MobileNo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                    @if (item.ProfilePhoto == "")
+                                    {
+                                        <img src="~/Documents/ProfilePhoto/avatar.png" alt="" class="img-circle img-fluid">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Documents/Logo/@item.ProfilePhoto" alt="" class="img-circle img-fluid">
+                                    }
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                   
+                                    <a href="@Url.Action("_RedirectOrg", "Director",new {item.CustId,item.CustCategeory })" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user"></i> View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+<img src="~/CPStorefront/Banner/currency_dollar.png" />
+
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

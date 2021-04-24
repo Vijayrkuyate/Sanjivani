@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "Nested";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+<style>
+    td.details-control {
+        background: url('https://cdn.rawgit.com/DataTables/DataTables/6c7ada53ebc228ea9bc28b1b216e793b1825d188/examples/resources/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+    tr.shown td.details-control {
+        background: url('https://cdn.rawgit.com/DataTables/DataTables/6c7ada53ebc228ea9bc28b1b216e793b1825d188/examples/resources/details_close.png') no-repeat center center;
+</style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <!-- Col reorder with resize-->
+    <script src="colreorderwithresize.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+
+    <button id="btn-show-all-children" type="button">Expand All</button>
+    <button id="btn-show-all-children" type="button">Collapse All</button>
+    <table id="exampleTable">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Savings</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2012</td>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>February</td>
+                <td>$80</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display:none">
+        <table id="exampleTable_2" class="display select" width="100%">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                    <th>Extn.</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tiger</td>
+                    <td>Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                    <td>5421</td>
+                    <td>t.nixon@datatables.net</td>
+                </tr>
+                <tr>
+                    <td>Garrett</td>
+                    <td>Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                    <td>8422</td>
+                    <td>g.winters@datatables.net</td>
+                </tr>
+                </tfoot>
+        </table>
+    </div>
+<script type="text/javascript">
+    function fnFormatDetails(table_id, html) {
+
+        var sOut = "<table id=\"exampleTable_" + table_id + "\">";
+
+        sOut += html;
+        sOut += "</table>";
+        return sOut;
+    }
+    var iTableCounter = 1;
+    var oTable;
+    var oInnerTable;
+    var TableHtml;
+
+    //Run On HTML Build
+    $(document).ready(function () {
+
+        TableHtml = $('#exampleTable_2').html();
+
+        //Insert a 'details' column to the table
+        var nCloneTh = document.createElement('th');
+        var nCloneTd = document.createElement('td');
+
+        nCloneTd.innerHTML = '<img src="http://i.imgur.com/SD7Dz.png">';
+        nCloneTd.className = "center";
+        $('#exampleTable thead tr').each(function () {
+            this.insertBefore(nCloneTh, this.childNodes[0]);
+        });
+
+        $('#exampleTable tbody tr').each(function () {
+            this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+        });
+
+        //Initialse DataTables, with no sorting on the 'details' column
+        var oTable = $('#exampleTable').dataTable({
+            'bJQueryUI': true,
+
+            'sPaginationType': 'full_numbers',
+            'aoColumnDefs': [{
+                'bSortable': false,
+                'class': 'details-control',
+                'aTargets': [0]
+            }
+            ],
+            'aaSorting': [[1, 'asc']]
+        });
+
+        /* Add event listener for opening and closing details
+         * Note that the indicator for showing which row is open is not controlled by DataTables,
+         * rather it is done here
+         */
+        $('#exampleTable tbody tr img').on('click', function () {
+            var nTr = $(this).closest('tr');
+
+            if (oTable.fnIsOpen(nTr)) {
+
+                /* This row is already open - close it */
+                this.src = "http://i.imgur.com/SD7Dz.png";
+                oTable.fnClose(nTr);
+            } else {
+                /* Open this row */
+                this.src = "http://i.imgur.com/d4ICC.png";
+                oTable.fnOpen(nTr, fnFormatDetails(iTableCounter, TableHtml), 'details-control');
+                oInnerTable = $('#exampleTable_' + iTableCounter).dataTable({
+                    'bJQueryUI': true,
+                    'sPaginationType': 'full_numbers'
+                });
+                iTableCounter = iTableCounter + 1;
+
+            }
+
+            $('#btn-show-all-children').on('click', function () {
+                // Enumerate all rows
+                oTable.rows().every(function () {
+                    // If row has details collapsed
+                    if (!this.oTable.fnIsOpen(nTr)) {
+                        /* Open this row */
+                        this.src = "http://i.imgur.com/d4ICC.png";
+                        this.oTable.fnOpen(nTr, fnFormatDetails(iTableCounter, TableHtml), 'details-control');
+                        this.oInnerTable = $("#exampleTable_" + iTableCounter).dataTable({
+                            'bJQueryUI': true,
+                            'sPaginationType': 'full_numbers'
+                        });
+                        iTableCounter = iTableCounter + 1;
+                    }
+                });
+            });
+
+            // Handle click on "Collapse All" button
+            $('#btn-hide-all-children').on('click', function () {
+                // Enumerate all rows
+                oTable.rows().every(function () {
+                    // If row has details expanded
+                    if (oTable.fnIsOpen(nTr)) {
+
+                        /* This row is already open - close it */
+                        this.src = "http://i.imgur.com/SD7Dz.png";
+                        oTable.fnClose(nTr);
+                    }
+                });
+            });
+            $('#btn-show-all-children').on('click', function () {
+                // Enumerate all rows
+                oTable.rows().every(function () {
+                    // If row has details collapsed
+                    if (!this.oTable.fnIsOpen(nTr)) {
+                        /* Open this row */
+                        this.src = "http://i.imgur.com/d4ICC.png";
+                        this.oTable.fnOpen(nTr, fnFormatDetails(iTableCounter, TableHtml), 'details-control');
+                        this.oInnerTable = $("#exampleTable_" + iTableCounter).dataTable({
+                            'bJQueryUI': true,
+                            'sPaginationType': 'full_numbers'
+                        });
+                        iTableCounter = iTableCounter + 1;
+                    }
+                });
+            });
+
+            // Handle click on "Collapse All" button
+            $('#btn-hide-all-children').on('click', function () {
+                // Enumerate all rows
+                oTable.rows().every(function () {
+                    // If row has details expanded
+                    if (oTable.fnIsOpen(nTr)) {
+
+                        /* This row is already open - close it */
+                        this.src = "http://i.imgur.com/SD7Dz.png";
+                        oTable.fnClose(nTr);
+                    }
+                });
+            });
+        });
+    });
+</script>

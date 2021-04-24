@@ -1,0 +1,145 @@
+﻿@model IEnumerable<SanjivaniModalView.ProductBusinessModal>
+
+@{
+    ViewBag.Title = "Domain";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">DOMAIN</h1>
+   
+</section>
+<section class="content">
+
+
+    <div class="col-lg-12" style="border:1px solid;background-color:palegoldenrod">
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;cursor: move;color: white;">
+                    <!-- tools box -->
+                    <div class="form-group col-md-6" style="margin-top: 10px;">
+
+
+                        <a class="btn btn-danger btn-md" href="@Url.Action("AddDomain","Product",new { ProductId=0})" style="color:white"><i class="fa fa-plus"></i> Add New Product</a>
+                        <button class="btn btn-success btn-md" onclick="DownloadExcel()"><i class="fa fa-file-o"></i> ExportExcel</button>
+                    </div>
+                  
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr style="color: white;background-color: #030358">
+                                    
+                                    <th style="width: 20px;">Image</th>
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+                                  
+                                    <th>SAC Code</th>
+                                    <th>Registrartion Price</th>
+                                    <th>Renewal Price</th>
+                                    <th>Transfer Price</th>
+                                    <th>Restoration Price</th>
+                                    <th>Operation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rowNo = 0; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr style="background-color:white">
+                                        @*<td>@item.RegistrationDate</td>*@
+                                        <td>
+                                            <div class="pull-left image">
+                                                <img src="~/Documents/ProductImage/@item.PropductImage" class="img-circle" alt="User Image" style="height: 47px;">
+                                            </div>
+                                        </td>
+                                        <td>@item.ProductCode</td>
+                                       
+                                        <td>@item.ProductName</td>
+                                        
+                                        <td>@item.SACCode</td>
+                                        <td>@item.RegistrartionPrice</td>
+                                        <td>@item.RenewalPrice</td>
+                                        <td>@item.TransferPrice</td>
+                                        <td>@item.DomainregistrationPrice</td>
+                                        <td align="center">
+                                            <a class="btn btn-danger btn-sm" href="@Url.Action("AddDomain","Product",new { ProductId=item.ProductId})">
+                                                <i class="fa fa-eye">
+                                                </i>
+
+                                            </a>
+                                       
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                   
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+        function DownloadExcel() {
+            $.ajax({
+                type: "POST",
+                url: "/Product/ExcelExportDomainList",
+                cache: false,
+                success: function (data) {
+                    window.location = '/Product/DownloadDomainList';
+                },
+                error: function (data) {
+                    Materialize.toast("Something went wrong. ", 3000, 'rounded');
+                }
+            });
+        }
+</script>

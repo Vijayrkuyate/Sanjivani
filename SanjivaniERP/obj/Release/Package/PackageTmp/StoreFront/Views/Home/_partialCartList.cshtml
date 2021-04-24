@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ModelView.Cart>
+<table class="table cart m-bottom0">
+    <tbody>
+        <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="#">@item.Domain</a>
+                </td>
+                <td><span>@item.ProductName</span></td>
+                
+                <td>
+                    <input type="hidden" id="IntractId" name="rank" value=@item.CartId>
+                    <select id="cars" class="form-control">
+                        @if (@item.SubscriptionId == "1")
+                        {
+                            <option  selected value="1">1-Year</option>
+                        }
+                        else
+                        {
+                            <option value="1">1-Year</option>
+                        }
+                        @if (@item.SubscriptionId == "2")
+                        {
+                            <option selected value="2">2-Year</option>
+                        }
+                        else
+                        {
+                            <option value="2">2-Year</option>
+                        }
+                       @if (@item.SubscriptionId == "3")
+                       {
+                        <option selected value="3">3-Year</option>
+                       }
+                       else
+                       {
+                        <option value="3">3-Year</option>
+                       }
+                    </select>
+                   
+                </td>
+                <td><span>@item.Price</span></td>
+                <td scope="row">
+                    <input type="hidden" id="IntractId" name="rank" value=@item.CartId>
+                    <a id="Delete"><i class="fa fa-trash fa-2x"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="https://master.pioneersoft.co.in/Content/js/jquery.min.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/countrystatecity.js"></script>
+<script src="https://master.pioneersoft.co.in/Content/js/bootstrap.min.js"></script>
+<script>
+    $('body').on('click', '#Delete', function () {
+        debugger;
+        var CartId = $(this).siblings("#IntractId").val();
+
+        var dd = getJsonResult("@Url.Action("DeleteCartItem", "Home")", { CartId });
+          var d = loadData("@Url.Action("_partialCartList", "Home")");
+        $('#cartlist').html(d);
+
+        var d = loadData("@Url.Action("_partialorderSummary", "Home")");
+        $('#ordersummary').html(d);
+        var messege = '';
+        if (dd.Status == 200) {
+            messege = 'Record saved successfully';
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+    });
+    $('body').on('change', '#cars', function () {
+        debugger;
+        var CartId = $(this).siblings("#IntractId").val();
+        var Year = $(this).val();
+        var dd = getJsonResult("@Url.Action("UpdateSubscription", "Home")", { CartId, Year });
+        var d = loadData("@Url.Action("_partialCartList", "Home")");
+        $('#cartlist').html(d);
+
+        var d = loadData("@Url.Action("_partialorderSummary", "Home")");
+        $('#ordersummary').html(d);
+        var messege = '';
+        if (dd.Status == 200) {
+            messege = 'Record saved successfully';
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+    });
+</script>

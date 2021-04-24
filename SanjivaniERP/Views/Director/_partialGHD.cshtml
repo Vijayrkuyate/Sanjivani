@@ -1,0 +1,119 @@
+﻿@model IEnumerable<SanjivaniModalView.GHDs>
+
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #1c7faf;">
+            <th align="center">Sr.No</th>
+            <th>Knowledgebase</th>
+            <th>Link</th>
+            <th>Operation</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@item.RegistrationDate</td>*@
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>@item.GHD</td>
+                <td>@item.Link</td>
+
+                <td align="center">
+                    <input type="hidden" id="WithdrawId1" name="rank" value=@item.Link />
+                    <a class="btn btn-success btn-sm" id="view" data-toggle="modal" data-target="#modal-default" style="color:white">
+                        <i class="fa fa-eye">
+                        </i>
+
+                    </a>
+                 
+                    @*<input type="hidden" id="GHDIF" name="rank" value=@item.GHDId>*@
+                    <input type="hidden" id="Link" name="rank" value=@item.Link>
+                    @*<input type="hidden" id="GHDss" name="rank" value=@item.GHD>*@
+                    @Html.TextBoxFor(x => @item.GHDId, new { id = "GHDIF", @style = "display:none" })
+                    @Html.TextBoxFor(x => @item.GHD, new { id= "GHDss",@style = "display:none" })
+                    <a class="btn btn-primary btn-sm" id="Edit" onclick="edit()">
+                        <i class="fa fa-edit">
+                        </i>
+
+                    </a>
+                    <input type="hidden" id="GHDId" name="rank" value=@item.GHDId>
+                    <a class="btn btn-danger btn-sm" id="delete" style="color:white">
+                        <i class="fa fa-trash-restore-alt">
+                        </i>
+
+                    </a>
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+   
+    $('body').on('click', '#delete', function () {
+        debugger;
+        var GHDId = $(this).siblings("#GHDId").val();
+
+        var dd = getJsonResult("@Url.Action("DeleteGHD", "Director")", { GHDId });
+        var d = loadData("@Url.Action("_partialGHD", "Director")", {});
+        $('#child').html(d);
+        var messege = '';
+        if (dd.Status == 200) {
+            messege = 'Record saved successfully';
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+    });
+    $('body').on('click', '#view', function () {
+        debugger;
+        var id = $(this).siblings("#WithdrawId1").val();
+        debugger;
+        // var id = $(this).attr("id");
+        //parts = id.split('.').pop().trim();
+        //var currenturl = window.location.href;
+
+        var Url = id
+        var url = Url
+
+        debugger;
+        $("#pdf").show();
+        $("#pdf").attr("src", url);
+    });
+
+        $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+        });
+        function write_to_excel() {
+            $("#example1").table2excel({
+                name: "Table2Excel",
+                filename: "myFileName",
+                fileext: ".xls"
+            });
+        }
+
+</script>

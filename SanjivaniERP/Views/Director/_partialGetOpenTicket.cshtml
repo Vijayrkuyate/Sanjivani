@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SanjivaniModalView.GHDTicket>
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr style="color: white;background-color: #030358;">
+
+
+            <th>Ticket Id.</th>
+            <th>Ticket Categeory</th>
+            <th>Department</th>
+
+            <th>Product Name</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            
+            <th>SME</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr style="background-color:white">
+                @*<td>@item.RegistrationDate</td>*@
+
+                <td>TIC @item.SalesTicketId</td>
+
+                <td>@item.TicketCat</td>
+                <td>@item.Department</td>
+
+                <td>@item.ProductName</td>
+                <td>@item.OrderDate</td>
+                <td>@item.CustName</td>
+              
+                <td>
+                    <select id="TTL" class="form-control">
+                        <option value="volvo">Select Employee</option>
+                        <option value="volvo">Vijay</option>
+                        <option value="volvo">Rahul</option>
+                    </select>
+                </td>
+                @if (@item.Department == "Sales")
+                {
+                    <td align="center">
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("ViewSalesTicket", "Director",new { TicketId= @item.TicketId })">
+                            <i class="fa fa-eye">
+                            </i>
+                        </a>
+                    </td>
+                }
+                @if (@item.Department == "Billing")
+                {
+                    <td align="center">
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("ViewSalesTicket", "Director",new { TicketId= @item.TicketId })">
+                            <i class="fa fa-eye">
+                            </i>
+                        </a>
+                    </td>
+                }
+                @if (@item.Department == "Technical")
+                {
+                    <td align="center">
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("ViewTechanicalTicket", "Director",new { TicketId= @item.TicketId })">
+                            <i class="fa fa-eye">
+                            </i>
+                        </a>
+                    </td>
+                }
+            </tr>
+        }
+
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>
+

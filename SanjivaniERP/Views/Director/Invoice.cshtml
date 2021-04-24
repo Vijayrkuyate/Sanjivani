@@ -1,0 +1,227 @@
+﻿
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Invoice</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Invoice</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="callout callout-info">
+                    <h5><i class="fas fa-info"></i> Note:</h5>
+                    This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+                </div>
+
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3" style="border: 1px solid;">
+                    <p2><strong>Tax Invoice</strong> </p2>
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                <div class="row invoice-info" style="border: 1px solid;">
+                                    <div class="col-sm-3 invoice-col">
+                                        <img src="~/Documents/PanSanjivani.png" class="img-circle" alt="User Image" style="height: 161px;" />
+                                    </div>
+                                    <div class="col-sm-4 invoice-col" style="font-size: initial;">
+
+                                        <address>
+
+                                            <br>
+                                            <br>
+                                            <strong>TORAMBE SANJIVANI TECHNOLOGY LIMITED</strong><br>
+                                            CIN : U74999PN2018PLC180489<br>
+                                            PAN : AAHCT0530E<br>
+                                            TAN :PNET12866A<br>
+                                            GSTIN : 27AAHCT0530E1ZP
+                                        </address>
+                                    </div>
+                                </div>
+
+                            </h4>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <strong>Service Provider</strong>
+
+                            <address>
+                                Rahul Torambe <br>
+                                Torambe Sanjivani Technology Ltd <br>
+                                Hadapsar, Pune - 411060<br>
+                                M : 8956253672 <br>
+                                Prepared by: [Vaishali]
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <strong>Customer</strong>
+                            <address>
+                                John Doe<br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                Phone: (555) 539-1037<br>
+                                Email: john.doe@example.com
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                            <b>Invoice #007612</b><br>
+                            <br>
+                            <b>Order ID:</b> 4F3S8J<br>
+                            <b>Payment Due:</b> 2/22/2014<br>
+                            <b>Account:</b> 968-34567
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-12 table-responsive" style="border: 1px solid;">
+                            <table class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                       
+                                       
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Rate Per Qty</th>
+                                        <th>Taxable Value</th>
+                                        <th>CGST</th>
+                                        <th>SGST</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                       
+                                        <td>El snort testosterone trophy driving gloves handsome</td>
+                                        <td>1</td>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <td>$64.50</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                       
+                                        <td>Wes Anderson umami biodiesel</td>
+                                        <td>1</td>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <td>$50.00</td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        
+                                        <td>Terry Richardson helvetica tousled street art master</td>
+                                        <td>1</td>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <td>$10.70</td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        
+                                        <td>Tousled lomo letterpress</td>
+                                        <td>1</td>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <th>100.00</th>
+                                        <td>$25.99</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <!-- accepted payments column -->
+                        <div class="col-6" style="border: 1px solid;margin-top:10px">
+                            <address style="text-align:center">
+                               
+                                <strong>Signiture!</strong>
+                            </address>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-6" style="border: 1px solid;margin-top:10px">
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td>$250.30</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tax (9.3%)</th>
+                                        <td>$10.34</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping:</th>
+                                        <td>$5.80</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td>$265.24</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row invoice-info">
+                        <div class="col-sm-12 invoice-col" style="border: 1px solid;margin-top:10px">
+                            <address style="text-align:center">
+                                If you have any questions about this Invoice, please contact<br>
+                                [ Rahul , 8956253672 #, E-mail : billing@sanjivanitechnology.com ]<br>
+                               <strong>Thank You For Your Business!</strong>
+                            </address>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <!-- this row will not appear when printing -->
+                    <div class="row no-print">
+                        <div class="col-12">
+                            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                            <button type="button" class="btn btn-success float-right">
+                                <i class="far fa-credit-card"></i> Submit
+                                Payment
+                            </button>
+                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                <i class="fas fa-download"></i> Generate PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.invoice -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+

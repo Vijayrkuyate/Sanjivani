@@ -1,0 +1,382 @@
+﻿@model SanjivaniModalView.SetPrice
+
+@{
+    ViewBag.Title = "SetPrice";
+    Layout = "~/Views/Shared/_LayoutSanjivani.cshtml";
+}
+
+<section class="content-header">
+   
+        <h1 class="m-0 text-danger" style="text-align: center;font-weight: 1000;color: #a9a0a1!important;">SET PRISE</h1>
+    
+</section>
+
+<section class="content">
+
+    <!-- /.box-body -->
+    <div class="col-lg-12" style="border:1px solid;background-color:palegoldenrod">
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="form-group col-md-3">
+
+                    <label for="exampleInputEmail1">Channal Partner</label>
+                    @Html.DropDownListFor(model => model.CustName, new SelectList(ViewBag.BindCPCustomer, "Value", "Text"), "--Select CP--", new { @class = "form-control", })
+
+
+                </div>
+
+                <div class="form-group col-md-3">
+
+                    <label for="exampleInputEmail1">Product Categeory</label>
+                    @Html.DropDownListFor(model => model.ProductCat, new SelectList(ViewBag.BindProductCat, "Value", "Text"), "--Select Categeory--", new { @class = "form-control", })
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <label for="exampleInputEmail1">Set Your Margin</label>
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Amount" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group col-md-3">
+
+                    <a class="btn btn-danger btn-md" id="SaveCat" style="color:white;margin-top: 30px;"><i class="fa fa-plus"></i> Set Price</a>
+
+                </div>
+            </div><!-- /.row - inside box -->
+        </div>
+        <section class="col-lg-12 connectedSortable ui-sortable">
+            <!-- Box (with bar chart) -->
+            <div class="box box-danger" id="loading-example">
+                <div class="box-header" style="cursor: move;background-color: steelblue;cursor: move;color: white;">
+                    <!-- tools box -->
+
+
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body table-responsive" id="OrderDtl">
+
+                    </div>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <!-- /.nav-tabs-custom -->
+            <!-- Calendar -->
+            <!-- /.box -->
+            <!-- quick email widget -->
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/Excel/jquery.table2excel.js"></script>
+
+<script type="text/javascript">
+    $('body').on('click', '#view', function () {
+        debugger;
+        var id = $(this).siblings("#ProductId1").val();
+        $('#ProductId2').val(id);
+    });
+    $('body').on('click', '#setprice', function () {
+        debugger;
+        var amount = $('#fileuploaded').val();
+        var productid = $('#ProductId2').val();
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+        var amount = $('#fileuploaded').val()
+
+        var data = { CustName: Name, Categeory: Cat, Amount: amount, ProductId: productid };
+
+        var dd = getJsonResult("@Url.Action("SetCustomerPriceList", "Product")", { Cat, Name, amount, productid });
+
+        var messege = '';
+        if (dd.Status == 200) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Set Prise Sucessfully'
+            })
+            if (Cat == 'Domain') {
+                var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+            if (Cat == 'Email') {
+                var d = loadData("@Url.Action("_partialEmailSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+            if (Cat == 'Hosting') {
+                var d = loadData("@Url.Action("_partialHostingSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+      
+        $('#modal-default').modal('toggle');
+        $('#modal-default').modal('hide');
+        $('.modal-backdrop').removeClass('modal-backdrop');
+        $('.fade').removeClass('fade');
+        $('.in').removeClass('in');
+
+        $('html, body').css({
+            'overflow': 'auto',
+            'height': 'auto'
+        });
+        $('.close').click();
+    });
+    $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": false
+        });
+    });
+    function write_to_excel() {
+        $("#example1").table2excel({
+            name: "Table2Excel",
+            filename: "myFileName",
+            fileext: ".xls"
+        });
+    }
+    $('#CustName').change(function () {
+        debugger;
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var data = { CustName: Name, Categeory: Cat };
+        if (Cat == 'Domain') {
+            var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Email') {
+            var d = loadData("@Url.Action("_partialEmailSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Hosting') {
+            var d = loadData("@Url.Action("_partialHostingSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        @*var dd = getJsonResult("@Url.Action("DeleteUserIntraction", "Partner")", { IntractionId });
+            var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+            $('#_IntractionList').html(d);
+            var messege = '';
+            if (dd.Status == 200) {
+                messege = 'Record saved successfully';
+            }
+            else {
+                messege = 'Internal server error please try again';
+            }*@
+    });
+
+    $('#ProductCat').change(function () {
+        debugger;
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+
+        var data = { CustName: Name, Categeory: Cat };
+        if (Cat == 'Domain') {
+            var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Email') {
+            var d = loadData("@Url.Action("_partialEmailSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        if (Cat == 'Hosting') {
+            var d = loadData("@Url.Action("_partialHostingSetPrice", "Product")", data)
+            $('#OrderDtl').html(d);
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        }
+        @*var dd = getJsonResult("@Url.Action("DeleteUserIntraction", "Partner")", { IntractionId });
+            var d = loadData("@Url.Action("_PartialUserIntarction", "Partner")", data);
+            $('#_IntractionList').html(d);
+            var messege = '';
+            if (dd.Status == 200) {
+                messege = 'Record saved successfully';
+            }
+            else {
+                messege = 'Internal server error please try again';
+            }*@
+    });
+    $('#SaveCat').click(function () {
+        debugger;
+        var t = document.getElementById("ProductCat");
+        var Cat = t.options[t.selectedIndex].text;
+
+        var t1 = document.getElementById("CustName");
+        var Name = t1.options[t1.selectedIndex].text;
+        var amount = $('#Amount').val()
+
+        var data = { CustName: Name, Categeory: Cat };
+
+        var dd = getJsonResult("@Url.Action("SetPriceList", "Product")", { Cat, Name, amount });
+
+        var messege = '';
+        if (dd.Status == 200) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Set Prise Sucessfully'
+            })
+            if (Cat == 'Domain') {
+                var d = loadData("@Url.Action("_partialSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+            if (Cat == 'Email') {
+                var d = loadData("@Url.Action("_partialEmailSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+            if (Cat == 'Hosting') {
+                var d = loadData("@Url.Action("_partialHostingSetPrice", "Product")", data)
+                $('#OrderDtl').html(d);
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            }
+        }
+        else {
+            messege = 'Internal server error please try again';
+        }
+
+
+
+    });
+</script>

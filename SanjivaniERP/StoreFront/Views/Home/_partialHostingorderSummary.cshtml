@@ -1,0 +1,23 @@
+﻿<h3 class="text-center padding20 summary-boxtitle">Order Summary</h3>
+<table class="table m-bottom0">
+    <tbody>
+        @foreach (var item in ViewBag.orderSummary)
+        {
+            <tr class="">
+                <th scope="row">Cart Subtotal</th>
+                <td class="text-right">@item.cartsubtotal</td>
+            </tr>
+            <tr>
+                <th scope="row"><small class="text-muted">Totals</small></th>
+                <td class="text-right text-muted"><small>@item.totals</small></td>
+            </tr>
+            <tr>
+                <th scope="row">Order Total</th>
+                <td>
+                    <h2 class="price text-right">@item.ordertotals</h2>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
